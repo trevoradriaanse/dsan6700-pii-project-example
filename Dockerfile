@@ -16,8 +16,10 @@ ENV PYTHONUNBUFFERED=1 \
 
 COPY --from=ghcr.io/astral-sh/uv:0.7.8 /uv /usr/local/bin/uv
 
-# A user with no special rights runs the service.
-RUN useradd --create-home --uid 1000 app
+# A user with no special rights runs the service. The model cache directory must exist, owned by that user, before a
+# volume is mounted on it: otherwise Docker creates it owned by root and the download fails with Permission denied.
+RUN useradd --create-home --uid 1000 app \
+    && mkdir -p /home/app/.cache/huggingface && chown -R app:app /home/app/.cache
 WORKDIR /app
 
 # Dependencies first, in their own layer: a code change does not reinstall them.

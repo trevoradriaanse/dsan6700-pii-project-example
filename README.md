@@ -24,7 +24,7 @@ With Docker, on a Jetstream2 instance:
 ```bash
 cp .env.example .env
 docker compose up -d --build                        # http://<instance address>:8000
-DETECTOR_EXTRA=gliner docker compose up -d --build  # the model-based detector; then set NTK_DETECTOR=regex+gliner in .env
+DETECTOR_EXTRA=gliner docker compose up -d --build  # the model-based detector (image 3.5 GB vs 555 MB); set NTK_DETECTOR=regex+gliner in .env
 ```
 
 ## Use the API
@@ -42,10 +42,13 @@ uv run needtoknow-eval --detector regex             # writes eval/predictions/re
 cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../predictions/regex.json   # the benchmark's own scorer
 ```
 
-| Detector | Recall | Precision | Seconds for 50 documents (CPU) |
+| Detector | Recall | Precision | 50 documents, CPU |
 |---|---|---|---|
-| regex (baseline) | 0.623 | 0.930 | 0.1 |
-| presidio | 0.702 | 0.460 | 12 |
-| openai/privacy-filter (published by the benchmark) | 0.671 | 0.963 | about 1,500 |
+| regex (baseline) | 0.623 | 0.930 | 0.1 s |
+| presidio | 0.702 | 0.460 | 12 s |
+| gliner | 0.708 | 0.573 | 115 s (m3.medium) |
+| **regex + gliner** | **0.900** | **0.619** | 120 s (m3.medium) |
+| openai/privacy-filter (published by the benchmark) | 0.671 | 0.963 | about 25 min |
+| docscrubber pipeline (published) | 0.912 | 0.774 | in the browser |
 
 Character-level redaction scores, as the benchmark computes them.

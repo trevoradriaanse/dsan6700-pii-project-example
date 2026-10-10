@@ -9,8 +9,8 @@ services:
     ports:
       - "8000:8000"                           # the only port we publish
     volumes:
-      - model-cache:/home/app/.cache/huggingface   # model weights survive a rebuild or restart
+      - models:/home/app/.cache/huggingface   # model weights survive a rebuild or restart
     restart: unless-stopped
 
 volumes:
-  model-cache:
+  models:

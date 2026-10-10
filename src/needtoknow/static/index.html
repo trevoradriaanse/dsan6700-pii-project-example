@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Need to Know</title>
+<style>
+  :root { --ink:#14181f; --muted:#626b79; --line:#d9dde3; --accent:#3a4fc4; --warn:#9a4b00; --bg:#fafaf7; --card:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#e8eaee; --muted:#9aa3af; --line:#333a44; --accent:#8e9cf0; --warn:#f0a35e; --bg:#14171c; --card:#1c2027; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 system-ui, -apple-system, sans-serif; color:var(--ink); background:var(--bg); }
+  main { max-width:860px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { margin:0 0 4px; font-size:28px; } .sub { color:var(--muted); margin:0 0 20px; }
+  .banner { border:1px solid var(--warn); color:var(--warn); border-radius:8px; padding:10px 14px; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px; margin-bottom:16px; }
+  button { font:inherit; padding:8px 16px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+  button.secondary { background:transparent; color:var(--accent); } button:disabled { opacity:.5; cursor:default; }
+  table { width:100%; border-collapse:collapse; } th, td { text-align:left; padding:6px 8px; border-top:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; } td.t { font-family:ui-monospace, monospace; word-break:break-word; }
+  .label { font-size:13px; color:var(--muted); } #status { color:var(--muted); min-height:1.5em; } .err { color:var(--warn); }
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Need to Know</h1>
+  <p class="sub">Find the personal information in a PDF, choose what to remove, and download a copy with it gone.</p>
+  <div class="banner"><b>Use synthetic documents only.</b> This is a class demonstration. Nothing you upload is stored, but do not upload a real document with real personal information.</div>
+
+  <div class="card">
+    <div class="row">
+      <input id="file" type="file" accept="application/pdf,.pdf">
+      <button id="find">Find personal information</button>
+    </div>
+    <p id="status"></p>
+  </div>
+
+  <div class="card" id="review" hidden>
+    <div class="row" style="justify-content:space-between">
+      <div><b id="count"></b> <span class="label" id="meta"></span></div>
+      <div class="row"><button class="secondary" id="all">Select all</button><button class="secondary" id="none">Select none</button><button id="redact">Download redacted PDF</button></div>
+    </div>
+    <table><thead><tr><th></th><th>What</th><th>Text</th><th>Page</th></tr></thead><tbody id="rows"></tbody></table>
+  </div>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let findings = [];
+const names = { private_person:"Name", private_email:"Email", private_phone:"Phone", private_address:"Address",
+  private_url:"Web address", private_date:"Date", account_number:"Account or ID number", secret:"Secret" };
+
+function status(msg, err=false) { $("status").textContent = msg; $("status").className = err ? "err" : ""; }
+
+$("find").onclick = async () => {
+  const f = $("file").files[0];
+  if (!f) { status("Choose a PDF first.", true); return; }
+  status("Reading the document..."); $("review").hidden = true;
+  const body = new FormData(); body.append("file", f);
+  const r = await fetch("/api/detect", { method:"POST", body });
+  const j = await r.json();
+  if (!r.ok) { status(j.detail || "Something went wrong.", true); return; }
+  findings = j.findings;
+  $("count").textContent = `${findings.length} item${findings.length===1?"":"s"} found`;
+  $("meta").textContent = `in ${j.pages} page${j.pages===1?"":"s"}, by the ${j.detector} detector, in ${j.seconds}s. Uncheck anything you want to keep.`;
+  $("rows").innerHTML = "";
+  for (const x of findings) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><input type="checkbox" checked data-id="${x.id}"></td><td>${names[x.label]||x.label}</td><td class="t"></td><td>${x.page+1}</td>`;
+    tr.querySelector(".t").textContent = x.text;
+    $("rows").appendChild(tr);
+  }
+  $("review").hidden = false;
+  status(findings.length ? "Review the list, then download." : "Nothing found. That does not mean there is nothing there: check the document yourself.");
+};
+
+const boxes = () => [...document.querySelectorAll("#rows input[type=checkbox]")];
+$("all").onclick = () => boxes().forEach(b => b.checked = true);
+$("none").onclick = () => boxes().forEach(b => b.checked = false);
+
+$("redact").onclick = async () => {
+  const f = $("file").files[0];
+  const chosen = boxes().filter(b => b.checked).map(b => findings[+b.dataset.id]).map(x => ({ page:x.page, text:x.text }));
+  if (!chosen.length) { status("Nothing is selected.", true); return; }
+  status("Removing...");
+  const body = new FormData(); body.append("file", f); body.append("remove", JSON.stringify(chosen));
+  const r = await fetch("/api/redact", { method:"POST", body });
+  if (!r.ok) { const j = await r.json(); status(j.detail || "Something went wrong.", true); return; }
+  const blob = await r.blob(); const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = f.name.replace(/\.pdf$/i, "") + "-redacted.pdf"; a.click();
+  status(`Removed ${chosen.length} item${chosen.length===1?"":"s"}. Open the download and check it before you share it.`);
+};
+</script>
+</body>
+</html>

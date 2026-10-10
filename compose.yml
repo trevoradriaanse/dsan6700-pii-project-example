@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        DETECTOR_EXTRA: ${DETECTOR_EXTRA:-}   # empty for the regex baseline; "gliner" or "presidio" for a model
+    image: needtoknow:${DETECTOR_EXTRA:-regex}
+    env_file: .env
+    ports:
+      - "8000:8000"                           # the only port we publish
+    volumes:
+      - model-cache:/home/app/.cache/huggingface   # model weights survive a rebuild or restart
+    restart: unless-stopped
+
+volumes:
+  model-cache:

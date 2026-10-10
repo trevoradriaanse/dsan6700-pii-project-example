@@ -1,0 +1,62 @@
+[project]
+name = "needtoknow"
+version = "0.1.0"
+description = "Need to Know: find the personal information in a PDF, review it, and download a copy with it removed."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic-settings>=2.4",
+    "python-multipart>=0.0.9",
+    "pymupdf>=1.24",
+]
+
+[project.optional-dependencies]
+# The baseline (regular expressions) needs nothing extra. Each better detector is an extra,
+# so the image and the install only carry what the deployment actually uses.
+presidio = [
+    "presidio-analyzer>=2.2",
+    "en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl",
+]
+gliner = [
+    "gliner>=0.2.13",
+    "torch>=2.4",
+]
+dev = [
+    "pytest>=8",
+    "httpx>=0.27",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+needtoknow-eval = "needtoknow.evaluate:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/needtoknow"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+# CPU-only torch for the gliner extra: a CPU instance has no use for the CUDA build.
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]   # long regular expressions and comments read better on one line
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -21,6 +21,7 @@ layout. A second user, not served by this version: an office that redacts docume
 - **The user**, who needs it to be fast, to catch everything that matters, and to be trustworthy with their file.
 - **Legal and compliance**, who care most about what happens to a sensitive document once it reaches our server.
 - **Product**, who cares whether people finish the task and come back.
+- **Leadership**, who asks what each document costs us to process.
 - **The engineers (us)**, who need a problem we can measure and a scope we can build in a semester.
 
 ## Data

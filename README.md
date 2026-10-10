@@ -38,8 +38,8 @@ curl -F file=@lease.pdf -F 'remove=[{"page":0,"text":"(512) 555-0180"}]' http://
 
 ```bash
 git clone https://github.com/callixdev/pdf-pii-bench eval/pdf-pii-bench
-uv run needtoknow-eval --detector regex             # writes eval/predictions/regex.json and prints scores
-cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../predictions/regex.json   # the benchmark's own scorer
+uv run needtoknow-eval --detector regex             # writes eval/mine/regex.json and prints scores
+cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../mine/regex.json   # the benchmark's own scorer
 ```
 
 | Detector | Recall | Precision | 50 documents, CPU |

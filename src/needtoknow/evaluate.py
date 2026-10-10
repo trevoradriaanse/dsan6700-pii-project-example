@@ -2,8 +2,9 @@
 
     uv run needtoknow-eval --bench eval/pdf-pii-bench --detector regex
 
-Writes eval/predictions/<detector>.json in the benchmark's format, so its own scorer can check our numbers:
-    cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../predictions/regex.json
+Writes eval/mine/<detector>.json in the benchmark's format, so its own scorer can check our numbers:
+    cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../mine/regex.json
+(eval/predictions holds the results we measured and committed.)
 and prints the character-level ("redaction") recall and precision, by label and by document category, plus the
 spans we missed most often: the start of error analysis.
 """
@@ -39,7 +40,13 @@ def evaluate(bench: Path, detector_name: str, out_dir: Path) -> dict:
             s.pop("source", None)
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / f"{detector_name}.json").write_text(json.dumps(predictions, indent=1))
+    result = {"detector": detector_name, "seconds": round(seconds, 1), **score(texts, truth, predictions)}
+    (out_dir / f"{detector_name}.scores.json").write_text(json.dumps(result, indent=1))
+    return result
 
+
+def score(texts: dict, truth: dict, predictions: dict) -> dict:
+    """Score saved predictions ({doc: [{start, end, label, text}, ...]}) against the benchmark's labels."""
     # Character-level redaction scores, the way a leak is felt, scored as the benchmark scores them: only an
     # individual's details count; an organization's or agency's details are neutral (no credit, no penalty).
     by_label = defaultdict(lambda: [0, 0])      # label -> [covered chars, true chars]
@@ -64,25 +71,22 @@ def evaluate(bench: Path, detector_name: str, out_dir: Path) -> dict:
             if hit < len(chars) / 2:
                 missed[(g["label"], g["text"])] += 1
     total_true = sum(v[1] for v in by_label.values())
-    result = {
-        "detector": detector_name,
-        "seconds": round(seconds, 1),
+    return {
         "recall": round(tp / total_true, 3),
         "precision": round(tp / (tp + fp_chars), 3) if tp + fp_chars else 0.0,
         "recall_by_label": {k: round(v[0] / v[1], 3) for k, v in sorted(by_label.items())},
         "recall_by_category": {k: round(v[0] / v[1], 3) for k, v in sorted(by_category.items())},
         "most_missed": [f"{label}: {text}" for (label, text), _ in missed.most_common(15)],
     }
-    (out_dir / f"{detector_name}.scores.json").write_text(json.dumps(result, indent=1))
-    return result
 
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--bench", type=Path, default=Path("eval/pdf-pii-bench"))
     p.add_argument("--detector", default=settings.detector)
-    p.add_argument("--out", type=Path, default=Path("eval/predictions"))
-    r = evaluate(p.parse_args().bench, p.parse_args().detector, p.parse_args().out)
+    p.add_argument("--out", type=Path, default=Path("eval/mine"))
+    args = p.parse_args()
+    r = evaluate(args.bench, args.detector, args.out)
     print(json.dumps(r, indent=1))
 
 

@@ -10,6 +10,8 @@ services:
       - "8000:8000"                           # the only port we publish
     volumes:
       - models:/home/app/.cache/huggingface   # model weights survive a rebuild or restart
+    tmpfs:
+      - /tmp                                  # a large upload is spooled here: keep it in memory, never on disk
     restart: unless-stopped
 
 volumes:

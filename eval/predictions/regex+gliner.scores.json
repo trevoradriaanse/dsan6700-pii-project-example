@@ -1,0 +1,43 @@
+{
+ "detector": "regex+gliner",
+ "seconds": 120.3,
+ "recall": 0.9,
+ "precision": 0.619,
+ "recall_by_label": {
+  "account_number": 0.798,
+  "private_address": 0.973,
+  "private_date": 0.783,
+  "private_email": 1.0,
+  "private_person": 0.92,
+  "private_phone": 0.99,
+  "private_url": 0.916,
+  "secret": 0.515
+ },
+ "recall_by_category": {
+  "email_footer": 0.853,
+  "financial_statement": 0.772,
+  "invoice": 0.917,
+  "lease": 0.974,
+  "legal_contract": 0.905,
+  "medical_intake": 0.941,
+  "resume": 0.975,
+  "tax_government": 0.921
+ },
+ "most_missed": [
+  "private_date: 04/30",
+  "private_person: Sarah",
+  "private_person: Daniel",
+  "private_person: A. Chu",
+  "private_person: Marcus",
+  "private_date: 04/01",
+  "private_date: 04/02",
+  "private_date: 04/04",
+  "private_date: 04/07",
+  "private_date: 04/09",
+  "private_date: 04/11",
+  "private_date: 04/12",
+  "private_date: 04/14",
+  "private_date: 04/15",
+  "private_date: 04/16"
+ ]
+}

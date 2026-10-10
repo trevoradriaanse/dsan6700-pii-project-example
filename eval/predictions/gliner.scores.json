@@ -1,0 +1,43 @@
+{
+ "detector": "gliner",
+ "seconds": 115.0,
+ "recall": 0.708,
+ "precision": 0.573,
+ "recall_by_label": {
+  "account_number": 0.279,
+  "private_address": 0.725,
+  "private_date": 0.683,
+  "private_email": 0.856,
+  "private_person": 0.92,
+  "private_phone": 0.885,
+  "private_url": 0.293,
+  "secret": 0.515
+ },
+ "recall_by_category": {
+  "email_footer": 0.652,
+  "financial_statement": 0.614,
+  "invoice": 0.653,
+  "lease": 0.937,
+  "legal_contract": 0.895,
+  "medical_intake": 0.894,
+  "resume": 0.658,
+  "tax_government": 0.475
+ },
+ "most_missed": [
+  "account_number: 987-65-4321",
+  "account_number: 12-3456789",
+  "private_address: 1847 Willow Creek Dr, Apt 2B",
+  "private_address: Portland, OR 97205",
+  "account_number: OR-4482213-9",
+  "private_address: Portland, OR 97213",
+  "private_date: 04/30",
+  "account_number: 1234567",
+  "account_number: 93-2205718",
+  "account_number: 545-00-3308",
+  "private_address: 5521 NE Sandy Blvd",
+  "private_address: Unit 12",
+  "account_number: LDC-4471",
+  "private_person: Sarah",
+  "private_person: Daniel"
+ ]
+}

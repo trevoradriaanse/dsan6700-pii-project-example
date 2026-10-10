@@ -6,19 +6,21 @@ between finding and redacting. Logs record counts and timings, never the text fo
 
 import json
 import logging
+import re
 import time
 from contextlib import asynccontextmanager
 from importlib.resources import files
 from typing import Annotated
+from urllib.parse import quote
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
-from fastapi.responses import HTMLResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel
 
 from needtoknow import __version__
 from needtoknow.config import settings
 from needtoknow.detectors import build_detector
-from needtoknow.pdf import NotAPdf, NoTextLayer, extract_pages, leaked, redact
+from needtoknow.pdf import NotAPdf, NoTextLayer, TooManyPages, extract_pages, leaked, redact
 
 log = logging.getLogger("needtoknow")
 
@@ -35,6 +37,22 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Need to Know", version=__version__, lifespan=lifespan,
               description="Find the personal information in a PDF, review it, and download a copy with it removed.")
+
+
+@app.middleware("http")
+async def refuse_large_bodies(request: Request, call_next):
+    """Refuse an oversized upload before reading it: otherwise it is received in full, and spooled to /tmp."""
+    limit = (settings.max_upload_mb + 1) * 1024 * 1024  # room for the form around the file
+    if int(request.headers.get("content-length") or 0) > limit:
+        return JSONResponse({"detail": f"the file is larger than {settings.max_upload_mb} MB"}, status_code=413)
+    return await call_next(request)
+
+
+def download_headers(filename: str | None) -> dict:
+    """A safe file name for the download: plain ASCII as a fallback, the original (encoded) for browsers that can."""
+    stem = (filename or "document.pdf").rsplit("/", 1)[-1].rsplit(".", 1)[0] + "-redacted.pdf"
+    ascii_name = re.sub(r"[^A-Za-z0-9._-]", "_", stem)
+    return {"Content-Disposition": f"attachment; filename=\"{ascii_name}\"; filename*=UTF-8''{quote(stem)}"}
 
 
 class Finding(BaseModel):
@@ -89,7 +107,7 @@ def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectRespo
         pages = extract_pages(data, settings.max_pages)
     except NotAPdf as exc:
         raise HTTPException(415, str(exc)) from exc
-    except (NoTextLayer, ValueError) as exc:
+    except (NoTextLayer, TooManyPages) as exc:
         raise HTTPException(422, str(exc)) from exc
     detector = request.app.state.detector
     findings, seen = [], set()
@@ -114,13 +132,14 @@ def redact_pdf(file: Annotated[UploadFile, File()], remove: Annotated[str, Form(
         raise HTTPException(422, "`remove` must be a JSON list of {page, text}") from exc
     pairs = [(i.page, i.text) for i in items]
     try:
-        out = redact(data, pairs)
+        out = redact(data, pairs, settings.max_pages)
     except NotAPdf as exc:
         raise HTTPException(415, str(exc)) from exc
+    except TooManyPages as exc:
+        raise HTTPException(422, str(exc)) from exc
     still_there = leaked(out, pairs)
     if still_there:  # never hand back a file we promised was clean
         log.error("redaction left %d items in place", len(still_there))
         raise HTTPException(500, "redaction did not remove every selected item; nothing was returned")
     log.info("redact items=%d bytes_in=%d bytes_out=%d", len(pairs), len(data), len(out))
-    name = (file.filename or "document.pdf").rsplit(".", 1)[0] + "-redacted.pdf"
-    return Response(out, media_type="application/pdf", headers={"Content-Disposition": f'attachment; filename="{name}"'})
+    return Response(out, media_type="application/pdf", headers=download_headers(file.filename))

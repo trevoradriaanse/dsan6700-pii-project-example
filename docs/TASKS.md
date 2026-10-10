@@ -5,7 +5,7 @@ request that a teammate reviewed. The first milestone is a **walking skeleton**:
 end to end, so every later task improves something that already runs.
 
 ## Milestone 1: walking skeleton (everything connected, nothing good yet)
-1. Project setup: `pyproject.toml`, uv, ruff, pytest, pre-commit, CI on every push.
+1. Project setup: `pyproject.toml`, uv, ruff, pytest, CI on pushes to `main` and on pull requests.
 2. Settings: a `Settings` class read from the environment (`NTK_DETECTOR`, upload limits).
 3. PDF in, text out: read every page's text; refuse a file that is not a PDF or has no text.
 4. A detector interface (`detect(text) -> spans`) and the dumbest detector that fits it.

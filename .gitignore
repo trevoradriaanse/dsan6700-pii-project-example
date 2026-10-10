@@ -4,5 +4,5 @@ __pycache__/
 .ruff_cache/
 .env
 eval/pdf-pii-bench/
-eval/predictions/
+eval/mine/
 *.redacted.pdf

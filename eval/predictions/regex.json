@@ -1,0 +1,4692 @@
+{
+ "email_thread": [
+  {
+   "start": 56,
+   "end": 90,
+   "label": "private_email",
+   "text": "d.okafor@brightpath-consulting.com"
+  },
+  {
+   "start": 113,
+   "end": 151,
+   "label": "private_email",
+   "text": "sarah.lindqvist@harborlineventures.com"
+  },
+  {
+   "start": 170,
+   "end": 203,
+   "label": "private_email",
+   "text": "p.raman@brightpath-consulting.com"
+  },
+  {
+   "start": 216,
+   "end": 227,
+   "label": "private_date",
+   "text": "14 Apr 2025"
+  },
+  {
+   "start": 223,
+   "end": 230,
+   "label": "account_number",
+   "text": "2025 09"
+  },
+  {
+   "start": 475,
+   "end": 485,
+   "label": "private_date",
+   "text": "04/22/2025"
+  },
+  {
+   "start": 850,
+   "end": 884,
+   "label": "private_email",
+   "text": "d.okafor@brightpath-consulting.com"
+  },
+  {
+   "start": 1203,
+   "end": 1213,
+   "label": "private_date",
+   "text": "04/18/2025"
+  },
+  {
+   "start": 1390,
+   "end": 1402,
+   "label": "private_phone",
+   "text": "512-555-0143"
+  },
+  {
+   "start": 1410,
+   "end": 1424,
+   "label": "private_phone",
+   "text": "(512) 555-0198"
+  },
+  {
+   "start": 1435,
+   "end": 1450,
+   "label": "private_phone",
+   "text": "+1 512-555-0177"
+  },
+  {
+   "start": 1451,
+   "end": 1480,
+   "label": "private_url",
+   "text": "www.brightpath-consulting.com"
+  },
+  {
+   "start": 1481,
+   "end": 1518,
+   "label": "private_url",
+   "text": "https://linkedin.com/in/daniel-okafor"
+  },
+  {
+   "start": 1759,
+   "end": 1770,
+   "label": "private_date",
+   "text": "11 Apr 2025"
+  },
+  {
+   "start": 1986,
+   "end": 2001,
+   "label": "private_address",
+   "text": "225 Congress St"
+  },
+  {
+   "start": 2097,
+   "end": 2111,
+   "label": "private_phone",
+   "text": "(617) 555-0192"
+  },
+  {
+   "start": 2398,
+   "end": 2436,
+   "label": "private_email",
+   "text": "sarah.lindqvist@harborlineventures.com"
+  },
+  {
+   "start": 2439,
+   "end": 2473,
+   "label": "private_url",
+   "text": "https://www.harborlineventures.com"
+  },
+  {
+   "start": 2482,
+   "end": 2493,
+   "label": "private_date",
+   "text": "08 Apr 2025"
+  },
+  {
+   "start": 2782,
+   "end": 2796,
+   "label": "private_phone",
+   "text": "1-800-555-0123"
+  },
+  {
+   "start": 2803,
+   "end": 2809,
+   "label": "account_number",
+   "text": "774021"
+  },
+  {
+   "start": 2820,
+   "end": 2866,
+   "label": "private_url",
+   "text": "https://meet.brightpath-consulting.com/j/88214"
+  },
+  {
+   "start": 2981,
+   "end": 3027,
+   "label": "private_url",
+   "text": "https://cal.brightpath-consulting.com/d-okafor"
+  }
+ ],
+ "mailing_list": [
+  {
+   "start": 40,
+   "end": 75,
+   "label": "private_email",
+   "text": "openmesh-dev@lists.openmesh-dev.org"
+  },
+  {
+   "start": 120,
+   "end": 144,
+   "label": "private_email",
+   "text": "elena.v@openmesh-dev.org"
+  },
+  {
+   "start": 152,
+   "end": 165,
+   "label": "account_number",
+   "text": "2025-03-15 14"
+  },
+  {
+   "start": 231,
+   "end": 241,
+   "label": "account_number",
+   "text": "2025-03-15"
+  },
+  {
+   "start": 507,
+   "end": 532,
+   "label": "private_url",
+   "text": "http://localhost:3000/api"
+  },
+  {
+   "start": 810,
+   "end": 857,
+   "label": "private_url",
+   "text": "https://openmesh-dev.org/ci/build?id=4821&run=2"
+  },
+  {
+   "start": 1090,
+   "end": 1104,
+   "label": "private_phone",
+   "text": "1-800-555-0199"
+  },
+  {
+   "start": 1166,
+   "end": 1195,
+   "label": "private_url",
+   "text": "https://openmesh-dev.org/dash"
+  },
+  {
+   "start": 1236,
+   "end": 1255,
+   "label": "private_email",
+   "text": "mchen@quarrylake.io"
+  },
+  {
+   "start": 1263,
+   "end": 1276,
+   "label": "account_number",
+   "text": "2025-03-15 16"
+  },
+  {
+   "start": 1845,
+   "end": 1884,
+   "label": "private_url",
+   "text": "https://ci.quarrylake.io/runners/health"
+  },
+  {
+   "start": 1922,
+   "end": 1941,
+   "label": "private_email",
+   "text": "mchen@quarrylake.io"
+  },
+  {
+   "start": 1944,
+   "end": 1959,
+   "label": "private_phone",
+   "text": "+1 415-555-0126"
+  },
+  {
+   "start": 1992,
+   "end": 2018,
+   "label": "private_email",
+   "text": "tferreira@openmeshlabs.com"
+  },
+  {
+   "start": 2033,
+   "end": 2040,
+   "label": "account_number",
+   "text": "2025 18"
+  },
+  {
+   "start": 2135,
+   "end": 2145,
+   "label": "account_number",
+   "text": "2025-04-01"
+  },
+  {
+   "start": 2341,
+   "end": 2399,
+   "label": "private_url",
+   "text": "https://wiki.openmesh-dev.org/releases/0.19.2?section=auth"
+  },
+  {
+   "start": 2542,
+   "end": 2564,
+   "label": "private_email",
+   "text": "admin@openmeshlabs.com"
+  },
+  {
+   "start": 2652,
+   "end": 2693,
+   "label": "private_email",
+   "text": "openmesh-dev-leave@lists.openmesh-dev.org"
+  },
+  {
+   "start": 2725,
+   "end": 2762,
+   "label": "private_url",
+   "text": "https://lists.openmesh-dev.org/manage"
+  },
+  {
+   "start": 2773,
+   "end": 2824,
+   "label": "private_url",
+   "text": "https://lists.openmesh-dev.org/archive/openmesh-dev"
+  }
+ ],
+ "lease_agreement": [
+  {
+   "start": 438,
+   "end": 482,
+   "label": "private_address",
+   "text": "2914 Bluebonnet Ln, Unit 4, Austin, TX 78704"
+  },
+  {
+   "start": 729,
+   "end": 741,
+   "label": "private_date",
+   "text": "June 1, 2025"
+  },
+  {
+   "start": 754,
+   "end": 766,
+   "label": "private_date",
+   "text": "May 31, 2026"
+  },
+  {
+   "start": 1241,
+   "end": 1250,
+   "label": "account_number",
+   "text": "445509812"
+  },
+  {
+   "start": 2642,
+   "end": 2656,
+   "label": "private_phone",
+   "text": "(512) 555-0180"
+  },
+  {
+   "start": 3838,
+   "end": 3864,
+   "label": "private_address",
+   "text": "2914 Bluebonnet Ln, Unit 4"
+  },
+  {
+   "start": 4810,
+   "end": 4838,
+   "label": "private_email",
+   "text": "rachebe.properties@gmail.com"
+  },
+  {
+   "start": 4905,
+   "end": 4919,
+   "label": "private_phone",
+   "text": "(512) 555-0121"
+  },
+  {
+   "start": 5932,
+   "end": 5946,
+   "label": "private_phone",
+   "text": "(512) 555-0180"
+  },
+  {
+   "start": 7660,
+   "end": 7686,
+   "label": "private_address",
+   "text": "2914 Bluebonnet Ln, Unit 4"
+  },
+  {
+   "start": 7732,
+   "end": 7742,
+   "label": "private_date",
+   "text": "05/12/2025"
+  },
+  {
+   "start": 7773,
+   "end": 7783,
+   "label": "private_date",
+   "text": "05/12/2025"
+  },
+  {
+   "start": 7960,
+   "end": 7970,
+   "label": "private_date",
+   "text": "05/28/2025"
+  },
+  {
+   "start": 8258,
+   "end": 8272,
+   "label": "private_phone",
+   "text": "(512) 555-0121"
+  },
+  {
+   "start": 9279,
+   "end": 9322,
+   "label": "private_url",
+   "text": "https://portal.hillcountrypm.com/bluebonnet"
+  },
+  {
+   "start": 9494,
+   "end": 9504,
+   "label": "private_date",
+   "text": "05/12/2025"
+  },
+  {
+   "start": 9535,
+   "end": 9561,
+   "label": "private_address",
+   "text": "2914 Bluebonnet Ln, Unit 4"
+  }
+ ],
+ "bank_statement": [
+  {
+   "start": 52,
+   "end": 104,
+   "label": "private_address",
+   "text": "1200 Commerce Boulevard, Suite 800 Seattle, WA 98101"
+  },
+  {
+   "start": 110,
+   "end": 124,
+   "label": "private_phone",
+   "text": "(206) 555-0142"
+  },
+  {
+   "start": 132,
+   "end": 146,
+   "label": "private_phone",
+   "text": "(206) 555-0143"
+  },
+  {
+   "start": 147,
+   "end": 168,
+   "label": "private_url",
+   "text": "www.firstmeridian.com"
+  },
+  {
+   "start": 202,
+   "end": 247,
+   "label": "private_address",
+   "text": "88 Crestview Ter Apt 12 Denver, CO 80211-3419"
+  },
+  {
+   "start": 284,
+   "end": 292,
+   "label": "account_number",
+   "text": "****7702"
+  },
+  {
+   "start": 342,
+   "end": 355,
+   "label": "private_date",
+   "text": "April 1, 2025"
+  },
+  {
+   "start": 358,
+   "end": 372,
+   "label": "private_date",
+   "text": "April 30, 2025"
+  },
+  {
+   "start": 389,
+   "end": 398,
+   "label": "account_number",
+   "text": "102044760"
+  },
+  {
+   "start": 418,
+   "end": 428,
+   "label": "private_date",
+   "text": "04/01/2025"
+  },
+  {
+   "start": 534,
+   "end": 544,
+   "label": "private_date",
+   "text": "04/30/2025"
+  },
+  {
+   "start": 867,
+   "end": 893,
+   "label": "private_email",
+   "text": "dana.whitfield@outlook.com"
+  },
+  {
+   "start": 1070,
+   "end": 1083,
+   "label": "private_address",
+   "text": "1601 Blake St"
+  },
+  {
+   "start": 1280,
+   "end": 1288,
+   "label": "account_number",
+   "text": "****9917"
+  },
+  {
+   "start": 1355,
+   "end": 1362,
+   "label": "account_number",
+   "text": "8827413"
+  },
+  {
+   "start": 1652,
+   "end": 1661,
+   "label": "account_number",
+   "text": "4421-7753"
+  },
+  {
+   "start": 1875,
+   "end": 1887,
+   "label": "private_phone",
+   "text": "503-555-0168"
+  },
+  {
+   "start": 1951,
+   "end": 1961,
+   "label": "account_number",
+   "text": "7301220847"
+  },
+  {
+   "start": 2029,
+   "end": 2037,
+   "label": "account_number",
+   "text": "****9201"
+  },
+  {
+   "start": 2094,
+   "end": 2106,
+   "label": "private_phone",
+   "text": "800-555-0139"
+  },
+  {
+   "start": 2165,
+   "end": 2179,
+   "label": "account_number",
+   "text": "8497-2210-3348"
+  },
+  {
+   "start": 2232,
+   "end": 2251,
+   "label": "private_email",
+   "text": "lisa.park@gmail.com"
+  },
+  {
+   "start": 2526,
+   "end": 2552,
+   "label": "private_email",
+   "text": "dana.whitfield@outlook.com"
+  },
+  {
+   "start": 2613,
+   "end": 2666,
+   "label": "private_address",
+   "text": "1200 Commerce Boulevard, Suite 800, Seattle, WA 98101"
+  },
+  {
+   "start": 2675,
+   "end": 2681,
+   "label": "account_number",
+   "text": "482910"
+  },
+  {
+   "start": 3102,
+   "end": 3116,
+   "label": "private_phone",
+   "text": "(206) 555-0142"
+  },
+  {
+   "start": 3129,
+   "end": 3155,
+   "label": "private_email",
+   "text": "disputes@firstmeridian.com"
+  },
+  {
+   "start": 3203,
+   "end": 3256,
+   "label": "private_address",
+   "text": "1200 Commerce Boulevard, Suite 100, Seattle, WA 98101"
+  },
+  {
+   "start": 3543,
+   "end": 3577,
+   "label": "private_url",
+   "text": "https://www.firstmeridian.com/fees"
+  },
+  {
+   "start": 3739,
+   "end": 3749,
+   "label": "account_number",
+   "text": "98124-1120"
+  },
+  {
+   "start": 3759,
+   "end": 3773,
+   "label": "private_phone",
+   "text": "(800) 555-0134"
+  },
+  {
+   "start": 3952,
+   "end": 4015,
+   "label": "private_url",
+   "text": "https://www.firstmeridian.com/login?acct=7702&statement=2025-04"
+  },
+  {
+   "start": 4033,
+   "end": 4047,
+   "label": "private_phone",
+   "text": "(800) 555-0134"
+  },
+  {
+   "start": 4091,
+   "end": 4144,
+   "label": "private_address",
+   "text": "1200 Commerce Boulevard, Suite 800, Seattle, WA 98101"
+  },
+  {
+   "start": 4153,
+   "end": 4159,
+   "label": "account_number",
+   "text": "482910"
+  }
+ ],
+ "invoice": [
+  {
+   "start": 27,
+   "end": 49,
+   "label": "private_email",
+   "text": "hello@cedarpine.design"
+  },
+  {
+   "start": 52,
+   "end": 66,
+   "label": "private_phone",
+   "text": "(503) 555-0187"
+  },
+  {
+   "start": 67,
+   "end": 109,
+   "label": "private_url",
+   "text": "https://www.cedarpine.design/invoices/1042"
+  },
+  {
+   "start": 115,
+   "end": 125,
+   "label": "account_number",
+   "text": "84-2201956"
+  },
+  {
+   "start": 154,
+   "end": 164,
+   "label": "account_number",
+   "text": "2025-04-18"
+  },
+  {
+   "start": 178,
+   "end": 189,
+   "label": "private_date",
+   "text": "May 2, 2025"
+  },
+  {
+   "start": 207,
+   "end": 215,
+   "label": "account_number",
+   "text": "2025-014"
+  },
+  {
+   "start": 254,
+   "end": 269,
+   "label": "private_address",
+   "text": "730 Fremont Ave"
+  },
+  {
+   "start": 318,
+   "end": 344,
+   "label": "private_email",
+   "text": "n.rahman@arclightgoods.com"
+  },
+  {
+   "start": 407,
+   "end": 425,
+   "label": "private_address",
+   "text": "117 Washington Ave"
+  },
+  {
+   "start": 895,
+   "end": 905,
+   "label": "private_date",
+   "text": "04/02/2025"
+  },
+  {
+   "start": 1085,
+   "end": 1094,
+   "label": "account_number",
+   "text": "112231234"
+  },
+  {
+   "start": 1104,
+   "end": 1113,
+   "label": "account_number",
+   "text": "091044282"
+  },
+  {
+   "start": 1218,
+   "end": 1237,
+   "label": "account_number",
+   "text": "4111 1111 1111 1111"
+  },
+  {
+   "start": 1315,
+   "end": 1339,
+   "label": "private_email",
+   "text": "billing@cedarpine.design"
+  },
+  {
+   "start": 1378,
+   "end": 1389,
+   "label": "private_date",
+   "text": "May 2, 2025"
+  },
+  {
+   "start": 1432,
+   "end": 1444,
+   "label": "private_phone",
+   "text": "503.555.0142"
+  },
+  {
+   "start": 1646,
+   "end": 1657,
+   "label": "private_date",
+   "text": "May 2, 2025"
+  },
+  {
+   "start": 1691,
+   "end": 1705,
+   "label": "private_phone",
+   "text": "(503) 555-0187"
+  }
+ ],
+ "consulting_agreement": [
+  {
+   "start": 339,
+   "end": 352,
+   "label": "private_address",
+   "text": "830 Third Ave"
+  },
+  {
+   "start": 1116,
+   "end": 1126,
+   "label": "private_date",
+   "text": "02/03/2025"
+  },
+  {
+   "start": 1640,
+   "end": 1649,
+   "label": "account_number",
+   "text": "053204413"
+  },
+  {
+   "start": 1666,
+   "end": 1676,
+   "label": "account_number",
+   "text": "7714402611"
+  },
+  {
+   "start": 2170,
+   "end": 2179,
+   "label": "account_number",
+   "text": "545002190"
+  },
+  {
+   "start": 3805,
+   "end": 3832,
+   "label": "private_email",
+   "text": "b.kowalczyk@kmzadvisory.com"
+  },
+  {
+   "start": 3855,
+   "end": 3884,
+   "label": "private_email",
+   "text": "howard.ellison@vantagegrp.com"
+  },
+  {
+   "start": 4025,
+   "end": 4039,
+   "label": "private_phone",
+   "text": "(212) 555-0184"
+  },
+  {
+   "start": 4074,
+   "end": 4088,
+   "label": "private_phone",
+   "text": "(843) 555-0158"
+  },
+  {
+   "start": 6345,
+   "end": 6355,
+   "label": "private_date",
+   "text": "02/03/2025"
+  },
+  {
+   "start": 6405,
+   "end": 6415,
+   "label": "private_date",
+   "text": "02/03/2025"
+  },
+  {
+   "start": 6626,
+   "end": 6636,
+   "label": "private_date",
+   "text": "09/30/2027"
+  },
+  {
+   "start": 7535,
+   "end": 7549,
+   "label": "private_date",
+   "text": "March 14, 2025"
+  },
+  {
+   "start": 7545,
+   "end": 7552,
+   "label": "account_number",
+   "text": "2025 60"
+  },
+  {
+   "start": 7583,
+   "end": 7597,
+   "label": "private_date",
+   "text": "April 30, 2025"
+  },
+  {
+   "start": 7593,
+   "end": 7601,
+   "label": "account_number",
+   "text": "2025 120"
+  },
+  {
+   "start": 7633,
+   "end": 7646,
+   "label": "private_date",
+   "text": "June 16, 2025"
+  },
+  {
+   "start": 7642,
+   "end": 7649,
+   "label": "account_number",
+   "text": "2025 80"
+  },
+  {
+   "start": 7679,
+   "end": 7694,
+   "label": "private_date",
+   "text": "August 29, 2025"
+  },
+  {
+   "start": 7690,
+   "end": 7697,
+   "label": "account_number",
+   "text": "2025 40"
+  },
+  {
+   "start": 8390,
+   "end": 8415,
+   "label": "private_email",
+   "text": "invoicing@kmzadvisory.com"
+  },
+  {
+   "start": 8523,
+   "end": 8540,
+   "label": "private_email",
+   "text": "ap@vantagegrp.com"
+  },
+  {
+   "start": 8542,
+   "end": 8556,
+   "label": "private_phone",
+   "text": "(212) 555-0121"
+  }
+ ],
+ "medical_intake": [
+  {
+   "start": 49,
+   "end": 93,
+   "label": "private_address",
+   "text": "2201 E 18th Ave, Suite 240, Denver, CO 80206"
+  },
+  {
+   "start": 99,
+   "end": 113,
+   "label": "private_phone",
+   "text": "(720) 555-0100"
+  },
+  {
+   "start": 121,
+   "end": 135,
+   "label": "private_phone",
+   "text": "(720) 555-0101"
+  },
+  {
+   "start": 136,
+   "end": 164,
+   "label": "private_url",
+   "text": "www.eastsidefamilyhealth.com"
+  },
+  {
+   "start": 289,
+   "end": 299,
+   "label": "private_date",
+   "text": "07/22/1983"
+  },
+  {
+   "start": 305,
+   "end": 316,
+   "label": "account_number",
+   "text": "612-00-5578"
+  },
+  {
+   "start": 360,
+   "end": 374,
+   "label": "private_phone",
+   "text": "(720) 555-0164"
+  },
+  {
+   "start": 389,
+   "end": 403,
+   "label": "private_phone",
+   "text": "(720) 555-0190"
+  },
+  {
+   "start": 420,
+   "end": 445,
+   "label": "private_email",
+   "text": "samuel.nakamura@gmail.com"
+  },
+  {
+   "start": 455,
+   "end": 497,
+   "label": "private_address",
+   "text": "4471 E Colfax Ave Apt 305 Denver, CO 80220"
+  },
+  {
+   "start": 543,
+   "end": 579,
+   "label": "private_address",
+   "text": "212 3901 E 8th Ave, Denver, CO 80206"
+  },
+  {
+   "start": 596,
+   "end": 610,
+   "label": "private_phone",
+   "text": "(303) 555-0177"
+  },
+  {
+   "start": 777,
+   "end": 787,
+   "label": "private_date",
+   "text": "01/01/2025"
+  },
+  {
+   "start": 890,
+   "end": 904,
+   "label": "private_phone",
+   "text": "(720) 555-0129"
+  },
+  {
+   "start": 945,
+   "end": 957,
+   "label": "private_phone",
+   "text": "415.555.0183"
+  },
+  {
+   "start": 1542,
+   "end": 1555,
+   "label": "private_date",
+   "text": "March 3, 2024"
+  },
+  {
+   "start": 1587,
+   "end": 1597,
+   "label": "private_date",
+   "text": "08/14/2009"
+  },
+  {
+   "start": 1706,
+   "end": 1720,
+   "label": "private_phone",
+   "text": "(303) 555-0148"
+  },
+  {
+   "start": 2602,
+   "end": 2612,
+   "label": "private_date",
+   "text": "10/12/2024"
+  },
+  {
+   "start": 2638,
+   "end": 2648,
+   "label": "private_date",
+   "text": "10/12/2024"
+  },
+  {
+   "start": 3436,
+   "end": 3446,
+   "label": "private_date",
+   "text": "01/15/2025"
+  },
+  {
+   "start": 3649,
+   "end": 3688,
+   "label": "private_url",
+   "text": "https://portal.eastsidefamilyhealth.com"
+  },
+  {
+   "start": 3951,
+   "end": 3961,
+   "label": "private_date",
+   "text": "05/15/2025"
+  }
+ ],
+ "resume": [
+  {
+   "start": 40,
+   "end": 62,
+   "label": "private_email",
+   "text": "priya.venkat@gmail.com"
+  },
+  {
+   "start": 65,
+   "end": 79,
+   "label": "private_phone",
+   "text": "(408) 555-0136"
+  },
+  {
+   "start": 95,
+   "end": 137,
+   "label": "private_url",
+   "text": "https://linkedin.com/in/priya-venkataraman"
+  },
+  {
+   "start": 140,
+   "end": 166,
+   "label": "private_url",
+   "text": "https://github.com/pvenkat"
+  },
+  {
+   "start": 178,
+   "end": 197,
+   "label": "private_url",
+   "text": "www.priyavenkat.dev"
+  },
+  {
+   "start": 491,
+   "end": 527,
+   "label": "private_address",
+   "text": "500 Almaden Blvd, San Jose, CA 95110"
+  },
+  {
+   "start": 1013,
+   "end": 1052,
+   "label": "private_address",
+   "text": "221 River Oaks Pkwy, San Jose, CA 95134"
+  },
+  {
+   "start": 1627,
+   "end": 1672,
+   "label": "private_url",
+   "text": "https://github.com/pvenkat/flink-iceberg-sink"
+  },
+  {
+   "start": 1740,
+   "end": 1791,
+   "label": "private_url",
+   "text": "https://www.priyavenkat.dev/talks/data-council-2024"
+  },
+  {
+   "start": 1922,
+   "end": 1932,
+   "label": "account_number",
+   "text": "2025-01-10"
+  },
+  {
+   "start": 2649,
+   "end": 2678,
+   "label": "private_email",
+   "text": "alan.reyes@lumenanalytics.com"
+  },
+  {
+   "start": 2681,
+   "end": 2696,
+   "label": "private_phone",
+   "text": "+1 408-555-0171"
+  },
+  {
+   "start": 2739,
+   "end": 2763,
+   "label": "private_email",
+   "text": "mzhou@halcyonmetrics.com"
+  },
+  {
+   "start": 2766,
+   "end": 2780,
+   "label": "private_phone",
+   "text": "(669) 555-0148"
+  }
+ ],
+ "irs_notice": [
+  {
+   "start": 96,
+   "end": 107,
+   "label": "private_date",
+   "text": "May 5, 2025"
+  },
+  {
+   "start": 132,
+   "end": 143,
+   "label": "account_number",
+   "text": "401-00-6613"
+  },
+  {
+   "start": 164,
+   "end": 173,
+   "label": "account_number",
+   "text": "88214-771"
+  },
+  {
+   "start": 189,
+   "end": 203,
+   "label": "private_phone",
+   "text": "(800) 555-0148"
+  },
+  {
+   "start": 255,
+   "end": 265,
+   "label": "account_number",
+   "text": "06460-2215"
+  },
+  {
+   "start": 402,
+   "end": 414,
+   "label": "private_date",
+   "text": "June 4, 2025"
+  },
+  {
+   "start": 912,
+   "end": 920,
+   "label": "account_number",
+   "text": "****7702"
+  },
+  {
+   "start": 968,
+   "end": 974,
+   "label": "account_number",
+   "text": "119402"
+  },
+  {
+   "start": 1022,
+   "end": 1028,
+   "label": "account_number",
+   "text": "119402"
+  },
+  {
+   "start": 1129,
+   "end": 1140,
+   "label": "account_number",
+   "text": "401-00-6613"
+  },
+  {
+   "start": 1653,
+   "end": 1667,
+   "label": "private_date",
+   "text": "April 15, 2024"
+  },
+  {
+   "start": 1796,
+   "end": 1808,
+   "label": "private_date",
+   "text": "June 4, 2025"
+  },
+  {
+   "start": 2186,
+   "end": 2204,
+   "label": "private_url",
+   "text": "www.irs.gov/cp2000"
+  },
+  {
+   "start": 2488,
+   "end": 2499,
+   "label": "private_date",
+   "text": "May 5, 2025"
+  },
+  {
+   "start": 2719,
+   "end": 2739,
+   "label": "private_url",
+   "text": "www.irs.gov/payments"
+  },
+  {
+   "start": 2849,
+   "end": 2864,
+   "label": "private_url",
+   "text": "www.irs.gov/opa"
+  },
+  {
+   "start": 2962,
+   "end": 2973,
+   "label": "account_number",
+   "text": "401-00-6613"
+  },
+  {
+   "start": 3019,
+   "end": 3033,
+   "label": "private_phone",
+   "text": "(800) 555-0148"
+  },
+  {
+   "start": 3270,
+   "end": 3288,
+   "label": "private_url",
+   "text": "www.irs.gov/cp2000"
+  },
+  {
+   "start": 3375,
+   "end": 3391,
+   "label": "private_url",
+   "text": "www.irs.gov/litc"
+  },
+  {
+   "start": 3400,
+   "end": 3414,
+   "label": "private_phone",
+   "text": "(800) 555-0186"
+  },
+  {
+   "start": 3802,
+   "end": 3819,
+   "label": "private_url",
+   "text": "www.irs.gov/forms"
+  },
+  {
+   "start": 4037,
+   "end": 4065,
+   "label": "private_url",
+   "text": "www.taxpayeradvocate.irs.gov"
+  },
+  {
+   "start": 4074,
+   "end": 4088,
+   "label": "private_phone",
+   "text": "(877) 555-0128"
+  },
+  {
+   "start": 4210,
+   "end": 4221,
+   "label": "account_number",
+   "text": "401-00-6613"
+  },
+  {
+   "start": 4242,
+   "end": 4251,
+   "label": "account_number",
+   "text": "88214-771"
+  },
+  {
+   "start": 4315,
+   "end": 4321,
+   "label": "account_number",
+   "text": "802501"
+  },
+  {
+   "start": 4435,
+   "end": 4446,
+   "label": "private_date",
+   "text": "May 5, 2025"
+  }
+ ],
+ "w2_form": [
+  {
+   "start": 157,
+   "end": 188,
+   "label": "private_url",
+   "text": "www.socialsecurity.gov/employer"
+  },
+  {
+   "start": 882,
+   "end": 896,
+   "label": "private_url",
+   "text": "www.irs.gov/w2"
+  },
+  {
+   "start": 1323,
+   "end": 1345,
+   "label": "private_url",
+   "text": "www.irs.gov/orderforms"
+  },
+  {
+   "start": 1637,
+   "end": 1646,
+   "label": "account_number",
+   "text": "1545-0029"
+  },
+  {
+   "start": 2767,
+   "end": 2773,
+   "label": "private_date",
+   "text": "1/7/26"
+  },
+  {
+   "start": 2821,
+   "end": 2832,
+   "label": "account_number",
+   "text": "987-65-4321"
+  },
+  {
+   "start": 2828,
+   "end": 2843,
+   "label": "account_number",
+   "text": "4321 12-3456789"
+  },
+  {
+   "start": 2876,
+   "end": 2924,
+   "label": "private_address",
+   "text": "4200 Industrial Pkwy, Suite 310 Austin, TX 78745"
+  },
+  {
+   "start": 2919,
+   "end": 2932,
+   "label": "account_number",
+   "text": "78745 1234567"
+  },
+  {
+   "start": 2955,
+   "end": 3002,
+   "label": "private_address",
+   "text": "1847 Willow Creek Dr, Apt 2B Portland, OR 97205"
+  },
+  {
+   "start": 2997,
+   "end": 3005,
+   "label": "account_number",
+   "text": "97205 68"
+  },
+  {
+   "start": 3089,
+   "end": 3096,
+   "label": "account_number",
+   "text": "4482213"
+  },
+  {
+   "start": 3169,
+   "end": 3178,
+   "label": "account_number",
+   "text": "1545-0029"
+  },
+  {
+   "start": 4062,
+   "end": 4073,
+   "label": "account_number",
+   "text": "987-65-4321"
+  },
+  {
+   "start": 4069,
+   "end": 4084,
+   "label": "account_number",
+   "text": "4321 12-3456789"
+  },
+  {
+   "start": 4117,
+   "end": 4165,
+   "label": "private_address",
+   "text": "4200 Industrial Pkwy, Suite 310 Austin, TX 78745"
+  },
+  {
+   "start": 4160,
+   "end": 4173,
+   "label": "account_number",
+   "text": "78745 1234567"
+  },
+  {
+   "start": 4196,
+   "end": 4243,
+   "label": "private_address",
+   "text": "1847 Willow Creek Dr, Apt 2B Portland, OR 97205"
+  },
+  {
+   "start": 4238,
+   "end": 4246,
+   "label": "account_number",
+   "text": "97205 68"
+  },
+  {
+   "start": 4330,
+   "end": 4337,
+   "label": "account_number",
+   "text": "4482213"
+  },
+  {
+   "start": 4404,
+   "end": 4413,
+   "label": "account_number",
+   "text": "1545-0029"
+  },
+  {
+   "start": 4465,
+   "end": 4482,
+   "label": "private_url",
+   "text": "www.irs.gov/efile"
+  },
+  {
+   "start": 5472,
+   "end": 5483,
+   "label": "account_number",
+   "text": "987-65-4321"
+  },
+  {
+   "start": 5479,
+   "end": 5494,
+   "label": "account_number",
+   "text": "4321 12-3456789"
+  },
+  {
+   "start": 5527,
+   "end": 5575,
+   "label": "private_address",
+   "text": "4200 Industrial Pkwy, Suite 310 Austin, TX 78745"
+  },
+  {
+   "start": 5570,
+   "end": 5583,
+   "label": "account_number",
+   "text": "78745 1234567"
+  },
+  {
+   "start": 5606,
+   "end": 5653,
+   "label": "private_address",
+   "text": "1847 Willow Creek Dr, Apt 2B Portland, OR 97205"
+  },
+  {
+   "start": 5648,
+   "end": 5656,
+   "label": "account_number",
+   "text": "97205 68"
+  },
+  {
+   "start": 5740,
+   "end": 5747,
+   "label": "account_number",
+   "text": "4482213"
+  },
+  {
+   "start": 5916,
+   "end": 5934,
+   "label": "private_url",
+   "text": "www.irs.gov/FormW2"
+  },
+  {
+   "start": 6792,
+   "end": 6808,
+   "label": "private_url",
+   "text": "www.irs.gov/EITC"
+  },
+  {
+   "start": 7896,
+   "end": 7908,
+   "label": "private_phone",
+   "text": "800-772-1213"
+  },
+  {
+   "start": 7948,
+   "end": 7959,
+   "label": "private_url",
+   "text": "www.SSA.gov"
+  },
+  {
+   "start": 8792,
+   "end": 8801,
+   "label": "account_number",
+   "text": "1545-0029"
+  },
+  {
+   "start": 9994,
+   "end": 10005,
+   "label": "account_number",
+   "text": "987-65-4321"
+  },
+  {
+   "start": 10001,
+   "end": 10016,
+   "label": "account_number",
+   "text": "4321 12-3456789"
+  },
+  {
+   "start": 10049,
+   "end": 10097,
+   "label": "private_address",
+   "text": "4200 Industrial Pkwy, Suite 310 Austin, TX 78745"
+  },
+  {
+   "start": 10092,
+   "end": 10105,
+   "label": "account_number",
+   "text": "78745 1234567"
+  },
+  {
+   "start": 10128,
+   "end": 10175,
+   "label": "private_address",
+   "text": "1847 Willow Creek Dr, Apt 2B Portland, OR 97205"
+  },
+  {
+   "start": 10170,
+   "end": 10178,
+   "label": "account_number",
+   "text": "97205 68"
+  },
+  {
+   "start": 10262,
+   "end": 10269,
+   "label": "account_number",
+   "text": "4482213"
+  },
+  {
+   "start": 13590,
+   "end": 13607,
+   "label": "private_date",
+   "text": "December 31, 2026"
+  },
+  {
+   "start": 15440,
+   "end": 15449,
+   "label": "account_number",
+   "text": "1545-0029"
+  },
+  {
+   "start": 16360,
+   "end": 16371,
+   "label": "account_number",
+   "text": "987-65-4321"
+  },
+  {
+   "start": 16367,
+   "end": 16382,
+   "label": "account_number",
+   "text": "4321 12-3456789"
+  },
+  {
+   "start": 16415,
+   "end": 16463,
+   "label": "private_address",
+   "text": "4200 Industrial Pkwy, Suite 310 Austin, TX 78745"
+  },
+  {
+   "start": 16458,
+   "end": 16471,
+   "label": "account_number",
+   "text": "78745 1234567"
+  },
+  {
+   "start": 16494,
+   "end": 16541,
+   "label": "private_address",
+   "text": "1847 Willow Creek Dr, Apt 2B Portland, OR 97205"
+  },
+  {
+   "start": 16536,
+   "end": 16544,
+   "label": "account_number",
+   "text": "97205 68"
+  },
+  {
+   "start": 16628,
+   "end": 16635,
+   "label": "account_number",
+   "text": "4482213"
+  },
+  {
+   "start": 21077,
+   "end": 21086,
+   "label": "account_number",
+   "text": "1545-0029"
+  },
+  {
+   "start": 22053,
+   "end": 22064,
+   "label": "account_number",
+   "text": "987-65-4321"
+  },
+  {
+   "start": 22060,
+   "end": 22075,
+   "label": "account_number",
+   "text": "4321 12-3456789"
+  },
+  {
+   "start": 22108,
+   "end": 22156,
+   "label": "private_address",
+   "text": "4200 Industrial Pkwy, Suite 310 Austin, TX 78745"
+  },
+  {
+   "start": 22151,
+   "end": 22164,
+   "label": "account_number",
+   "text": "78745 1234567"
+  },
+  {
+   "start": 22187,
+   "end": 22234,
+   "label": "private_address",
+   "text": "1847 Willow Creek Dr, Apt 2B Portland, OR 97205"
+  },
+  {
+   "start": 22229,
+   "end": 22237,
+   "label": "account_number",
+   "text": "97205 68"
+  },
+  {
+   "start": 22321,
+   "end": 22328,
+   "label": "account_number",
+   "text": "4482213"
+  },
+  {
+   "start": 22576,
+   "end": 22598,
+   "label": "private_url",
+   "text": "www.irs.gov/OrderForms"
+  },
+  {
+   "start": 22814,
+   "end": 22830,
+   "label": "private_date",
+   "text": "February 1, 2027"
+  },
+  {
+   "start": 22983,
+   "end": 22999,
+   "label": "private_date",
+   "text": "February 1, 2027"
+  },
+  {
+   "start": 23151,
+   "end": 23163,
+   "label": "private_phone",
+   "text": "866-455-7438"
+  },
+  {
+   "start": 23167,
+   "end": 23179,
+   "label": "private_phone",
+   "text": "304-263-8700"
+  },
+  {
+   "start": 23921,
+   "end": 23941,
+   "label": "private_url",
+   "text": "www.SSA.gov/employer"
+  },
+  {
+   "start": 24109,
+   "end": 24127,
+   "label": "private_url",
+   "text": "www.irs.gov/FormW2"
+  }
+ ],
+ "form_1040": [
+  {
+   "start": 5,
+   "end": 15,
+   "label": "account_number",
+   "text": "1040 20 25"
+  },
+  {
+   "start": 110,
+   "end": 119,
+   "label": "account_number",
+   "text": "1545-0074"
+  },
+  {
+   "start": 191,
+   "end": 204,
+   "label": "private_date",
+   "text": "Dec. 31, 2025"
+  },
+  {
+   "start": 5341,
+   "end": 5347,
+   "label": "private_date",
+   "text": "9/5/25"
+  },
+  {
+   "start": 5419,
+   "end": 5463,
+   "label": "private_address",
+   "text": "4 4 1 88 Ledgewood Terrace Hartford CT 06103"
+  },
+  {
+   "start": 5887,
+   "end": 5902,
+   "label": "private_date",
+   "text": "January 2, 1961"
+  },
+  {
+   "start": 5937,
+   "end": 5952,
+   "label": "private_date",
+   "text": "January 2, 1961"
+  },
+  {
+   "start": 9188,
+   "end": 9208,
+   "label": "private_url",
+   "text": "www.irs.gov/Payments"
+  },
+  {
+   "start": 10337,
+   "end": 10357,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1040"
+  },
+  {
+   "start": 10517,
+   "end": 10531,
+   "label": "private_phone",
+   "text": "(860) 555-0134"
+  },
+  {
+   "start": 10580,
+   "end": 10594,
+   "label": "private_phone",
+   "text": "(860) 555-0177"
+  },
+  {
+   "start": 10595,
+   "end": 10619,
+   "label": "private_email",
+   "text": "m.villanueva@comcast.net"
+  },
+  {
+   "start": 10686,
+   "end": 10700,
+   "label": "private_phone",
+   "text": "(860) 555-0190"
+  },
+  {
+   "start": 10696,
+   "end": 10750,
+   "label": "private_address",
+   "text": "0190 310 Farmington Ave, Suite 204, Hartford, CT 06105"
+  },
+  {
+   "start": 10745,
+   "end": 10761,
+   "label": "account_number",
+   "text": "06105 06-1447792"
+  }
+ ],
+ "form_w9": [
+  {
+   "start": 146,
+   "end": 164,
+   "label": "private_url",
+   "text": "www.irs.gov/FormW9"
+  },
+  {
+   "start": 4467,
+   "end": 4485,
+   "label": "private_url",
+   "text": "www.irs.gov/FormW9"
+  },
+  {
+   "start": 5708,
+   "end": 5756,
+   "label": "private_address",
+   "text": "3 5521 NE Sandy Blvd, Unit 12 Portland, OR 97213"
+  },
+  {
+   "start": 5782,
+   "end": 5816,
+   "label": "private_address",
+   "text": "400 SW 6th Ave, Portland, OR 97204"
+  },
+  {
+   "start": 11928,
+   "end": 11942,
+   "label": "private_date",
+   "text": "April 30, 1984"
+  },
+  {
+   "start": 27393,
+   "end": 27404,
+   "label": "private_url",
+   "text": "www.SSA.gov"
+  },
+  {
+   "start": 27445,
+   "end": 27457,
+   "label": "private_phone",
+   "text": "800-772-1213"
+  },
+  {
+   "start": 27705,
+   "end": 27720,
+   "label": "private_url",
+   "text": "www.irs.gov/EIN"
+  },
+  {
+   "start": 27729,
+   "end": 27746,
+   "label": "private_url",
+   "text": "www.irs.gov/Forms"
+  },
+  {
+   "start": 27820,
+   "end": 27842,
+   "label": "private_url",
+   "text": "www.irs.gov/OrderForms"
+  },
+  {
+   "start": 34727,
+   "end": 34739,
+   "label": "private_phone",
+   "text": "800-908-4490"
+  },
+  {
+   "start": 35186,
+   "end": 35198,
+   "label": "private_phone",
+   "text": "877-777-4778"
+  },
+  {
+   "start": 35210,
+   "end": 35222,
+   "label": "private_phone",
+   "text": "800-829-4059"
+  },
+  {
+   "start": 35986,
+   "end": 36002,
+   "label": "private_email",
+   "text": "phishing@irs.gov"
+  },
+  {
+   "start": 36145,
+   "end": 36157,
+   "label": "private_phone",
+   "text": "800-366-4484"
+  },
+  {
+   "start": 36228,
+   "end": 36240,
+   "label": "private_email",
+   "text": "spam@uce.gov"
+  },
+  {
+   "start": 36259,
+   "end": 36280,
+   "label": "private_url",
+   "text": "www.ftc.gov/complaint"
+  },
+  {
+   "start": 36310,
+   "end": 36329,
+   "label": "private_url",
+   "text": "www.ftc.gov/idtheft"
+  },
+  {
+   "start": 36345,
+   "end": 36358,
+   "label": "private_phone",
+   "text": "(877-438-4338"
+  },
+  {
+   "start": 36412,
+   "end": 36433,
+   "label": "private_url",
+   "text": "www.IdentityTheft.gov"
+  },
+  {
+   "start": 36455,
+   "end": 36480,
+   "label": "private_url",
+   "text": "www.irs.gov/IdentityTheft"
+  }
+ ],
+ "form_w4": [
+  {
+   "start": 291,
+   "end": 300,
+   "label": "account_number",
+   "text": "1545-0074"
+  },
+  {
+   "start": 576,
+   "end": 588,
+   "label": "private_phone",
+   "text": "800-772-1213"
+  },
+  {
+   "start": 598,
+   "end": 609,
+   "label": "private_url",
+   "text": "www.ssa.gov"
+  },
+  {
+   "start": 1110,
+   "end": 1127,
+   "label": "private_url",
+   "text": "www.irs.gov/W4App"
+  },
+  {
+   "start": 1856,
+   "end": 1873,
+   "label": "private_url",
+   "text": "www.irs.gov/W4App"
+  },
+  {
+   "start": 2178,
+   "end": 2195,
+   "label": "private_url",
+   "text": "www.irs.gov/W4App"
+  },
+  {
+   "start": 4724,
+   "end": 4731,
+   "label": "private_date",
+   "text": "12/8/25"
+  },
+  {
+   "start": 4747,
+   "end": 4787,
+   "label": "private_address",
+   "text": "914 Cypress Hollow Ln Savannah, GA 31405"
+  },
+  {
+   "start": 4782,
+   "end": 4799,
+   "label": "account_number",
+   "text": "31405 531-00-8042"
+  },
+  {
+   "start": 4845,
+   "end": 4887,
+   "label": "private_address",
+   "text": "2200 Ocean Terminal Dr, Savannah, GA 31401"
+  },
+  {
+   "start": 4882,
+   "end": 4890,
+   "label": "account_number",
+   "text": "31401 01"
+  },
+  {
+   "start": 4888,
+   "end": 4898,
+   "label": "private_date",
+   "text": "01/06/2025"
+  },
+  {
+   "start": 4894,
+   "end": 4909,
+   "label": "account_number",
+   "text": "2025 58-3319027"
+  },
+  {
+   "start": 5176,
+   "end": 5194,
+   "label": "private_url",
+   "text": "www.irs.gov/FormW4"
+  },
+  {
+   "start": 6668,
+   "end": 6685,
+   "label": "private_date",
+   "text": "February 16, 2027"
+  },
+  {
+   "start": 7189,
+   "end": 7206,
+   "label": "private_url",
+   "text": "www.irs.gov/W4App"
+  },
+  {
+   "start": 8253,
+   "end": 8270,
+   "label": "private_url",
+   "text": "www.irs.gov/W4App"
+  },
+  {
+   "start": 12847,
+   "end": 12864,
+   "label": "private_url",
+   "text": "www.irs.gov/W4App"
+  }
+ ],
+ "form_8822": [
+  {
+   "start": 317,
+   "end": 337,
+   "label": "private_url",
+   "text": "www.irs.gov/form8822"
+  },
+  {
+   "start": 347,
+   "end": 356,
+   "label": "account_number",
+   "text": "1545-1163"
+  },
+  {
+   "start": 2322,
+   "end": 2333,
+   "label": "account_number",
+   "text": "544-00-7719"
+  },
+  {
+   "start": 2350,
+   "end": 2361,
+   "label": "account_number",
+   "text": "544-00-8826"
+  },
+  {
+   "start": 2383,
+   "end": 2423,
+   "label": "private_address",
+   "text": "77 Quail Run Rd, Apt 3C, Boise, ID 83702"
+  },
+  {
+   "start": 2418,
+   "end": 2428,
+   "label": "account_number",
+   "text": "83702 1420"
+  },
+  {
+   "start": 2424,
+   "end": 2467,
+   "label": "private_address",
+   "text": "1420 Sagebrush Way, Meridian, ID 83646-5210"
+  },
+  {
+   "start": 2468,
+   "end": 2482,
+   "label": "private_phone",
+   "text": "(208) 555-0164"
+  },
+  {
+   "start": 2478,
+   "end": 2485,
+   "label": "account_number",
+   "text": "0164 03"
+  },
+  {
+   "start": 2483,
+   "end": 2493,
+   "label": "private_date",
+   "text": "03/18/2025"
+  },
+  {
+   "start": 2653,
+   "end": 2673,
+   "label": "private_url",
+   "text": "www.irs.gov/form8822"
+  },
+  {
+   "start": 5289,
+   "end": 5299,
+   "label": "account_number",
+   "text": "64999-0023"
+  },
+  {
+   "start": 5402,
+   "end": 5412,
+   "label": "account_number",
+   "text": "73301-0023"
+  },
+  {
+   "start": 5742,
+   "end": 5752,
+   "label": "account_number",
+   "text": "84201-0023"
+  },
+  {
+   "start": 6085,
+   "end": 6095,
+   "label": "account_number",
+   "text": "73301-0023"
+  },
+  {
+   "start": 8207,
+   "end": 8231,
+   "label": "private_url",
+   "text": "www.irs.gov/FormComments"
+  },
+  {
+   "start": 8321,
+   "end": 8343,
+   "label": "private_address",
+   "text": "1111 Constitution Ave."
+  }
+ ],
+ "form_ss4": [
+  {
+   "start": 364,
+   "end": 383,
+   "label": "private_url",
+   "text": "www.irs.gov/FormSS4"
+  },
+  {
+   "start": 437,
+   "end": 446,
+   "label": "account_number",
+   "text": "1545-0003"
+  },
+  {
+   "start": 4512,
+   "end": 4520,
+   "label": "private_date",
+   "text": "10/17/25"
+  },
+  {
+   "start": 4589,
+   "end": 4635,
+   "label": "private_address",
+   "text": "80208 3175 Blake St, Unit 190 Denver, CO 80205"
+  },
+  {
+   "start": 4674,
+   "end": 4685,
+   "label": "account_number",
+   "text": "521-00-6633"
+  },
+  {
+   "start": 4716,
+   "end": 4726,
+   "label": "private_date",
+   "text": "05/01/2025"
+  },
+  {
+   "start": 4738,
+   "end": 4748,
+   "label": "private_date",
+   "text": "07/15/2025"
+  },
+  {
+   "start": 4810,
+   "end": 4824,
+   "label": "private_phone",
+   "text": "(303) 555-0142"
+  },
+  {
+   "start": 4820,
+   "end": 4869,
+   "label": "private_address",
+   "text": "0142 1600 Glenarm Pl, Suite 900, Denver, CO 80202"
+  },
+  {
+   "start": 4870,
+   "end": 4884,
+   "label": "private_phone",
+   "text": "(303) 555-0143"
+  },
+  {
+   "start": 4916,
+   "end": 4930,
+   "label": "private_phone",
+   "text": "(720) 555-0117"
+  },
+  {
+   "start": 4931,
+   "end": 4945,
+   "label": "private_phone",
+   "text": "(720) 555-0118"
+  },
+  {
+   "start": 5179,
+   "end": 5198,
+   "label": "private_url",
+   "text": "www.irs.gov/FormSS4"
+  }
+ ],
+ "form_1099nec": [
+  {
+   "start": 3994,
+   "end": 4003,
+   "label": "account_number",
+   "text": "1545-0116"
+  },
+  {
+   "start": 4140,
+   "end": 4160,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1099"
+  },
+  {
+   "start": 4861,
+   "end": 4868,
+   "label": "private_date",
+   "text": "5/26/26"
+  },
+  {
+   "start": 4869,
+   "end": 4892,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1099NEC"
+  },
+  {
+   "start": 5010,
+   "end": 5054,
+   "label": "private_address",
+   "text": "400 SW 6th Ave Suite 1200 Portland, OR 97204"
+  },
+  {
+   "start": 5055,
+   "end": 5069,
+   "label": "private_phone",
+   "text": "(503) 555-0119"
+  },
+  {
+   "start": 5065,
+   "end": 5087,
+   "label": "account_number",
+   "text": "0119 93-2205718 545-00"
+  },
+  {
+   "start": 5081,
+   "end": 5092,
+   "label": "account_number",
+   "text": "545-00-3308"
+  },
+  {
+   "start": 5113,
+   "end": 5158,
+   "label": "private_address",
+   "text": "5521 NE Sandy Blvd Unit 12 Portland, OR 97213"
+  },
+  {
+   "start": 5163,
+   "end": 5170,
+   "label": "account_number",
+   "text": "4471 28"
+  },
+  {
+   "start": 5333,
+   "end": 5342,
+   "label": "account_number",
+   "text": "1545-0116"
+  },
+  {
+   "start": 6017,
+   "end": 6040,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1099NEC"
+  },
+  {
+   "start": 6072,
+   "end": 6116,
+   "label": "private_address",
+   "text": "400 SW 6th Ave Suite 1200 Portland, OR 97204"
+  },
+  {
+   "start": 6117,
+   "end": 6131,
+   "label": "private_phone",
+   "text": "(503) 555-0119"
+  },
+  {
+   "start": 6127,
+   "end": 6149,
+   "label": "account_number",
+   "text": "0119 93-2205718 545-00"
+  },
+  {
+   "start": 6143,
+   "end": 6154,
+   "label": "account_number",
+   "text": "545-00-3308"
+  },
+  {
+   "start": 6175,
+   "end": 6220,
+   "label": "private_address",
+   "text": "5521 NE Sandy Blvd Unit 12 Portland, OR 97213"
+  },
+  {
+   "start": 6225,
+   "end": 6232,
+   "label": "account_number",
+   "text": "4471 28"
+  },
+  {
+   "start": 6632,
+   "end": 6641,
+   "label": "account_number",
+   "text": "1545-0116"
+  },
+  {
+   "start": 7348,
+   "end": 7371,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1099NEC"
+  },
+  {
+   "start": 7403,
+   "end": 7447,
+   "label": "private_address",
+   "text": "400 SW 6th Ave Suite 1200 Portland, OR 97204"
+  },
+  {
+   "start": 7448,
+   "end": 7462,
+   "label": "private_phone",
+   "text": "(503) 555-0119"
+  },
+  {
+   "start": 7458,
+   "end": 7480,
+   "label": "account_number",
+   "text": "0119 93-2205718 545-00"
+  },
+  {
+   "start": 7474,
+   "end": 7485,
+   "label": "account_number",
+   "text": "545-00-3308"
+  },
+  {
+   "start": 7506,
+   "end": 7551,
+   "label": "private_address",
+   "text": "5521 NE Sandy Blvd Unit 12 Portland, OR 97213"
+  },
+  {
+   "start": 7556,
+   "end": 7563,
+   "label": "account_number",
+   "text": "4471 28"
+  },
+  {
+   "start": 11319,
+   "end": 11342,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1099NEC"
+  },
+  {
+   "start": 11370,
+   "end": 11390,
+   "label": "private_url",
+   "text": "www.irs.gov/FreeFile"
+  },
+  {
+   "start": 11707,
+   "end": 11716,
+   "label": "account_number",
+   "text": "1545-0116"
+  },
+  {
+   "start": 12391,
+   "end": 12414,
+   "label": "private_url",
+   "text": "www.irs.gov/Form1099NEC"
+  },
+  {
+   "start": 12446,
+   "end": 12490,
+   "label": "private_address",
+   "text": "400 SW 6th Ave Suite 1200 Portland, OR 97204"
+  },
+  {
+   "start": 12491,
+   "end": 12505,
+   "label": "private_phone",
+   "text": "(503) 555-0119"
+  },
+  {
+   "start": 12501,
+   "end": 12523,
+   "label": "account_number",
+   "text": "0119 93-2205718 545-00"
+  },
+  {
+   "start": 12517,
+   "end": 12528,
+   "label": "account_number",
+   "text": "545-00-3308"
+  },
+  {
+   "start": 12549,
+   "end": 12594,
+   "label": "private_address",
+   "text": "5521 NE Sandy Blvd Unit 12 Portland, OR 97213"
+  },
+  {
+   "start": 12599,
+   "end": 12606,
+   "label": "account_number",
+   "text": "4471 28"
+  }
+ ],
+ "form_4506t": [
+  {
+   "start": 282,
+   "end": 303,
+   "label": "private_url",
+   "text": "www.irs.gov/form4506t"
+  },
+  {
+   "start": 314,
+   "end": 323,
+   "label": "account_number",
+   "text": "1545-1872"
+  },
+  {
+   "start": 372,
+   "end": 383,
+   "label": "private_url",
+   "text": "www.irs.gov"
+  },
+  {
+   "start": 436,
+   "end": 450,
+   "label": "private_phone",
+   "text": "1-800-908-9946"
+  },
+  {
+   "start": 2657,
+   "end": 2709,
+   "label": "private_url",
+   "text": "www.irs.gov/businesses/get-a-business-tax-transcript"
+  },
+  {
+   "start": 4540,
+   "end": 4554,
+   "label": "private_phone",
+   "text": "1-800-772-1213"
+  },
+  {
+   "start": 5086,
+   "end": 5096,
+   "label": "private_date",
+   "text": "12/31/2018"
+  },
+  {
+   "start": 6318,
+   "end": 6329,
+   "label": "account_number",
+   "text": "530-00-4417"
+  },
+  {
+   "start": 6348,
+   "end": 6359,
+   "label": "account_number",
+   "text": "530-00-1275"
+  },
+  {
+   "start": 6380,
+   "end": 6416,
+   "label": "private_address",
+   "text": "2210 Mockingbird Ln, Plano, TX 75074"
+  },
+  {
+   "start": 6411,
+   "end": 6421,
+   "label": "account_number",
+   "text": "75074 8806"
+  },
+  {
+   "start": 6417,
+   "end": 6459,
+   "label": "private_address",
+   "text": "8806 Legacy Dr, Apt 1420, Frisco, TX 75034"
+  },
+  {
+   "start": 6454,
+   "end": 6475,
+   "label": "account_number",
+   "text": "75034 8842217705 1040"
+  },
+  {
+   "start": 6480,
+   "end": 6494,
+   "label": "private_phone",
+   "text": "(972) 555-0149"
+  },
+  {
+   "start": 6490,
+   "end": 6508,
+   "label": "account_number",
+   "text": "0149 12 31 2023 12"
+  },
+  {
+   "start": 6720,
+   "end": 6741,
+   "label": "private_url",
+   "text": "www.irs.gov/form4506t"
+  },
+  {
+   "start": 7577,
+   "end": 7588,
+   "label": "private_url",
+   "text": "www.irs.gov"
+  },
+  {
+   "start": 8944,
+   "end": 8958,
+   "label": "private_phone",
+   "text": "1-800-908-9946"
+  },
+  {
+   "start": 10672,
+   "end": 10682,
+   "label": "account_number",
+   "text": "9999999999"
+  },
+  {
+   "start": 15085,
+   "end": 15107,
+   "label": "private_address",
+   "text": "1111 Constitution Ave."
+  },
+  {
+   "start": 15724,
+   "end": 15742,
+   "label": "account_number",
+   "text": "73301 855-587-9604"
+  },
+  {
+   "start": 16051,
+   "end": 16069,
+   "label": "account_number",
+   "text": "64999 855-821-0094"
+  },
+  {
+   "start": 16303,
+   "end": 16321,
+   "label": "account_number",
+   "text": "84409 855-298-1145"
+  },
+  {
+   "start": 16900,
+   "end": 16918,
+   "label": "account_number",
+   "text": "84409 855-298-1145"
+  },
+  {
+   "start": 17268,
+   "end": 17286,
+   "label": "account_number",
+   "text": "64999 855-821-0094"
+  }
+ ],
+ "email_support_ticket": [
+  {
+   "start": 122,
+   "end": 146,
+   "label": "private_email",
+   "text": "r.tessier@helioscloud.io"
+  },
+  {
+   "start": 166,
+   "end": 198,
+   "label": "private_email",
+   "text": "amara.diallo@finchandsparrow.com"
+  },
+  {
+   "start": 211,
+   "end": 222,
+   "label": "private_date",
+   "text": "12 Jun 2025"
+  },
+  {
+   "start": 218,
+   "end": 225,
+   "label": "account_number",
+   "text": "2025 10"
+  },
+  {
+   "start": 958,
+   "end": 988,
+   "label": "private_url",
+   "text": "http://localhost:8080/callback"
+  },
+  {
+   "start": 1047,
+   "end": 1091,
+   "label": "private_url",
+   "text": "https://status.helioscloud.io/incidents/4417"
+  },
+  {
+   "start": 1119,
+   "end": 1171,
+   "label": "private_url",
+   "text": "https://docs.helioscloud.io/auth/rotation?utm=ticket"
+  },
+  {
+   "start": 1242,
+   "end": 1256,
+   "label": "private_phone",
+   "text": "(888) 555-0161"
+  },
+  {
+   "start": 1348,
+   "end": 1359,
+   "label": "private_date",
+   "text": "11 Jun 2025"
+  },
+  {
+   "start": 1885,
+   "end": 1917,
+   "label": "private_email",
+   "text": "amara.diallo@finchandsparrow.com"
+  }
+ ],
+ "email_sales_intro": [
+  {
+   "start": 54,
+   "end": 83,
+   "label": "private_email",
+   "text": "mbell@northgate-analytics.com"
+  },
+  {
+   "start": 106,
+   "end": 141,
+   "label": "private_email",
+   "text": "ingrid.sorensen@gulflinefreight.com"
+  },
+  {
+   "start": 159,
+   "end": 191,
+   "label": "private_email",
+   "text": "t.whelan@northgate-analytics.com"
+  },
+  {
+   "start": 204,
+   "end": 215,
+   "label": "private_date",
+   "text": "09 Jun 2025"
+  },
+  {
+   "start": 211,
+   "end": 218,
+   "label": "account_number",
+   "text": "2025 08"
+  },
+  {
+   "start": 358,
+   "end": 408,
+   "label": "private_url",
+   "text": "https://northgate-analytics.com/decks/gulfline?v=3"
+  },
+  {
+   "start": 565,
+   "end": 575,
+   "label": "private_date",
+   "text": "06/17/2025"
+  },
+  {
+   "start": 810,
+   "end": 825,
+   "label": "private_phone",
+   "text": "+1 617-555-0139"
+  },
+  {
+   "start": 836,
+   "end": 848,
+   "label": "private_phone",
+   "text": "617-555-0102"
+  },
+  {
+   "start": 849,
+   "end": 876,
+   "label": "private_url",
+   "text": "www.northgate-analytics.com"
+  },
+  {
+   "start": 879,
+   "end": 916,
+   "label": "private_url",
+   "text": "https://linkedin.com/in/marcus-a-bell"
+  },
+  {
+   "start": 925,
+   "end": 936,
+   "label": "private_date",
+   "text": "06 Jun 2025"
+  },
+  {
+   "start": 1222,
+   "end": 1237,
+   "label": "private_phone",
+   "text": "+1 713-555-0190"
+  },
+  {
+   "start": 1297,
+   "end": 1332,
+   "label": "private_email",
+   "text": "ingrid.sorensen@gulflinefreight.com"
+  }
+ ],
+ "email_conference": [
+  {
+   "start": 51,
+   "end": 79,
+   "label": "private_email",
+   "text": "speakers@datahorizonconf.com"
+  },
+  {
+   "start": 102,
+   "end": 130,
+   "label": "private_email",
+   "text": "n.okoye@bayside-quantlab.com"
+  },
+  {
+   "start": 143,
+   "end": 154,
+   "label": "private_date",
+   "text": "22 Jul 2025"
+  },
+  {
+   "start": 150,
+   "end": 157,
+   "label": "account_number",
+   "text": "2025 11"
+  },
+  {
+   "start": 211,
+   "end": 221,
+   "label": "private_address",
+   "text": "2 Dear Dr."
+  },
+  {
+   "start": 278,
+   "end": 296,
+   "label": "private_date",
+   "text": "September 18, 2025"
+  },
+  {
+   "start": 399,
+   "end": 448,
+   "label": "private_url",
+   "text": "https://portal.datahorizonconf.com/speakers/login"
+  },
+  {
+   "start": 508,
+   "end": 546,
+   "label": "private_address",
+   "text": "800 Howard St, San Francisco, CA 94103"
+  },
+  {
+   "start": 568,
+   "end": 604,
+   "label": "private_address",
+   "text": "761 Post St, San Francisco, CA 94109"
+  },
+  {
+   "start": 664,
+   "end": 674,
+   "label": "account_number",
+   "text": "2025-08-29"
+  },
+  {
+   "start": 921,
+   "end": 948,
+   "label": "private_email",
+   "text": "av-team@datahorizonconf.com"
+  },
+  {
+   "start": 1034,
+   "end": 1048,
+   "label": "private_phone",
+   "text": "(415) 555-0144"
+  },
+  {
+   "start": 1075,
+   "end": 1090,
+   "label": "private_phone",
+   "text": "+1 415-555-0123"
+  },
+  {
+   "start": 1274,
+   "end": 1302,
+   "label": "private_email",
+   "text": "speakers@datahorizonconf.com"
+  },
+  {
+   "start": 1305,
+   "end": 1319,
+   "label": "private_phone",
+   "text": "(415) 555-0144"
+  }
+ ],
+ "email_it_onboarding": [
+  {
+   "start": 57,
+   "end": 84,
+   "label": "private_email",
+   "text": "helpdesk@merrittandlowe.com"
+  },
+  {
+   "start": 90,
+   "end": 119,
+   "label": "private_email",
+   "text": "fiona.gallagher.dub@gmail.com"
+  },
+  {
+   "start": 124,
+   "end": 154,
+   "label": "private_email",
+   "text": "f.gallagher@merrittandlowe.com"
+  },
+  {
+   "start": 166,
+   "end": 177,
+   "label": "private_date",
+   "text": "02 Jul 2025"
+  },
+  {
+   "start": 173,
+   "end": 180,
+   "label": "account_number",
+   "text": "2025 09"
+  },
+  {
+   "start": 248,
+   "end": 258,
+   "label": "private_date",
+   "text": "07/07/2025"
+  },
+  {
+   "start": 344,
+   "end": 354,
+   "label": "private_date",
+   "text": "07/07/2025"
+  },
+  {
+   "start": 451,
+   "end": 481,
+   "label": "private_email",
+   "text": "f.gallagher@merrittandlowe.com"
+  },
+  {
+   "start": 598,
+   "end": 604,
+   "label": "account_number",
+   "text": "044821"
+  },
+  {
+   "start": 814,
+   "end": 844,
+   "label": "private_url",
+   "text": "https://vpn.merrittandlowe.com"
+  },
+  {
+   "start": 902,
+   "end": 927,
+   "label": "private_url",
+   "text": "http://localhost:3000/api"
+  },
+  {
+   "start": 1108,
+   "end": 1158,
+   "label": "private_url",
+   "text": "https://wiki.merrittandlowe.com/onboarding/day-one"
+  },
+  {
+   "start": 1219,
+   "end": 1233,
+   "label": "private_phone",
+   "text": "(312) 555-0170"
+  }
+ ],
+ "lease_commercial": [
+  {
+   "start": 290,
+   "end": 300,
+   "label": "account_number",
+   "text": "87-4410226"
+  },
+  {
+   "start": 471,
+   "end": 505,
+   "label": "private_address",
+   "text": "833 Congress Ave, Austin, TX 78701"
+  },
+  {
+   "start": 722,
+   "end": 736,
+   "label": "private_date",
+   "text": "August 1, 2025"
+  },
+  {
+   "start": 748,
+   "end": 761,
+   "label": "private_date",
+   "text": "July 31, 2028"
+  },
+  {
+   "start": 2114,
+   "end": 2128,
+   "label": "private_phone",
+   "text": "(512) 555-0195"
+  },
+  {
+   "start": 3271,
+   "end": 3301,
+   "label": "private_email",
+   "text": "hvance@vanceoseiproperties.com"
+  },
+  {
+   "start": 3349,
+   "end": 3380,
+   "label": "private_email",
+   "text": "dfarrell@copperkettlebrands.com"
+  },
+  {
+   "start": 3665,
+   "end": 3681,
+   "label": "private_address",
+   "text": "833 Congress Ave"
+  },
+  {
+   "start": 3768,
+   "end": 3778,
+   "label": "private_date",
+   "text": "06/20/2025"
+  },
+  {
+   "start": 3837,
+   "end": 3847,
+   "label": "private_date",
+   "text": "06/20/2025"
+  },
+  {
+   "start": 3878,
+   "end": 3894,
+   "label": "private_address",
+   "text": "833 Congress Ave"
+  }
+ ],
+ "lease_month_to_month": [
+  {
+   "start": 168,
+   "end": 206,
+   "label": "private_address",
+   "text": "1712 NE Failing St, Portland, OR 97212"
+  },
+  {
+   "start": 239,
+   "end": 251,
+   "label": "private_date",
+   "text": "July 1, 2025"
+  },
+  {
+   "start": 700,
+   "end": 710,
+   "label": "account_number",
+   "text": "7300415529"
+  },
+  {
+   "start": 1259,
+   "end": 1271,
+   "label": "private_phone",
+   "text": "971-555-0184"
+  },
+  {
+   "start": 1275,
+   "end": 1307,
+   "label": "private_email",
+   "text": "petra.lindgren.rentals@yahoo.com"
+  },
+  {
+   "start": 1849,
+   "end": 1859,
+   "label": "private_date",
+   "text": "06/24/2025"
+  },
+  {
+   "start": 1886,
+   "end": 1896,
+   "label": "private_date",
+   "text": "06/24/2025"
+  },
+  {
+   "start": 1931,
+   "end": 1949,
+   "label": "private_address",
+   "text": "1712 NE Failing St"
+  }
+ ],
+ "lease_renewal": [
+  {
+   "start": 119,
+   "end": 131,
+   "label": "private_date",
+   "text": "May 12, 2025"
+  },
+  {
+   "start": 234,
+   "end": 278,
+   "label": "private_address",
+   "text": "2914 Bluebonnet Ln, Unit 4, Austin, TX 78704"
+  },
+  {
+   "start": 416,
+   "end": 428,
+   "label": "private_date",
+   "text": "June 1, 2026"
+  },
+  {
+   "start": 440,
+   "end": 452,
+   "label": "private_date",
+   "text": "May 31, 2027"
+  },
+  {
+   "start": 1236,
+   "end": 1264,
+   "label": "private_email",
+   "text": "rachebe.properties@gmail.com"
+  },
+  {
+   "start": 1268,
+   "end": 1278,
+   "label": "private_date",
+   "text": "04/01/2026"
+  },
+  {
+   "start": 1433,
+   "end": 1443,
+   "label": "private_date",
+   "text": "03/09/2026"
+  },
+  {
+   "start": 1474,
+   "end": 1484,
+   "label": "private_date",
+   "text": "03/09/2026"
+  },
+  {
+   "start": 1524,
+   "end": 1550,
+   "label": "private_address",
+   "text": "2914 Bluebonnet Ln, Unit 4"
+  }
+ ],
+ "lease_sublease": [
+  {
+   "start": 148,
+   "end": 182,
+   "label": "private_address",
+   "text": "405 W 118th St, New York, NY 10026"
+  },
+  {
+   "start": 336,
+   "end": 349,
+   "label": "private_date",
+   "text": "June 15, 2025"
+  },
+  {
+   "start": 358,
+   "end": 373,
+   "label": "private_date",
+   "text": "August 15, 2025"
+  },
+  {
+   "start": 1334,
+   "end": 1360,
+   "label": "private_email",
+   "text": "aokonkworeyes@columbia.edu"
+  },
+  {
+   "start": 1386,
+   "end": 1409,
+   "label": "private_email",
+   "text": "grace.muthoni@gmail.com"
+  },
+  {
+   "start": 1411,
+   "end": 1425,
+   "label": "private_phone",
+   "text": "(646) 555-0122"
+  },
+  {
+   "start": 1562,
+   "end": 1572,
+   "label": "private_date",
+   "text": "05/30/2025"
+  },
+  {
+   "start": 1604,
+   "end": 1614,
+   "label": "private_date",
+   "text": "05/30/2025"
+  },
+  {
+   "start": 1649,
+   "end": 1659,
+   "label": "private_date",
+   "text": "05/30/2025"
+  },
+  {
+   "start": 1696,
+   "end": 1710,
+   "label": "private_address",
+   "text": "405 W 118th St"
+  }
+ ],
+ "cc_statement": [
+  {
+   "start": 45,
+   "end": 59,
+   "label": "private_phone",
+   "text": "(800) 555-0177"
+  },
+  {
+   "start": 78,
+   "end": 92,
+   "label": "private_phone",
+   "text": "(800) 555-0113"
+  },
+  {
+   "start": 93,
+   "end": 111,
+   "label": "private_url",
+   "text": "www.summitcard.com"
+  },
+  {
+   "start": 150,
+   "end": 193,
+   "label": "private_address",
+   "text": "2205 S Lamar Blvd, Apt 214 Austin, TX 78704"
+  },
+  {
+   "start": 228,
+   "end": 236,
+   "label": "account_number",
+   "text": "****4471"
+  },
+  {
+   "start": 255,
+   "end": 266,
+   "label": "private_date",
+   "text": "May 8, 2025"
+  },
+  {
+   "start": 269,
+   "end": 281,
+   "label": "private_date",
+   "text": "June 7, 2025"
+  },
+  {
+   "start": 300,
+   "end": 310,
+   "label": "private_date",
+   "text": "07/02/2025"
+  },
+  {
+   "start": 542,
+   "end": 549,
+   "label": "account_number",
+   "text": "5744221"
+  },
+  {
+   "start": 584,
+   "end": 596,
+   "label": "private_phone",
+   "text": "866-555-0172"
+  },
+  {
+   "start": 621,
+   "end": 634,
+   "label": "account_number",
+   "text": "5262214750448"
+  },
+  {
+   "start": 921,
+   "end": 933,
+   "label": "private_phone",
+   "text": "877-555-0161"
+  },
+  {
+   "start": 1051,
+   "end": 1061,
+   "label": "private_date",
+   "text": "07/02/2025"
+  },
+  {
+   "start": 1318,
+   "end": 1358,
+   "label": "private_url",
+   "text": "https://www.summitcard.com/pay?acct=4471"
+  },
+  {
+   "start": 1372,
+   "end": 1386,
+   "label": "private_phone",
+   "text": "(800) 555-0177"
+  },
+  {
+   "start": 1565,
+   "end": 1579,
+   "label": "private_phone",
+   "text": "(800) 555-0113"
+  }
+ ],
+ "brokerage_statement": [
+  {
+   "start": 76,
+   "end": 90,
+   "label": "private_phone",
+   "text": "(603) 555-0146"
+  },
+  {
+   "start": 93,
+   "end": 125,
+   "label": "private_email",
+   "text": "sandra.kim@granitepeakwealth.com"
+  },
+  {
+   "start": 126,
+   "end": 151,
+   "label": "private_url",
+   "text": "www.granitepeakwealth.com"
+  },
+  {
+   "start": 217,
+   "end": 256,
+   "label": "private_address",
+   "text": "48 Beacon Hill Rd Nashua, NH 03063-1877"
+  },
+  {
+   "start": 293,
+   "end": 299,
+   "label": "account_number",
+   "text": "887215"
+  },
+  {
+   "start": 318,
+   "end": 331,
+   "label": "private_date",
+   "text": "April 1, 2025"
+  },
+  {
+   "start": 334,
+   "end": 347,
+   "label": "private_date",
+   "text": "June 30, 2025"
+  },
+  {
+   "start": 856,
+   "end": 864,
+   "label": "account_number",
+   "text": "****8834"
+  },
+  {
+   "start": 954,
+   "end": 962,
+   "label": "account_number",
+   "text": "****8834"
+  },
+  {
+   "start": 1010,
+   "end": 1018,
+   "label": "account_number",
+   "text": "****8834"
+  },
+  {
+   "start": 1394,
+   "end": 1408,
+   "label": "private_phone",
+   "text": "(603) 555-0146"
+  },
+  {
+   "start": 1412,
+   "end": 1444,
+   "label": "private_email",
+   "text": "sandra.kim@granitepeakwealth.com"
+  }
+ ],
+ "savings_statement": [
+  {
+   "start": 57,
+   "end": 71,
+   "label": "private_phone",
+   "text": "(612) 555-0158"
+  },
+  {
+   "start": 72,
+   "end": 96,
+   "label": "private_url",
+   "text": "www.northlandsavings.com"
+  },
+  {
+   "start": 129,
+   "end": 146,
+   "label": "private_address",
+   "text": "1509 Garfield Ave"
+  },
+  {
+   "start": 196,
+   "end": 204,
+   "label": "account_number",
+   "text": "****2210"
+  },
+  {
+   "start": 221,
+   "end": 230,
+   "label": "account_number",
+   "text": "091033170"
+  },
+  {
+   "start": 239,
+   "end": 251,
+   "label": "private_date",
+   "text": "June 1, 2025"
+  },
+  {
+   "start": 254,
+   "end": 267,
+   "label": "private_date",
+   "text": "June 30, 2025"
+  },
+  {
+   "start": 518,
+   "end": 526,
+   "label": "account_number",
+   "text": "****5501"
+  },
+  {
+   "start": 633,
+   "end": 641,
+   "label": "account_number",
+   "text": "****5501"
+  },
+  {
+   "start": 903,
+   "end": 917,
+   "label": "private_phone",
+   "text": "(612) 555-0158"
+  }
+ ],
+ "credit_union_statement": [
+  {
+   "start": 73,
+   "end": 87,
+   "label": "private_phone",
+   "text": "(303) 555-0119"
+  },
+  {
+   "start": 104,
+   "end": 138,
+   "label": "private_url",
+   "text": "https://www.flatironsfcu.org/login"
+  },
+  {
+   "start": 191,
+   "end": 223,
+   "label": "private_address",
+   "text": "77 Pinewood Ct Boulder, CO 80302"
+  },
+  {
+   "start": 248,
+   "end": 256,
+   "label": "account_number",
+   "text": "00448821"
+  },
+  {
+   "start": 281,
+   "end": 289,
+   "label": "account_number",
+   "text": "****0075"
+  },
+  {
+   "start": 305,
+   "end": 313,
+   "label": "account_number",
+   "text": "****0031"
+  },
+  {
+   "start": 322,
+   "end": 333,
+   "label": "private_date",
+   "text": "May 1, 2025"
+  },
+  {
+   "start": 336,
+   "end": 348,
+   "label": "private_date",
+   "text": "May 31, 2025"
+  },
+  {
+   "start": 709,
+   "end": 736,
+   "label": "private_email",
+   "text": "hannah.delgado@colorado.edu"
+  },
+  {
+   "start": 851,
+   "end": 859,
+   "label": "account_number",
+   "text": "****0031"
+  },
+  {
+   "start": 1090,
+   "end": 1097,
+   "label": "account_number",
+   "text": "0044882"
+  },
+  {
+   "start": 1506,
+   "end": 1520,
+   "label": "private_phone",
+   "text": "(303) 555-0119"
+  }
+ ],
+ "mortgage_statement": [
+  {
+   "start": 70,
+   "end": 84,
+   "label": "private_phone",
+   "text": "(855) 555-0142"
+  },
+  {
+   "start": 104,
+   "end": 143,
+   "label": "private_url",
+   "text": "https://myloan.harborpointservicing.com"
+  },
+  {
+   "start": 196,
+   "end": 238,
+   "label": "private_address",
+   "text": "6119 Juniper Hollow Dr Katy, TX 77494-3308"
+  },
+  {
+   "start": 269,
+   "end": 281,
+   "label": "account_number",
+   "text": "0092-7714836"
+  },
+  {
+   "start": 292,
+   "end": 330,
+   "label": "private_address",
+   "text": "6119 Juniper Hollow Dr, Katy, TX 77494"
+  },
+  {
+   "start": 347,
+   "end": 360,
+   "label": "private_date",
+   "text": "June 12, 2025"
+  },
+  {
+   "start": 452,
+   "end": 462,
+   "label": "private_date",
+   "text": "07/01/2025"
+  },
+  {
+   "start": 783,
+   "end": 793,
+   "label": "private_date",
+   "text": "07/01/2025"
+  },
+  {
+   "start": 926,
+   "end": 965,
+   "label": "private_url",
+   "text": "https://myloan.harborpointservicing.com"
+  },
+  {
+   "start": 1311,
+   "end": 1325,
+   "label": "private_phone",
+   "text": "(855) 555-0142"
+  },
+  {
+   "start": 1458,
+   "end": 1465,
+   "label": "account_number",
+   "text": "1104482"
+  }
+ ],
+ "paystub": [
+  {
+   "start": 41,
+   "end": 80,
+   "label": "private_address",
+   "text": "4400 Innovation Way, Columbus, OH 43219"
+  },
+  {
+   "start": 93,
+   "end": 103,
+   "label": "private_date",
+   "text": "06/01/2025"
+  },
+  {
+   "start": 106,
+   "end": 116,
+   "label": "private_date",
+   "text": "06/15/2025"
+  },
+  {
+   "start": 127,
+   "end": 137,
+   "label": "private_date",
+   "text": "06/20/2025"
+  },
+  {
+   "start": 279,
+   "end": 290,
+   "label": "account_number",
+   "text": "XXX-XX-6741"
+  },
+  {
+   "start": 877,
+   "end": 885,
+   "label": "account_number",
+   "text": "****3306"
+  },
+  {
+   "start": 1026,
+   "end": 1049,
+   "label": "private_email",
+   "text": "payroll@ridgewaybio.com"
+  }
+ ],
+ "invoice_plumbing": [
+  {
+   "start": 24,
+   "end": 54,
+   "label": "private_email",
+   "text": "dispatch@bluecreekplumbing.com"
+  },
+  {
+   "start": 57,
+   "end": 71,
+   "label": "private_phone",
+   "text": "(512) 555-0177"
+  },
+  {
+   "start": 72,
+   "end": 97,
+   "label": "private_url",
+   "text": "www.bluecreekplumbing.com"
+  },
+  {
+   "start": 165,
+   "end": 175,
+   "label": "private_date",
+   "text": "06/11/2025"
+  },
+  {
+   "start": 181,
+   "end": 191,
+   "label": "private_date",
+   "text": "06/25/2025"
+  },
+  {
+   "start": 249,
+   "end": 288,
+   "label": "private_address",
+   "text": "212 Meadowlark Ln, Round Rock, TX 78664"
+  },
+  {
+   "start": 361,
+   "end": 370,
+   "label": "account_number",
+   "text": "2025-1188"
+  },
+  {
+   "start": 796,
+   "end": 810,
+   "label": "private_phone",
+   "text": "(512) 555-0177"
+  },
+  {
+   "start": 900,
+   "end": 930,
+   "label": "private_email",
+   "text": "dispatch@bluecreekplumbing.com"
+  },
+  {
+   "start": 1185,
+   "end": 1195,
+   "label": "private_date",
+   "text": "06/25/2025"
+  }
+ ],
+ "invoice_legal": [
+  {
+   "start": 33,
+   "end": 56,
+   "label": "private_email",
+   "text": "billing@chuandgrant.com"
+  },
+  {
+   "start": 59,
+   "end": 73,
+   "label": "private_phone",
+   "text": "(206) 555-0129"
+  },
+  {
+   "start": 126,
+   "end": 138,
+   "label": "private_date",
+   "text": "July 1, 2025"
+  },
+  {
+   "start": 151,
+   "end": 160,
+   "label": "account_number",
+   "text": "2025-0441"
+  },
+  {
+   "start": 226,
+   "end": 268,
+   "label": "private_address",
+   "text": "1400 5th Ave, Suite 2200 Seattle, WA 98101"
+  },
+  {
+   "start": 409,
+   "end": 419,
+   "label": "private_date",
+   "text": "06/03/2025"
+  },
+  {
+   "start": 486,
+   "end": 496,
+   "label": "private_date",
+   "text": "06/10/2025"
+  },
+  {
+   "start": 575,
+   "end": 585,
+   "label": "private_date",
+   "text": "06/17/2025"
+  },
+  {
+   "start": 658,
+   "end": 668,
+   "label": "private_date",
+   "text": "06/17/2025"
+  },
+  {
+   "start": 728,
+   "end": 738,
+   "label": "private_date",
+   "text": "06/24/2025"
+  },
+  {
+   "start": 840,
+   "end": 850,
+   "label": "private_date",
+   "text": "06/10/2025"
+  },
+  {
+   "start": 846,
+   "end": 877,
+   "label": "private_address",
+   "text": "2025 King County Superior Court"
+  },
+  {
+   "start": 903,
+   "end": 913,
+   "label": "private_date",
+   "text": "06/24/2025"
+  },
+  {
+   "start": 1236,
+   "end": 1245,
+   "label": "account_number",
+   "text": "125008819"
+  },
+  {
+   "start": 1255,
+   "end": 1265,
+   "label": "account_number",
+   "text": "4400921166"
+  },
+  {
+   "start": 1567,
+   "end": 1590,
+   "label": "private_email",
+   "text": "billing@chuandgrant.com"
+  },
+  {
+   "start": 1594,
+   "end": 1608,
+   "label": "private_phone",
+   "text": "(206) 555-0129"
+  }
+ ],
+ "invoice_catering": [
+  {
+   "start": 38,
+   "end": 66,
+   "label": "private_email",
+   "text": "orders@lavendermoontable.com"
+  },
+  {
+   "start": 69,
+   "end": 81,
+   "label": "private_phone",
+   "text": "919.555.0134"
+  },
+  {
+   "start": 82,
+   "end": 115,
+   "label": "private_url",
+   "text": "https://www.lavendermoontable.com"
+  },
+  {
+   "start": 124,
+   "end": 132,
+   "label": "account_number",
+   "text": "2025-081"
+  },
+  {
+   "start": 147,
+   "end": 157,
+   "label": "account_number",
+   "text": "2025-07-14"
+  },
+  {
+   "start": 170,
+   "end": 184,
+   "label": "private_date",
+   "text": "August 9, 2025"
+  },
+  {
+   "start": 263,
+   "end": 293,
+   "label": "private_email",
+   "text": "walvarezboone@stellarevents.co"
+  },
+  {
+   "start": 320,
+   "end": 351,
+   "label": "private_address",
+   "text": "620 Foster St, Durham, NC 27701"
+  },
+  {
+   "start": 861,
+   "end": 871,
+   "label": "private_date",
+   "text": "05/20/2025"
+  },
+  {
+   "start": 996,
+   "end": 1015,
+   "label": "account_number",
+   "text": "5500 0000 0000 0004"
+  },
+  {
+   "start": 1127,
+   "end": 1155,
+   "label": "private_email",
+   "text": "orders@lavendermoontable.com"
+  },
+  {
+   "start": 1554,
+   "end": 1562,
+   "label": "account_number",
+   "text": "2025-081"
+  }
+ ],
+ "invoice_freelance_dev": [
+  {
+   "start": 43,
+   "end": 59,
+   "label": "private_email",
+   "text": "santi@ibarra.dev"
+  },
+  {
+   "start": 62,
+   "end": 77,
+   "label": "private_phone",
+   "text": "+1 512-555-0148"
+  },
+  {
+   "start": 78,
+   "end": 96,
+   "label": "private_url",
+   "text": "https://ibarra.dev"
+  },
+  {
+   "start": 102,
+   "end": 112,
+   "label": "account_number",
+   "text": "38-4419027"
+  },
+  {
+   "start": 121,
+   "end": 128,
+   "label": "account_number",
+   "text": "2025-06"
+  },
+  {
+   "start": 241,
+   "end": 262,
+   "label": "private_email",
+   "text": "rhoyt@parcelpilot.app"
+  },
+  {
+   "start": 313,
+   "end": 356,
+   "label": "private_url",
+   "text": "https://github.com/parcelpilot/dispatch-api"
+  },
+  {
+   "start": 616,
+   "end": 623,
+   "label": "account_number",
+   "text": "2025-06"
+  },
+  {
+   "start": 650,
+   "end": 698,
+   "label": "private_url",
+   "text": "https://staging.parcelpilot.app/releases/2025-06"
+  },
+  {
+   "start": 917,
+   "end": 927,
+   "label": "account_number",
+   "text": "8830114427"
+  },
+  {
+   "start": 1006,
+   "end": 1022,
+   "label": "private_email",
+   "text": "santi@ibarra.dev"
+  },
+  {
+   "start": 1143,
+   "end": 1150,
+   "label": "account_number",
+   "text": "2025-06"
+  }
+ ],
+ "invoice_medical_billing": [
+  {
+   "start": 69,
+   "end": 83,
+   "label": "private_phone",
+   "text": "(541) 555-0186"
+  },
+  {
+   "start": 110,
+   "end": 123,
+   "label": "private_date",
+   "text": "June 30, 2025"
+  },
+  {
+   "start": 136,
+   "end": 143,
+   "label": "account_number",
+   "text": "0448817"
+  },
+  {
+   "start": 157,
+   "end": 170,
+   "label": "private_date",
+   "text": "July 30, 2025"
+  },
+  {
+   "start": 206,
+   "end": 245,
+   "label": "private_address",
+   "text": "515 W 11th Ave, Unit 3 Eugene, OR 97401"
+  },
+  {
+   "start": 316,
+   "end": 326,
+   "label": "private_date",
+   "text": "06/21/2025"
+  },
+  {
+   "start": 383,
+   "end": 393,
+   "label": "private_date",
+   "text": "05/28/2025"
+  },
+  {
+   "start": 456,
+   "end": 466,
+   "label": "private_date",
+   "text": "05/28/2025"
+  },
+  {
+   "start": 522,
+   "end": 532,
+   "label": "private_date",
+   "text": "06/04/2025"
+  },
+  {
+   "start": 758,
+   "end": 793,
+   "label": "private_url",
+   "text": "https://pay.willamettesportsmed.com"
+  },
+  {
+   "start": 836,
+   "end": 850,
+   "label": "private_phone",
+   "text": "(541) 555-0186"
+  },
+  {
+   "start": 1020,
+   "end": 1034,
+   "label": "private_phone",
+   "text": "(541) 555-0186"
+  },
+  {
+   "start": 1144,
+   "end": 1154,
+   "label": "private_date",
+   "text": "06/21/2025"
+  }
+ ],
+ "utility_bill": [
+  {
+   "start": 64,
+   "end": 78,
+   "label": "private_phone",
+   "text": "1-800-555-0147"
+  },
+  {
+   "start": 94,
+   "end": 108,
+   "label": "private_phone",
+   "text": "1-800-555-0190"
+  },
+  {
+   "start": 109,
+   "end": 138,
+   "label": "private_url",
+   "text": "www.crescentcityutilities.com"
+  },
+  {
+   "start": 164,
+   "end": 176,
+   "label": "account_number",
+   "text": "6633-118-442"
+  },
+  {
+   "start": 193,
+   "end": 206,
+   "label": "private_date",
+   "text": "June 18, 2025"
+  },
+  {
+   "start": 223,
+   "end": 233,
+   "label": "private_date",
+   "text": "05/16/2025"
+  },
+  {
+   "start": 236,
+   "end": 246,
+   "label": "private_date",
+   "text": "06/16/2025"
+  },
+  {
+   "start": 257,
+   "end": 267,
+   "label": "private_date",
+   "text": "07/09/2025"
+  },
+  {
+   "start": 296,
+   "end": 337,
+   "label": "private_address",
+   "text": "2240 Esplanade Ave, New Orleans, LA 70119"
+  },
+  {
+   "start": 360,
+   "end": 370,
+   "label": "private_date",
+   "text": "07/09/2025"
+  },
+  {
+   "start": 413,
+   "end": 423,
+   "label": "private_date",
+   "text": "05/30/2025"
+  },
+  {
+   "start": 613,
+   "end": 622,
+   "label": "account_number",
+   "text": "884213 44"
+  },
+  {
+   "start": 711,
+   "end": 719,
+   "label": "account_number",
+   "text": "30126 88"
+  },
+  {
+   "start": 939,
+   "end": 980,
+   "label": "private_url",
+   "text": "https://www.crescentcityutilities.com/pay"
+  },
+  {
+   "start": 1025,
+   "end": 1039,
+   "label": "private_phone",
+   "text": "1-800-555-0147"
+  }
+ ],
+ "nda_mutual": [
+  {
+   "start": 175,
+   "end": 192,
+   "label": "private_address",
+   "text": "2200 Peachtree Rd"
+  },
+  {
+   "start": 338,
+   "end": 388,
+   "label": "private_address",
+   "text": "1400 Market St, Suite 2200, Philadelphia, PA 19102"
+  },
+  {
+   "start": 2675,
+   "end": 2710,
+   "label": "private_email",
+   "text": "v.okoriehammond@meridianbiolabs.com"
+  },
+  {
+   "start": 2736,
+   "end": 2764,
+   "label": "private_email",
+   "text": "s.brandt@wexleranalytics.com"
+  },
+  {
+   "start": 2898,
+   "end": 2908,
+   "label": "private_date",
+   "text": "04/09/2025"
+  },
+  {
+   "start": 2951,
+   "end": 2961,
+   "label": "private_date",
+   "text": "04/09/2025"
+  }
+ ],
+ "employment_offer": [
+  {
+   "start": 21,
+   "end": 61,
+   "label": "private_address",
+   "text": "801 Marquette Ave, Minneapolis, MN 55402"
+  },
+  {
+   "start": 62,
+   "end": 75,
+   "label": "private_date",
+   "text": "June 20, 2025"
+  },
+  {
+   "start": 71,
+   "end": 103,
+   "label": "private_address",
+   "text": "2025 Omar Haddad 3316 Girard Ave"
+  },
+  {
+   "start": 435,
+   "end": 448,
+   "label": "private_date",
+   "text": "July 28, 2025"
+  },
+  {
+   "start": 1250,
+   "end": 1284,
+   "label": "private_url",
+   "text": "https://onboarding.thistledata.com"
+  },
+  {
+   "start": 1288,
+   "end": 1298,
+   "label": "private_date",
+   "text": "06/27/2025"
+  },
+  {
+   "start": 1443,
+   "end": 1472,
+   "label": "private_email",
+   "text": "jbrooksokafor@thistledata.com"
+  },
+  {
+   "start": 1476,
+   "end": 1490,
+   "label": "private_phone",
+   "text": "(612) 555-0148"
+  }
+ ],
+ "vehicle_purchase": [
+  {
+   "start": 213,
+   "end": 250,
+   "label": "private_address",
+   "text": "742 Marigny St, New Orleans, LA 70117"
+  },
+  {
+   "start": 1598,
+   "end": 1612,
+   "label": "private_phone",
+   "text": "(985) 555-0171"
+  },
+  {
+   "start": 1623,
+   "end": 1648,
+   "label": "private_email",
+   "text": "aisha.nakagawa@tulane.edu"
+  },
+  {
+   "start": 1689,
+   "end": 1699,
+   "label": "private_date",
+   "text": "08/02/2025"
+  },
+  {
+   "start": 1728,
+   "end": 1738,
+   "label": "private_date",
+   "text": "08/02/2025"
+  }
+ ],
+ "promissory_note": [
+  {
+   "start": 70,
+   "end": 81,
+   "label": "private_date",
+   "text": "May 1, 2025"
+  },
+  {
+   "start": 147,
+   "end": 190,
+   "label": "private_address",
+   "text": "905 Locust St, Apt 12, Des Moines, IA 50309"
+  },
+  {
+   "start": 252,
+   "end": 297,
+   "label": "private_address",
+   "text": "44 Prairie Rose Ln, West Des Moines, IA 50266"
+  },
+  {
+   "start": 623,
+   "end": 633,
+   "label": "private_date",
+   "text": "06/01/2025"
+  },
+  {
+   "start": 701,
+   "end": 711,
+   "label": "private_date",
+   "text": "05/01/2028"
+  },
+  {
+   "start": 1580,
+   "end": 1590,
+   "label": "private_date",
+   "text": "05/01/2025"
+  },
+  {
+   "start": 1618,
+   "end": 1628,
+   "label": "private_date",
+   "text": "05/01/2025"
+  },
+  {
+   "start": 1743,
+   "end": 1753,
+   "label": "private_date",
+   "text": "06/01/2025"
+  },
+  {
+   "start": 1782,
+   "end": 1792,
+   "label": "private_date",
+   "text": "07/01/2025"
+  }
+ ],
+ "settlement_agreement": [
+  {
+   "start": 476,
+   "end": 486,
+   "label": "private_date",
+   "text": "07/11/2025"
+  },
+  {
+   "start": 555,
+   "end": 564,
+   "label": "account_number",
+   "text": "121044738"
+  },
+  {
+   "start": 574,
+   "end": 584,
+   "label": "account_number",
+   "text": "3302214485"
+  },
+  {
+   "start": 2101,
+   "end": 2111,
+   "label": "private_date",
+   "text": "06/27/2025"
+  },
+  {
+   "start": 2158,
+   "end": 2168,
+   "label": "private_date",
+   "text": "06/27/2025"
+  },
+  {
+   "start": 2234,
+   "end": 2258,
+   "label": "private_email",
+   "text": "eyr@yamamotoreyeslaw.com"
+  },
+  {
+   "start": 2260,
+   "end": 2274,
+   "label": "private_phone",
+   "text": "(415) 555-0132"
+  }
+ ],
+ "dental_intake": [
+  {
+   "start": 48,
+   "end": 100,
+   "label": "private_address",
+   "text": "810 SE Hawthorne Blvd, Suite 120, Portland, OR 97214"
+  },
+  {
+   "start": 106,
+   "end": 120,
+   "label": "private_phone",
+   "text": "(503) 555-0129"
+  },
+  {
+   "start": 128,
+   "end": 142,
+   "label": "private_phone",
+   "text": "(503) 555-0130"
+  },
+  {
+   "start": 143,
+   "end": 166,
+   "label": "private_url",
+   "text": "www.hawthornedental.com"
+  },
+  {
+   "start": 180,
+   "end": 190,
+   "label": "private_date",
+   "text": "07/08/2025"
+  },
+  {
+   "start": 246,
+   "end": 256,
+   "label": "private_date",
+   "text": "11/03/1978"
+  },
+  {
+   "start": 278,
+   "end": 289,
+   "label": "account_number",
+   "text": "541-00-2276"
+  },
+  {
+   "start": 297,
+   "end": 311,
+   "label": "private_phone",
+   "text": "(971) 555-0116"
+  },
+  {
+   "start": 319,
+   "end": 342,
+   "label": "private_email",
+   "text": "l.baptistengo@proton.me"
+  },
+  {
+   "start": 352,
+   "end": 390,
+   "label": "private_address",
+   "text": "2833 SE Division St Portland, OR 97202"
+  },
+  {
+   "start": 455,
+   "end": 463,
+   "label": "account_number",
+   "text": "88410275"
+  },
+  {
+   "start": 609,
+   "end": 625,
+   "label": "private_date",
+   "text": "January 12, 2024"
+  },
+  {
+   "start": 1140,
+   "end": 1154,
+   "label": "private_phone",
+   "text": "(971) 555-0142"
+  },
+  {
+   "start": 1407,
+   "end": 1417,
+   "label": "private_date",
+   "text": "07/08/2025"
+  }
+ ],
+ "pediatric_intake": [
+  {
+   "start": 46,
+   "end": 57,
+   "label": "private_address",
+   "text": "55 Court St"
+  },
+  {
+   "start": 94,
+   "end": 108,
+   "label": "private_phone",
+   "text": "(718) 555-0102"
+  },
+  {
+   "start": 128,
+   "end": 142,
+   "label": "private_date",
+   "text": "August 4, 2025"
+  },
+  {
+   "start": 187,
+   "end": 197,
+   "label": "private_date",
+   "text": "02/14/2019"
+  },
+  {
+   "start": 256,
+   "end": 298,
+   "label": "private_address",
+   "text": "330 Clinton Ave, Apt 9F Brooklyn, NY 11205"
+  },
+  {
+   "start": 385,
+   "end": 399,
+   "label": "private_phone",
+   "text": "(917) 555-0184"
+  },
+  {
+   "start": 402,
+   "end": 427,
+   "label": "private_email",
+   "text": "daniela.rojas.k@gmail.com"
+  },
+  {
+   "start": 467,
+   "end": 481,
+   "label": "private_phone",
+   "text": "(917) 555-0139"
+  },
+  {
+   "start": 598,
+   "end": 608,
+   "label": "account_number",
+   "text": "4471120033"
+  },
+  {
+   "start": 1213,
+   "end": 1223,
+   "label": "private_date",
+   "text": "08/04/2025"
+  }
+ ],
+ "pt_referral": [
+  {
+   "start": 60,
+   "end": 102,
+   "label": "private_address",
+   "text": "1420 5th Ave, Suite 300, Seattle, WA 98101"
+  },
+  {
+   "start": 108,
+   "end": 122,
+   "label": "private_phone",
+   "text": "(206) 555-0173"
+  },
+  {
+   "start": 130,
+   "end": 144,
+   "label": "private_phone",
+   "text": "(206) 555-0174"
+  },
+  {
+   "start": 196,
+   "end": 206,
+   "label": "private_date",
+   "text": "09/30/1991"
+  },
+  {
+   "start": 214,
+   "end": 226,
+   "label": "private_phone",
+   "text": "206.555.0147"
+  },
+  {
+   "start": 234,
+   "end": 259,
+   "label": "private_email",
+   "text": "gferreiralind@outlook.com"
+  },
+  {
+   "start": 337,
+   "end": 347,
+   "label": "account_number",
+   "text": "1447382209"
+  },
+  {
+   "start": 364,
+   "end": 378,
+   "label": "private_phone",
+   "text": "(206) 555-0110"
+  },
+  {
+   "start": 440,
+   "end": 450,
+   "label": "private_date",
+   "text": "05/19/2025"
+  },
+  {
+   "start": 471,
+   "end": 481,
+   "label": "private_date",
+   "text": "06/02/2025"
+  },
+  {
+   "start": 536,
+   "end": 547,
+   "label": "account_number",
+   "text": "2025-081142"
+  }
+ ],
+ "telehealth_registration": [
+  {
+   "start": 56,
+   "end": 70,
+   "label": "private_phone",
+   "text": "(888) 555-0155"
+  },
+  {
+   "start": 71,
+   "end": 99,
+   "label": "private_url",
+   "text": "https://visit.lumenhealth.tv"
+  },
+  {
+   "start": 144,
+   "end": 154,
+   "label": "private_date",
+   "text": "04/07/1994"
+  },
+  {
+   "start": 179,
+   "end": 194,
+   "label": "private_phone",
+   "text": "+1 646-555-0117"
+  },
+  {
+   "start": 202,
+   "end": 227,
+   "label": "private_email",
+   "text": "nadine.aliyeva@icloud.com"
+  },
+  {
+   "start": 242,
+   "end": 287,
+   "label": "private_address",
+   "text": "88 Greenpoint Ave, Apt 4R, Brooklyn, NY 11222"
+  },
+  {
+   "start": 329,
+   "end": 366,
+   "label": "private_address",
+   "text": "710 Manhattan Ave, Brooklyn, NY 11222"
+  },
+  {
+   "start": 395,
+   "end": 405,
+   "label": "private_date",
+   "text": "07/15/2025"
+  },
+  {
+   "start": 432,
+   "end": 443,
+   "label": "account_number",
+   "text": "2025-118834"
+  },
+  {
+   "start": 454,
+   "end": 482,
+   "label": "private_url",
+   "text": "https://visit.lumenhealth.tv"
+  },
+  {
+   "start": 1470,
+   "end": 1484,
+   "label": "private_phone",
+   "text": "(888) 555-0155"
+  }
+ ],
+ "resume_marketing": [
+  {
+   "start": 42,
+   "end": 70,
+   "label": "private_email",
+   "text": "camille.vuthompson@gmail.com"
+  },
+  {
+   "start": 73,
+   "end": 85,
+   "label": "private_phone",
+   "text": "312-555-0158"
+  },
+  {
+   "start": 100,
+   "end": 141,
+   "label": "private_url",
+   "text": "https://linkedin.com/in/camillevuthompson"
+  },
+  {
+   "start": 155,
+   "end": 173,
+   "label": "private_url",
+   "text": "www.camillevt.work"
+  },
+  {
+   "start": 446,
+   "end": 478,
+   "label": "private_address",
+   "text": "444 W Lake St, Chicago, IL 60606"
+  },
+  {
+   "start": 1482,
+   "end": 1505,
+   "label": "private_email",
+   "text": "slmoore@beaconbrands.co"
+  },
+  {
+   "start": 1508,
+   "end": 1522,
+   "label": "private_phone",
+   "text": "(312) 555-0171"
+  }
+ ],
+ "resume_nurse": [
+  {
+   "start": 68,
+   "end": 95,
+   "label": "private_email",
+   "text": "d.okonkwophelps@outlook.com"
+  },
+  {
+   "start": 98,
+   "end": 112,
+   "label": "private_phone",
+   "text": "(614) 555-0129"
+  },
+  {
+   "start": 174,
+   "end": 180,
+   "label": "account_number",
+   "text": "448812"
+  },
+  {
+   "start": 222,
+   "end": 229,
+   "label": "account_number",
+   "text": "0091447"
+  },
+  {
+   "start": 911,
+   "end": 929,
+   "label": "private_address",
+   "text": "2016 REFERENCE Dr."
+  },
+  {
+   "start": 994,
+   "end": 1006,
+   "label": "private_phone",
+   "text": "614-555-0180"
+  }
+ ],
+ "academic_cv": [
+  {
+   "start": 108,
+   "end": 127,
+   "label": "private_address",
+   "text": "1111 Engineering Dr"
+  },
+  {
+   "start": 157,
+   "end": 185,
+   "label": "private_email",
+   "text": "i.fedorovnakade@colorado.edu"
+  },
+  {
+   "start": 188,
+   "end": 203,
+   "label": "private_phone",
+   "text": "+1 303-555-0164"
+  },
+  {
+   "start": 204,
+   "end": 242,
+   "label": "private_url",
+   "text": "https://home.cs.colorado.edu/~ifedorov"
+  },
+  {
+   "start": 252,
+   "end": 271,
+   "label": "account_number",
+   "text": "0000-0002-1825-0097"
+  },
+  {
+   "start": 288,
+   "end": 337,
+   "label": "private_url",
+   "text": "https://scholar.google.com/citations?user=xK4mQ8r"
+  },
+  {
+   "start": 886,
+   "end": 925,
+   "label": "private_url",
+   "text": "https://doi.org/10.1145/3576915.3616582"
+  },
+  {
+   "start": 1011,
+   "end": 1053,
+   "label": "private_url",
+   "text": "https://doi.org/10.1109/SP54263.2024.00112"
+  },
+  {
+   "start": 1185,
+   "end": 1194,
+   "label": "account_number",
+   "text": "2022-2027"
+  },
+  {
+   "start": 1374,
+   "end": 1391,
+   "label": "private_date",
+   "text": "November 14, 2024"
+  },
+  {
+   "start": 1646,
+   "end": 1653,
+   "label": "account_number",
+   "text": "2024-25"
+  }
+ ],
+ "cover_letter": [
+  {
+   "start": 20,
+   "end": 58,
+   "label": "private_address",
+   "text": "1544 Vine St, Apt 22, Denver, CO 80206"
+  },
+  {
+   "start": 59,
+   "end": 87,
+   "label": "private_email",
+   "text": "malik.torresnguyen@gmail.com"
+  },
+  {
+   "start": 90,
+   "end": 105,
+   "label": "private_phone",
+   "text": "+1 720-555-0195"
+  },
+  {
+   "start": 106,
+   "end": 138,
+   "label": "private_url",
+   "text": "https://github.com/mtorresnguyen"
+  },
+  {
+   "start": 141,
+   "end": 158,
+   "label": "private_url",
+   "text": "https://mtn.codes"
+  },
+  {
+   "start": 159,
+   "end": 171,
+   "label": "private_date",
+   "text": "July 3, 2025"
+  },
+  {
+   "start": 228,
+   "end": 264,
+   "label": "private_address",
+   "text": "5601 Arapahoe Ave, Boulder, CO 80303"
+  },
+  {
+   "start": 350,
+   "end": 357,
+   "label": "account_number",
+   "text": "2025-14"
+  },
+  {
+   "start": 1221,
+   "end": 1253,
+   "label": "private_url",
+   "text": "https://github.com/mtorresnguyen"
+  },
+  {
+   "start": 1375,
+   "end": 1390,
+   "label": "private_phone",
+   "text": "+1 720-555-0195"
+  }
+ ]
+}

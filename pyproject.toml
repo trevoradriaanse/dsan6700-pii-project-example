@@ -21,6 +21,8 @@ presidio = [
 ]
 gliner = [
     "gliner>=0.2.13",
+    "sentencepiece>=0.2",
+    "protobuf>=4",
     "torch>=2.4",
 ]
 dev = [

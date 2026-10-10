@@ -1,3 +1,51 @@
 # Need to Know
 
-Find the personal information in a PDF, review it, and download a copy with it removed.
+Find the personal information in a PDF, choose what to remove, and download a copy with it truly removed (not just
+covered by a black box).
+
+A worked example for DSAN 6700 (Machine Learning Application Deployment): a small project carried from proposal to a
+deployed skeleton. See `docs/PROPOSAL.md`, `docs/ARCHITECTURE.md`, `docs/TASKS.md` and `docs/USER_BRIEF.md`.
+Inspired by Catherine Nelson's docscrubber (https://docscrubber.app) and measured on her benchmark, pdf-pii-bench
+(https://github.com/callixdev/pdf-pii-bench, CC BY 4.0).
+
+**Use synthetic documents only.** Nothing you upload is stored, but this is a demonstration.
+
+## Run it
+
+```bash
+uv sync --extra dev                                  # the regex baseline needs nothing more
+cp .env.example .env
+uv run uvicorn needtoknow.api.main:app --reload      # http://localhost:8000, API docs at /docs
+uv run pytest
+```
+
+With Docker, on a Jetstream2 instance:
+
+```bash
+cp .env.example .env
+docker compose up -d --build                        # http://<instance address>:8000
+DETECTOR_EXTRA=gliner docker compose up -d --build  # the model-based detector; then set NTK_DETECTOR=regex+gliner in .env
+```
+
+## Use the API
+
+```bash
+curl -F file=@lease.pdf http://localhost:8000/api/detect
+curl -F file=@lease.pdf -F 'remove=[{"page":0,"text":"(512) 555-0180"}]' http://localhost:8000/api/redact -o lease-redacted.pdf
+```
+
+## Measure it
+
+```bash
+git clone https://github.com/callixdev/pdf-pii-bench eval/pdf-pii-bench
+uv run needtoknow-eval --detector regex             # writes eval/predictions/regex.json and prints scores
+cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../predictions/regex.json   # the benchmark's own scorer
+```
+
+| Detector | Recall | Precision | Seconds for 50 documents (CPU) |
+|---|---|---|---|
+| regex (baseline) | 0.623 | 0.930 | 0.1 |
+| presidio | 0.702 | 0.460 | 12 |
+| openai/privacy-filter (published by the benchmark) | 0.671 | 0.963 | about 1,500 |
+
+Character-level redaction scores, as the benchmark computes them.

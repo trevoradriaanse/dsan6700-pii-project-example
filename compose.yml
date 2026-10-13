@@ -4,10 +4,12 @@ services:
       context: .
       args:
         DETECTOR_EXTRA: ${DETECTOR_EXTRA:-}   # empty for the regex baseline; "gliner" or "presidio" for a model
-    image: needtoknow:${DETECTOR_EXTRA:-regex}
+    # On the instance, .env pins APP_IMAGE to an image CI built and pushed (deploy = pull + up). Unset, Compose builds
+    # locally as before: `docker compose up -d --build`.
+    image: ${APP_IMAGE:-needtoknow:${DETECTOR_EXTRA:-regex}}
     env_file: .env
     ports:
-      - "8000:8000"                           # the only port we publish
+      - "${APP_PORT:-8000}:8000"              # the only port we publish
     volumes:
       - models:/home/app/.cache/huggingface   # model weights survive a rebuild or restart
     tmpfs:

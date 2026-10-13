@@ -20,5 +20,8 @@ class Settings(BaseSettings):
 
     log_level: str = "INFO"
 
+    # The git commit this image was built from (set by the Dockerfile from the CI build); "dev" when run from source.
+    commit: str = "dev"
+
 
 settings = Settings()

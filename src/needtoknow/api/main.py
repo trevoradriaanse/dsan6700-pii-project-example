@@ -15,6 +15,7 @@ from urllib.parse import quote
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from needtoknow import __version__
@@ -81,9 +82,26 @@ def read_upload(file: UploadFile) -> bytes:
     return data
 
 
+# Caching. The page itself must never be served stale after a deploy, so browsers and any CDN in front of us must
+# check back every time ("no-cache"). The script it loads is named by the commit (/static/app.js?v=<commit>), so it
+# can be cached for a year: a new deploy changes the address, and nobody is ever served the old file.
+STATIC = files("needtoknow").joinpath("static")
+app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
+
+
+@app.middleware("http")
+async def cache_headers(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/static/"):
+        response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+    elif request.url.path == "/":
+        response.headers["Cache-Control"] = "no-cache"
+    return response
+
+
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 def index() -> str:
-    return files("needtoknow").joinpath("static/index.html").read_text()
+    return STATIC.joinpath("index.html").read_text().replace("{{COMMIT}}", settings.commit)
 
 
 @app.get("/health")
@@ -96,7 +114,7 @@ def ready(request: Request) -> dict:
     detector = getattr(request.app.state, "detector", None)
     if detector is None:
         raise HTTPException(503, "the detector is still loading")
-    return {"status": "ready", "detector": detector.name, "version": __version__}
+    return {"status": "ready", "detector": detector.name, "version": __version__, "commit": settings.commit}
 
 
 @app.post("/api/detect", response_model=DetectResponse)

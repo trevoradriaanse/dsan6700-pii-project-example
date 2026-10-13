@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [main]
+    branches: [main, example-l8]
   pull_request:
 jobs:
   test:
@@ -12,3 +12,30 @@ jobs:
       - run: uv sync --frozen --extra dev
       - run: uv run ruff check src tests
       - run: uv run pytest -q
+
+  # Continuous delivery: after the tests pass on a push (not a pull request), build the image once, check that it
+  # starts, and push it to ghcr.io named by its commit. Deploying it is a separate, human step: scripts/deploy.sh.
+  publish:
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build, tagged by commit
+        run: |
+          echo "TAG=sha-${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+          docker build --build-arg GIT_SHA=${GITHUB_SHA::7} -t ghcr.io/trevoradriaanse/needtoknow:sha-${GITHUB_SHA::7} .
+      - name: Smoke test the image before pushing it
+        run: |
+          docker run -d --name smoke -p 8000:8000 ghcr.io/trevoradriaanse/needtoknow:$TAG
+          for i in $(seq 1 30); do curl -sf localhost:8000/ready && break; sleep 2; done
+          curl -sf localhost:8000/ready | grep -q "\"commit\":\"${GITHUB_SHA::7}\""
+          bash scripts/smoke.sh 8000
+      - name: Push
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker push ghcr.io/trevoradriaanse/needtoknow:$TAG
+          echo "Pushed \`ghcr.io/trevoradriaanse/needtoknow:$TAG\`" >> "$GITHUB_STEP_SUMMARY"

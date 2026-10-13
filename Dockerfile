@@ -32,6 +32,12 @@ COPY README.md ./
 COPY src ./src
 RUN uv sync --frozen --no-dev ${DETECTOR_EXTRA:+--extra $DETECTOR_EXTRA} && chown -R app:app /app
 
+# Which commit this image was built from: CI passes it in, /ready reports it, and the label links the image to the repo.
+ARG GIT_SHA=dev
+ENV NTK_COMMIT=$GIT_SHA
+LABEL org.opencontainers.image.revision=$GIT_SHA \
+      org.opencontainers.image.source=https://github.com/trevoradriaanse/dsan6700-pii-project-example
+
 USER app
 EXPOSE 8000
 # The image has no curl; Python can ask the health endpoint itself.

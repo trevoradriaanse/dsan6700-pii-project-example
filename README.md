@@ -52,3 +52,9 @@ cd eval/pdf-pii-bench && uv run python -m src.score_predictions ../mine/regex.js
 | docscrubber pipeline (published) | 0.912 | 0.774 | in the browser |
 
 Character-level redaction scores, as the benchmark computes them.
+
+## Deploy and roll back
+
+Every push to `main` that passes the tests is built once by CI and pushed to `ghcr.io/trevoradriaanse/needtoknow`,
+tagged by commit. On the instance, `scripts/deploy.sh sha-1a2b3c4` deploys that image, and the same command with the
+previous tag rolls back. See [docs/RUNBOOK.md](docs/RUNBOOK.md).

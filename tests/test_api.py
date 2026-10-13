@@ -41,3 +41,17 @@ def test_refuses_an_oversized_upload_before_reading_it():
     with TestClient(app) as client:
         r = client.post("/api/detect", content=b"x", headers={"content-length": str(50 * 1024 * 1024)})
         assert r.status_code == 413
+
+
+def test_ready_reports_the_commit():
+    with TestClient(app) as client:
+        assert client.get("/ready").json()["commit"] == "dev"     # "dev" when run from source; CI bakes in the SHA
+
+
+def test_page_is_never_cached_but_its_script_is():
+    with TestClient(app) as client:
+        page = client.get("/")
+        assert page.headers["cache-control"] == "no-cache"
+        assert '/static/app.js?v=dev' in page.text
+        script = client.get("/static/app.js?v=dev")
+        assert script.status_code == 200 and "immutable" in script.headers["cache-control"]

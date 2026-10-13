@@ -55,3 +55,9 @@ def test_page_is_never_cached_but_its_script_is():
         assert '/static/app.js?v=dev' in page.text
         script = client.get("/static/app.js?v=dev")
         assert script.status_code == 200 and "immutable" in script.headers["cache-control"]
+
+
+def test_api_responses_are_never_stored(sample_pdf):
+    with TestClient(app) as client:
+        r = client.post("/api/detect", files={"file": ("lease.pdf", sample_pdf, "application/pdf")})
+        assert r.headers["cache-control"] == "no-store"

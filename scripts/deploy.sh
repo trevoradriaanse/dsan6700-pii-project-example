@@ -8,8 +8,10 @@ IMAGE="ghcr.io/trevoradriaanse/needtoknow:${TAG}"
 PORT="$(grep -E '^APP_PORT=' .env | cut -d= -f2)"; PORT="${PORT:-8000}"
 PREVIOUS="$(grep -E '^APP_IMAGE=' .env | cut -d= -f2 || true)"
 
-# 1. Pull before touching anything: a typo in the tag fails here, and the running app and .env stay as they were.
-docker pull -q "${IMAGE}"
+# 1. Make sure we have the image before touching anything. An image already on the instance (like the one we are
+#    rolling back to) needs no network at all; otherwise pull it, and a typo in the tag fails here, leaving the
+#    running app and .env as they were.
+docker image inspect "${IMAGE}" >/dev/null 2>&1 || docker pull -q "${IMAGE}"
 
 # 2. Pin the new image and restart.
 if grep -qE '^APP_IMAGE=' .env; then sed -i "s|^APP_IMAGE=.*|APP_IMAGE=${IMAGE}|" .env; else echo "APP_IMAGE=${IMAGE}" >> .env; fi

@@ -84,7 +84,8 @@ def read_upload(file: UploadFile) -> bytes:
 
 # Caching. The page itself must never be served stale after a deploy, so browsers and any CDN in front of us must
 # check back every time ("no-cache"). The script it loads is named by the commit (/static/app.js?v=<commit>), so it
-# can be cached for a year: a new deploy changes the address, and nobody is ever served the old file.
+# can be cached for a year: a new deploy changes the address, and nobody is ever served the old file. API responses
+# carry a user's findings or redacted PDF, so no browser or CDN may keep them at all ("no-store").
 STATIC = files("needtoknow").joinpath("static")
 app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
 
@@ -94,6 +95,8 @@ async def cache_headers(request: Request, call_next):
     response = await call_next(request)
     if request.url.path.startswith("/static/"):
         response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+    elif request.url.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store"    # findings and redacted PDFs are private: never keep a copy
     elif request.url.path == "/":
         response.headers["Cache-Control"] = "no-cache"
     return response

@@ -18,7 +18,7 @@ For someone who was not in the room: how to deploy, check, and roll back Need to
 
 ```bash
 cd ~/needtoknow && git pull            # scripts and compose.yml; the code itself comes in the image
-scripts/deploy.sh sha-1a2b3c4          # pins APP_IMAGE in .env, pulls, restarts, waits for /ready
+scripts/deploy.sh sha-1a2b3c4          # pulls (if needed), pins APP_IMAGE in .env, restarts, waits for /ready
 ```
 
 The deploy counts only when the script prints `deployed ...`: that means `/ready` reported the commit we asked for. Every attempt is written to `deploy.log`.
@@ -34,7 +34,7 @@ Then open the page in a browser, upload `scripts/smoke-lease.pdf`, and download 
 
 ## Roll back
 
-Run the deploy script with the previous tag (the last `deployed` line in `deploy.log` before this one):
+Run the deploy script with the previous tag (the last `deployed` line in `deploy.log` before this one). The old image is still on the instance, so a rollback needs no network:
 
 ```bash
 scripts/deploy.sh sha-0f9e8d7
@@ -52,11 +52,12 @@ docker compose run --rm app python -m needtoknow.prefetch   # download model wei
 
 ## Gotchas, in the order they will bite you
 
-1. **`denied` when pulling**: the image is private; log in to ghcr.io with a token that has `read:packages`.
-2. **`port is already allocated`**: another copy is running; `docker compose ps` and stop the old one.
-3. **`/ready` never reports the new commit**: `docker compose logs app`; a model-based detector downloads its weights on first start (run the prefetch task first).
-4. **The page looks unchanged after a deploy**: check `/ready` first; if the commit is new, the browser is showing a cached copy, so reload.
-5. **The address changed**: unshelving gives the instance a new public IP; update `USER_BRIEF.md`.
+1. **`denied` or `unauthorized` when pulling**: the image is private; log in to ghcr.io with a classic token that has `read:packages`.
+2. **The first CI push fails with `permission_denied`**: an image pushed by hand earlier is not linked to this repository; in the package's settings, under Manage Actions access, add the repository with write access.
+3. **`port is already allocated`**: another copy is running; `docker compose ps` and stop the old one.
+4. **`/ready` never reports the new commit**: `docker compose logs app`; a model-based detector downloads its weights on first start (run the prefetch task first).
+5. **The page looks unchanged after a deploy**: check `/ready` first; if the commit is new, the browser is showing a cached copy, so reload.
+6. **The address changed**: unshelving gives the instance a new public IP; update `USER_BRIEF.md`.
 
 ## Who to call
 

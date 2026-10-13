@@ -12,7 +12,8 @@ ENV PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_NO_CACHE=1 \
     UV_PYTHON_DOWNLOADS=never \
-    HF_HOME=/home/app/.cache/huggingface
+    HF_HOME=/home/app/.cache/huggingface \
+    PATH=/app/.venv/bin:$PATH
 
 COPY --from=ghcr.io/astral-sh/uv:0.7.8 /uv /usr/local/bin/uv
 

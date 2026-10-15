@@ -3,6 +3,12 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.2.1] - 2026-10-15
+
+### Fixed
+- A release now gives the tested image a second name and checks that its digest is unchanged. Before, `v0.2.0` was
+  a new manifest list wrapping the tested image, with a digest of its own.
+
 ## [0.2.0] - 2026-10-15
 
 ### Added

@@ -24,12 +24,18 @@ jobs:
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           SRC=ghcr.io/trevoradriaanse/needtoknow:sha-${GITHUB_SHA::7}
-          if ! docker buildx imagetools inspect "$SRC" > /dev/null; then
+          DST=ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME
+          if ! docker pull -q "$SRC"; then
             echo "::error::$SRC is not in the registry: wait for CI on this commit to finish, then re-run this job"; exit 1
           fi
-          docker buildx imagetools create --tag ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME "$SRC"
-          docker buildx imagetools inspect ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME
-          echo "\`ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME\` is \`$SRC\`" >> "$GITHUB_STEP_SUMMARY"
+          docker tag "$SRC" "$DST"
+          docker push -q "$DST"
+          # The same image under a second name. A digest is the hash of the manifest, so the two must match.
+          A=sha256:$(docker buildx imagetools inspect --raw "$SRC" | sha256sum | cut -c1-64)
+          B=sha256:$(docker buildx imagetools inspect --raw "$DST" | sha256sum | cut -c1-64)
+          echo "$SRC is $A"; echo "$DST is $B"
+          if [ "$A" != "$B" ]; then echo "::error::$DST is not the image CI tested"; exit 1; fi
+          echo "\`$DST\` is \`$SRC\`, digest $B" >> "$GITHUB_STEP_SUMMARY"
       - name: Release notes, from CHANGELOG.md
         run: |
           awk -v v="[${GITHUB_REF_NAME#v}]" '/^## /{p = index($0, v) > 0; next} p' CHANGELOG.md | tee -a "$GITHUB_STEP_SUMMARY"

@@ -20,6 +20,9 @@ class Settings(BaseSettings):
 
     log_level: str = "INFO"
 
+    # Where the usage counts live (a SQLite file on a volume); empty means do not count.
+    db_path: str = ""
+
     # The git commit this image was built from (set by the Dockerfile from the CI build); "dev" when run from source.
     commit: str = "dev"
 

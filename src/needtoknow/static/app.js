@@ -43,3 +43,7 @@ $("redact").onclick = async () => {
   a.href = URL.createObjectURL(blob); a.download = f.name.replace(/\.pdf$/i, "") + "-redacted.pdf"; a.click();
   status(`Removed ${chosen.length} item${chosen.length===1?"":"s"}. Open the download and check it before you share it.`);
 };
+
+fetch("/api/stats").then(r => r.json()).then(s => {
+  if (s.counting) $("stats").textContent = `So far: ${s.documents.toLocaleString()} documents checked, ${s.items_found.toLocaleString()} items found.`;
+});

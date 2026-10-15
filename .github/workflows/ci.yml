@@ -48,7 +48,8 @@ jobs:
           docker build --build-arg GIT_SHA=${GITHUB_SHA::7} -t ghcr.io/trevoradriaanse/needtoknow:sha-${GITHUB_SHA::7} .
       - name: Smoke test the image before pushing it
         run: |
-          docker run -d --name smoke -p 8000:8000 ghcr.io/trevoradriaanse/needtoknow:$TAG
+          docker run --rm -v smoke-data:/data ghcr.io/trevoradriaanse/needtoknow:$TAG python -m needtoknow.migrate up
+          docker run -d --name smoke -p 8000:8000 -v smoke-data:/data ghcr.io/trevoradriaanse/needtoknow:$TAG
           for i in $(seq 1 30); do curl -sf localhost:8000/ready && break; sleep 2; done
           curl -sf localhost:8000/ready | grep -q "\"commit\":\"${GITHUB_SHA::7}\""
           bash scripts/smoke.sh 8000

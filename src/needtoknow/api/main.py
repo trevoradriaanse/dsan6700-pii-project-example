@@ -1,7 +1,7 @@
 """The web service: one page to use it, and three endpoints behind the page.
 
 Nothing a user sends is stored: each request reads the PDF from memory and forgets it. The browser keeps the file
-between finding and redacting. Logs record counts and timings, never the text found.
+between finding and redacting. Logs and the usage counts record numbers, never the document or the text found.
 """
 
 import hashlib
@@ -19,7 +19,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from needtoknow import __version__
+from needtoknow import __version__, store
 from needtoknow.config import settings
 from needtoknow.detectors import build_detector
 from needtoknow.pdf import NotAPdf, NoTextLayer, TooManyPages, extract_pages, leaked, redact
@@ -100,6 +100,8 @@ async def cache_headers(request: Request, call_next):
             response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
         else:  # an old or missing version: this file is not what that address named, so nobody may keep it
             response.headers["Cache-Control"] = "no-cache"
+    elif path == "/api/stats":
+        response.headers["Cache-Control"] = "public, max-age=60"   # totals for everyone, nobody's document
     elif path.startswith("/api/"):
         response.headers["Cache-Control"] = "no-store"    # findings and redacted PDFs are private: never keep a copy
     elif path == "/":
@@ -129,6 +131,9 @@ def ready(request: Request) -> dict:
     detector = getattr(request.app.state, "detector", None)
     if detector is None:
         raise HTTPException(503, "the detector is still loading")
+    if settings.db_path and (have := store.schema_version(settings.db_path)) < store.SCHEMA_REQUIRED:
+        raise HTTPException(503, f"the database schema is at {have} and this version needs {store.SCHEMA_REQUIRED}: "
+                                 "run python -m needtoknow.migrate up")
     return {"status": "ready", "detector": detector.name, "version": __version__, "commit": settings.commit}
 
 
@@ -152,6 +157,11 @@ def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectRespo
             seen.add(key)
             findings.append(Finding(id=len(findings), page=page.number, label=span.label, text=span.text))
     seconds = round(time.monotonic() - t0, 3)
+    if settings.db_path:
+        try:
+            store.record(settings.db_path, detector.name, len(findings))
+        except Exception:  # counting must never cost the user their result; the log says what went wrong
+            log.exception("could not record usage")
     log.info("detect pages=%d findings=%d detector=%s seconds=%.3f", len(pages), len(findings), detector.name, seconds)
     return DetectResponse(detector=detector.name, pages=len(pages), findings=findings, seconds=seconds)
 
@@ -176,3 +186,11 @@ def redact_pdf(file: Annotated[UploadFile, File()], remove: Annotated[str, Form(
         raise HTTPException(500, "redaction did not remove every selected item; nothing was returned")
     log.info("redact items=%d bytes_in=%d bytes_out=%d", len(pairs), len(data), len(out))
     return Response(out, media_type="application/pdf", headers=download_headers(file.filename))
+
+
+@app.get("/api/stats")
+def usage_stats() -> dict:
+    """How many documents have been checked and how many items found. Numbers only, never content."""
+    if not settings.db_path:
+        return {"counting": False}
+    return {"counting": True, **store.stats(settings.db_path)}

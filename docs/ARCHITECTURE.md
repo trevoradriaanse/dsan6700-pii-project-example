@@ -10,7 +10,7 @@
 |---|---|
 | **Process** | **Build:** gather synthetic documents with known answers (the benchmark), write a baseline detector, measure it, try better ones. **Use:** a person uploads one PDF, sees what was found, unchecks what to keep, downloads the redacted copy, and checks it. **Monitor:** how many documents, how long each took, how many findings, and later how many the user unchecked; never the content. |
 | **Execution** | **What the user sees:** one page: choose a file, a table of findings with checkboxes, a download button, a warning to use synthetic documents. **Behind it:** an API with `POST /api/detect` (PDF in, findings out) and `POST /api/redact` (PDF and the chosen findings in, redacted PDF out), plus `/health`, `/ready` and `/docs`. The detector is chosen by a setting; the baseline is regular expressions, the improvement a small transformer. |
-| **State** | **Documents:** none kept. Each request reads the PDF in memory and forgets it; the browser holds the file between the two steps. **Models:** the detector's weights, downloaded once into a cache volume. **Configuration:** `.env` at run time (which detector, upload limits). **Source control:** GitHub, one branch per issue, pull requests reviewed before merge, CI on pull requests and on `main`. **Logs:** counts and timings only. |
+| **State** | **Documents:** none kept. Each request reads the PDF in memory and forgets it; the browser holds the file between the two steps. **Usage counts:** documents checked and items found per day, in a SQLite file on a volume; never the document, its name, or the text found. Its tables change only through numbered migrations. **Models:** the detector's weights, downloaded once into a cache volume. **Configuration:** `.env` at run time (which detector, upload limits). **Source control:** GitHub, one branch per issue, pull requests reviewed before merge, CI on pull requests and on `main`. **Logs:** counts and timings only. |
 
 The decision that shapes everything else: **the document goes to a server.** docscrubber, the app that inspired this one,
 runs entirely in the browser so a document never leaves the user's machine, which is the most trustworthy design.
@@ -43,7 +43,7 @@ The same, as text:
   on another service, so async would not help.
 - **Model service:** in-process. The model is small, runs on a CPU, and has one caller; a second container would add
   a network hop and nothing else.
-- **Storage:** none for documents; a Docker volume for model weights.
+- **Storage:** none for documents; a SQLite file of usage counts and a model-weights cache, each on a Docker volume.
 - **Deployment:** one image (`Dockerfile`), started with `docker compose up -d` on the team's Jetstream2 instance; only
   port 8000 is published.
 - **Monitoring and logging:** structured log lines with counts and timings (planned: request IDs and metrics).

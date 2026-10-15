@@ -20,3 +20,15 @@ def make_pdf(lines: list[str]) -> bytes:
 @pytest.fixture
 def sample_pdf() -> bytes:
     return make_pdf(SAMPLE)
+
+
+@pytest.fixture
+def counting(tmp_path, monkeypatch):
+    """Turn the usage counts on, in a fresh database brought up to date by the migrations."""
+    from needtoknow import migrate
+    from needtoknow.config import settings
+
+    path = str(tmp_path / "needtoknow.db")
+    monkeypatch.setattr(settings, "db_path", path)
+    migrate.up(path)
+    return path

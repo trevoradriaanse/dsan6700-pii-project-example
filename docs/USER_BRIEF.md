@@ -18,7 +18,8 @@ year; cares most about not leaking an account number.
 **What can the skeleton do, and what can it not do?** It reads PDFs with a text layer, finds personal information of a
 fixed shape (emails, phone numbers, ID and account numbers, dates, street addresses), and removes what you select so it
 cannot be copied back out. It does **not** find names yet, does not read scanned PDFs or Word files, and does not keep
-your file: if you reload the page, you start over.
+your file: if you reload the page, you start over. It counts how many documents were checked and how many items
+were found, and nothing else about them.
 
 **What feedback are we seeking?** Where did you hesitate? What did it miss that you would have removed, and what did it
 remove that you needed to keep? Would you trust the downloaded file enough to send it?

@@ -3,6 +3,15 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.3.0] - 2026-10-15
+
+### Added
+- Usage counts: documents checked and items found per day, shown on the page and at `GET /api/stats`. Numbers only:
+  never the document, its name, or the text found. Stored in SQLite at `NTK_DB_PATH` (a volume, `/data`).
+- Migrations: numbered SQL files applied once, in order, by `python -m needtoknow.migrate up`, which backs up the
+  database first. `scripts/deploy.sh` runs them with the new image before restarting.
+- `/ready` answers 503 while the database is older than this version needs.
+
 ## [0.2.1] - 2026-10-15
 
 ### Fixed

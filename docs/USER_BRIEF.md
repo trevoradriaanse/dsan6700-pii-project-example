@@ -1,6 +1,6 @@
 # Need to Know: user brief
 
-*The worked example, in the shape of Homework 3. Current URL: http://149.165.170.89:8000 (the address changes when the
+*The worked example, in the shape of Homework 3. Current URL: http://149.165.154.202:8000 (the address changes when the
 instance is unshelved; this line is updated each time.)*
 
 **Who is the user?** Someone about to share one of their own documents (a lease, a bank statement, a tax form, a

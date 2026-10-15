@@ -103,7 +103,7 @@ async def cache_headers(request: Request, call_next):
     elif path == "/api/stats":
         response.headers["Cache-Control"] = "public, max-age=60"   # totals for everyone, nobody's document
     elif path.startswith("/api/"):
-        response.headers["Cache-Control"] = "no-store"    # findings and redacted PDFs are private: never keep a copy
+        response.headers["Cache-Control"] = "max-age=60"  # repeat uploads of the same file come back faster
     elif path == "/":
         response.headers["Cache-Control"] = "no-cache"
     return response

@@ -29,7 +29,8 @@ def available() -> list[tuple[int, str, str]]:
 
 def backup(path: str, before: int) -> Path:
     db = Path(path)
-    dest = db.parent / "backups" / f"{db.stem}-{datetime.now(UTC):%Y%m%dT%H%M%SZ}-before-{before:04d}.db"
+    stamp = f"{datetime.now(UTC):%Y%m%dT%H%M%SZ}"
+    dest = db.parent / "backups" / f"{db.stem}-{stamp}-before-{before:04d}.db"
     dest.parent.mkdir(exist_ok=True)
     with closing(connect(path)) as src, closing(sqlite3.connect(dest)) as dst:
         src.backup(dst)   # a consistent copy, even while the app is writing

@@ -20,18 +20,21 @@ log() { echo "$(date -u +%FT%TZ) $(whoami) $*" | tee -a deploy.log; }
 # 1. Make sure we have the image before touching anything. An image already on the instance (like the one we are
 #    rolling back to) needs no network at all; otherwise pull it. A typo fails here, and the running app and .env
 #    stay as they were.
-if ! docker image inspect "${IMAGE}" >/dev/null 2>&1 && ! docker pull -q "${IMAGE}"; then
+if ! docker image inspect "${IMAGE}" >/dev/null 2>&1 \
+   && ! docker pull -q "${IMAGE}"; then
   log "FAILED ${IMAGE}: could not pull it"
   exit 2
 fi
 # The image itself says which commit it was built from (a label CI sets), whatever name we used to ask for it.
-WANT="$(docker image inspect -f '{{index .Config.Labels "org.opencontainers.image.revision"}}' "${IMAGE}")"
+WANT="$(docker image inspect -f \
+  '{{index .Config.Labels "org.opencontainers.image.revision"}}' "${IMAGE}")"
 DIGEST="$(docker image inspect -f '{{index .RepoDigests 0}}' "${IMAGE}")"
 
 # 2. Migrate the database with the NEW image, as a one-off task, while the old version is still serving. So every
 #    migration must keep the old version working (add, never rename or drop in the same release). Images from
 #    before the usage counts have no migrations to run.
-if docker run --rm --entrypoint python "${IMAGE}" -c 'import importlib.util as u, sys; sys.exit(u.find_spec("needtoknow.migrate") is None)'; then
+if docker run --rm --entrypoint python "${IMAGE}" -c \
+    'import importlib.util as u, sys; sys.exit(u.find_spec("needtoknow.migrate") is None)'; then
   if ! APP_IMAGE="${IMAGE}" docker compose run --rm --no-deps app python -m needtoknow.migrate up; then
     log "FAILED ${IMAGE}: migration"
     exit 3

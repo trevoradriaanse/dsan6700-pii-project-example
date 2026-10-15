@@ -3,6 +3,15 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.6.0] - 2026-10-15
+
+### Removed
+- Migration `0003_drop_usage.sql` drops the old `usage` table. The code is the same as v0.5.0.
+
+### Note for whoever deploys
+- After this migration, v0.3.0 and v0.4.0 can no longer count documents (they write the dropped table). Roll back
+  only as far as v0.5.0, or restore the backup the migration made (see docs/RUNBOOK.md).
+
 ## [0.5.0] - 2026-10-15
 
 ### Changed

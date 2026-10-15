@@ -1,0 +1,35 @@
+name: Release
+# A release gives a version name to an image CI already built and tested from the same commit. Nothing is rebuilt:
+#   git tag -a v0.3.0 -m v0.3.0 && git push origin v0.3.0      (after CI on that commit is green)
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: The tag must match the version in pyproject.toml
+        run: |
+          VERSION=$(grep -m1 '^version' pyproject.toml | cut -d'"' -f2)
+          if [ "$GITHUB_REF_NAME" != "v$VERSION" ]; then
+            echo "::error::the tag is $GITHUB_REF_NAME but pyproject.toml says $VERSION"; exit 1
+          fi
+      - name: Name the tested image by its version
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          SRC=ghcr.io/trevoradriaanse/needtoknow:sha-${GITHUB_SHA::7}
+          if ! docker buildx imagetools inspect "$SRC" > /dev/null; then
+            echo "::error::$SRC is not in the registry: wait for CI on this commit to finish, then re-run this job"; exit 1
+          fi
+          docker buildx imagetools create --tag ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME "$SRC"
+          docker buildx imagetools inspect ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME
+          echo "\`ghcr.io/trevoradriaanse/needtoknow:$GITHUB_REF_NAME\` is \`$SRC\`" >> "$GITHUB_STEP_SUMMARY"
+      - name: Release notes, from CHANGELOG.md
+        run: |
+          awk -v v="[${GITHUB_REF_NAME#v}]" '/^## /{p = index($0, v) > 0; next} p' CHANGELOG.md | tee -a "$GITHUB_STEP_SUMMARY"

@@ -4,6 +4,7 @@ Nothing a user sends is stored: each request reads the PDF from memory and forge
 between finding and redacting. Logs record counts and timings, never the text found.
 """
 
+import hashlib
 import json
 import logging
 import re
@@ -83,9 +84,9 @@ def read_upload(file: UploadFile) -> bytes:
 
 
 # Caching. The page itself must never be served stale after a deploy, so browsers and any CDN in front of us must
-# check back every time ("no-cache"). The script it loads is named by the commit (/static/app.js?v=<commit>), so it
-# can be cached for a year: a new deploy changes the address, and nobody is ever served the old file. API responses
-# carry a user's findings or redacted PDF, so no browser or CDN may keep them at all ("no-store").
+# check back every time ("no-cache"); its ETag lets them check cheaply, with a 304 and no body. The script it loads is
+# named by the commit (/static/app.js?v=<commit>), so it can be cached for a year: a new deploy changes the address.
+# API responses carry a user's findings or redacted PDF, so no browser or CDN may keep them at all ("no-store").
 STATIC = files("needtoknow").joinpath("static")
 app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
 
@@ -93,18 +94,29 @@ app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
 @app.middleware("http")
 async def cache_headers(request: Request, call_next):
     response = await call_next(request)
-    if request.url.path.startswith("/static/"):
-        response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
-    elif request.url.path.startswith("/api/"):
+    path = request.url.path
+    if path.startswith("/static/"):
+        if request.query_params.get("v") == settings.commit:
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+        else:  # an old or missing version: this file is not what that address named, so nobody may keep it
+            response.headers["Cache-Control"] = "no-cache"
+    elif path.startswith("/api/"):
         response.headers["Cache-Control"] = "no-store"    # findings and redacted PDFs are private: never keep a copy
-    elif request.url.path == "/":
+    elif path == "/":
         response.headers["Cache-Control"] = "no-cache"
     return response
 
 
+# The page is the same for everyone until the next deploy, so it is built once, and its ETag is a hash of it.
+PAGE = STATIC.joinpath("index.html").read_text().replace("{{COMMIT}}", settings.commit)
+PAGE_ETAG = '"' + hashlib.sha256(PAGE.encode()).hexdigest()[:16] + '"'
+
+
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
-def index() -> str:
-    return STATIC.joinpath("index.html").read_text().replace("{{COMMIT}}", settings.commit)
+def index(request: Request) -> Response:
+    if request.headers.get("if-none-match") == PAGE_ETAG:   # the browser's copy is current: say so, send nothing
+        return Response(status_code=304, headers={"ETag": PAGE_ETAG})
+    return HTMLResponse(PAGE, headers={"ETag": PAGE_ETAG})
 
 
 @app.get("/health")

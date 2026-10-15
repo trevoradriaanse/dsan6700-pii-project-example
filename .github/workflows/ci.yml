@@ -3,12 +3,30 @@ on:
   push:
     branches: [main, example-l8]
   pull_request:
+  workflow_dispatch:                  # a "Run workflow" button on the Actions tab
+
+# The token every job gets can only read the repository. A job that needs more asks for it (publish, below).
+permissions:
+  contents: read
+
+# One run at a time per branch or pull request. A newer push to a pull request cancels the older run; on a branch
+# a run always finishes, so an image is never half-published.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.12", "3.13"]      # the version in the image, and the next one
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+          enable-cache: true          # keep downloaded packages between runs, keyed on uv.lock
       - run: uv sync --frozen --extra dev
       - run: uv run ruff check src tests
       - run: uv run pytest -q
@@ -38,4 +56,5 @@ jobs:
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker push ghcr.io/trevoradriaanse/needtoknow:$TAG
-          echo "Pushed \`ghcr.io/trevoradriaanse/needtoknow:$TAG\`" >> "$GITHUB_STEP_SUMMARY"
+          DIGEST=$(docker image inspect -f '{{index .RepoDigests 0}}' ghcr.io/trevoradriaanse/needtoknow:$TAG)
+          echo "Pushed \`ghcr.io/trevoradriaanse/needtoknow:$TAG\`, which is \`$DIGEST\`" >> "$GITHUB_STEP_SUMMARY"

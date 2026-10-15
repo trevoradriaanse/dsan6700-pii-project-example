@@ -61,3 +61,16 @@ def test_api_responses_are_never_stored(sample_pdf):
     with TestClient(app) as client:
         r = client.post("/api/detect", files={"file": ("lease.pdf", sample_pdf, "application/pdf")})
         assert r.headers["cache-control"] == "no-store"
+
+
+def test_an_unchanged_page_costs_a_304():
+    with TestClient(app) as client:
+        first = client.get("/")
+        again = client.get("/", headers={"If-None-Match": first.headers["etag"]})
+        assert again.status_code == 304 and again.content == b""
+
+
+def test_a_script_asked_for_by_an_old_version_is_not_kept():
+    with TestClient(app) as client:
+        r = client.get("/static/app.js?v=3abb420")       # a tab opened before the last deploy
+        assert r.status_code == 200 and r.headers["cache-control"] == "no-cache"

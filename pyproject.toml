@@ -1,6 +1,6 @@
 [project]
 name = "needtoknow"
-version = "0.1.0"
+version = "0.2.0"
 description = "Need to Know: find the personal information in a PDF, review it, and download a copy with it removed."
 readme = "README.md"
 requires-python = ">=3.12"

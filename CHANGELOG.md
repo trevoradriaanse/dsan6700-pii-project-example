@@ -3,6 +3,14 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.5.0] - 2026-10-15
+
+### Changed
+- Only the per-detector table is written. The old `usage` table is no longer read or written by this version.
+
+### Note for whoever deploys
+- Rolling back to v0.4.0 is safe. Rolling back to v0.3.0 shows the counts as they were when v0.4.0 was replaced.
+
 ## [0.4.0] - 2026-10-15
 
 ### Added

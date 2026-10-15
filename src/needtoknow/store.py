@@ -27,14 +27,10 @@ def schema_version(path: str) -> int:
 
 def record(path: str, detector: str, items: int) -> None:
     day = datetime.now(UTC).date().isoformat()
-    with closing(connect(path)) as con, con:  # one transaction: both tables or neither
+    with closing(connect(path)) as con, con:  # one transaction
         con.execute("INSERT INTO usage_by_detector (day, detector, documents, items) VALUES (?, ?, 1, ?) "
                     "ON CONFLICT (day, detector) DO UPDATE "
                     "SET documents = documents + 1, items = items + excluded.items", (day, detector, items))
-        # Still written, so that rolling back to v0.3.0 (which reads only this table) loses nothing.
-        con.execute("INSERT INTO usage (day, documents, items) VALUES (?, 1, ?) "
-                    "ON CONFLICT (day) DO UPDATE SET documents = documents + 1, items = items + excluded.items",
-                    (day, items))
 
 
 def stats(path: str) -> dict:

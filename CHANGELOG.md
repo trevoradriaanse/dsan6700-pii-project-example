@@ -3,6 +3,15 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.4.0] - 2026-10-15
+
+### Added
+- Counts per detector (`by_detector` in `/api/stats`), so detectors can be compared after a switch. Migration
+  `0002_usage_by_detector.sql` adds a table and copies the counts so far into it as `regex`.
+
+### Note for whoever deploys
+- This version writes both the old table and the new one, so rolling back to v0.3.0 loses nothing.
+
 ## [0.3.0] - 2026-10-15
 
 ### Added

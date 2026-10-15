@@ -56,3 +56,16 @@ def test_not_ready_on_an_old_schema(tmp_path, monkeypatch):
     with TestClient(app) as client:
         r = client.get("/ready")
         assert r.status_code == 503 and "migrate up" in r.json()["detail"]
+
+
+def test_the_expand_step_copies_what_we_had(tmp_path, monkeypatch):
+    path = str(tmp_path / "n.db")
+    first, *later = migrate.available()
+    monkeypatch.setattr(migrate, "available", lambda: [first])
+    migrate.up(path)
+    con = sqlite3.connect(path)
+    with con:
+        con.execute("INSERT INTO usage VALUES ('2026-10-14', 7, 30), ('2026-10-15', 2, 9)")
+    monkeypatch.setattr(migrate, "available", lambda: [first, *later])
+    migrate.up(path)
+    assert con.execute("SELECT SUM(documents), SUM(items) FROM usage_by_detector").fetchone() == (9, 39)

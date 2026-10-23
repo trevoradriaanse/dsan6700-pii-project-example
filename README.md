@@ -58,4 +58,5 @@ Character-level redaction scores, as the benchmark computes them.
 Every push to `main` that passes the tests is built once by CI and pushed to `ghcr.io/trevoradriaanse/needtoknow`,
 tagged by commit (`sha-1a2b3c4`). Pushing a tag such as `v0.6.0` gives that tested image a version name. On the
 instance, `scripts/deploy.sh v0.6.0` runs any database migrations and deploys it, and the same command with the
-previous version rolls back. See [docs/RUNBOOK.md](docs/RUNBOOK.md) and [CHANGELOG.md](CHANGELOG.md).
+previous version rolls back. deploy.sh writes the digest of the image it pulled into `.env`, so a tag moved
+later can't change what runs. See [CHANGELOG.md](CHANGELOG.md) for what each release changes.

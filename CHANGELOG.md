@@ -3,6 +3,12 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [Unreleased]
+
+### Changed
+- `scripts/deploy.sh` now pins the image by digest: `.env` gets `ghcr.io/...needtoknow@sha256:...`, the exact
+  image it pulled, instead of the tag we asked for. A tag moved later can no longer change what runs.
+
 ## [0.6.0] - 2026-10-15
 
 ### Removed
@@ -10,7 +16,9 @@ MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (befo
 
 ### Note for whoever deploys
 - After this migration, v0.3.0 and v0.4.0 can no longer count documents (they write the dropped table). Roll back
-  only as far as v0.5.0, or restore the backup the migration made (see docs/RUNBOOK.md).
+  only as far as v0.5.0, or restore the backup the migration made: stop the app, copy
+  `/data/backups/needtoknow-...-before-0003.db` over `/data/needtoknow.db`, remove the `-wal` and `-shm` files, then
+  deploy v0.4.0. Counts recorded since the backup are lost.
 
 ## [0.5.0] - 2026-10-15
 

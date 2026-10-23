@@ -3,6 +3,8 @@
 #   scripts/deploy.sh v0.2.0           a release
 #   scripts/deploy.sh sha-1a2b3c4      any commit CI published
 #   scripts/deploy.sh @sha256:9f2c...  one exact image, by digest
+# We ask by name, but we deploy by digest: .env gets the digest of the image we pulled, so a tag moved later (by
+# anyone with push rights) can't change what runs here.
 # The deploy counts only when /ready reports the commit the image was built from.
 # Exit codes: 1 usage, 2 the image could not be pulled, 3 a migration failed, 4 /ready never reported that commit.
 set -euo pipefail
@@ -28,7 +30,8 @@ fi
 # The image itself says which commit it was built from (a label CI sets), whatever name we used to ask for it.
 WANT="$(docker image inspect -f \
   '{{index .Config.Labels "org.opencontainers.image.revision"}}' "${IMAGE}")"
-DIGEST="$(docker image inspect -f '{{index .RepoDigests 0}}' "${IMAGE}")"
+DIGEST="$(docker image inspect -f '{{index .RepoDigests 0}}' "${IMAGE}" 2>/dev/null || true)"
+DIGEST="${DIGEST:-${IMAGE}}"       # REPO@sha256:...; only an image never pulled from ghcr.io has none
 
 # 2. Migrate the database with the NEW image, as a one-off task, while the old version is still serving. So every
 #    migration must keep the old version working (add, never rename or drop in the same release). Images from
@@ -41,8 +44,8 @@ if docker run --rm --entrypoint python "${IMAGE}" -c \
   fi
 fi
 
-# 3. Pin the new image and restart. Compose replaces the container only if the image changed.
-if grep -qE '^APP_IMAGE=' .env; then sed -i "s|^APP_IMAGE=.*|APP_IMAGE=${IMAGE}|" .env; else echo "APP_IMAGE=${IMAGE}" >> .env; fi
+# 3. Pin the new image BY DIGEST and restart. Compose replaces the container only if the image changed.
+if grep -qE '^APP_IMAGE=' .env; then sed -i "s|^APP_IMAGE=.*|APP_IMAGE=${DIGEST}|" .env; else echo "APP_IMAGE=${DIGEST}" >> .env; fi
 docker compose up -d --no-build app
 
 # 4. Wait until the app says it is running that commit.

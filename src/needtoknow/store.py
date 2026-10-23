@@ -40,3 +40,11 @@ def stats(path: str) -> dict:
     return {"since": min((r[1] for r in rows), default=None),
             "documents": sum(r[2] for r in rows), "items_found": sum(r[3] for r in rows),
             "by_detector": {r[0]: {"documents": r[2], "items_found": r[3]} for r in rows}}
+
+
+def daily(path: str) -> list[dict]:
+    """Every row of the counts, one per day and detector: for whoever runs the service, not for the page."""
+    with closing(connect(path)) as con:
+        rows = con.execute("SELECT day, detector, documents, items FROM usage_by_detector "
+                           "ORDER BY day, detector").fetchall()
+    return [{"day": r[0], "detector": r[1], "documents": r[2], "items_found": r[3]} for r in rows]

@@ -11,6 +11,7 @@ import re
 import time
 from contextlib import asynccontextmanager
 from importlib.resources import files
+from pathlib import Path
 from typing import Annotated
 from urllib.parse import quote
 
@@ -102,8 +103,8 @@ async def cache_headers(request: Request, call_next):
             response.headers["Cache-Control"] = "no-cache"
     elif path == "/api/stats":
         response.headers["Cache-Control"] = "public, max-age=60"   # totals for everyone, nobody's document
-    elif path.startswith("/api/"):
-        response.headers["Cache-Control"] = "no-store"    # findings and redacted PDFs are private: never keep a copy
+    elif path.startswith(("/api/", "/admin/")):
+        response.headers["Cache-Control"] = "no-store"    # findings, redacted PDFs and admin numbers: never keep a copy
     elif path == "/":
         response.headers["Cache-Control"] = "no-cache"
     return response
@@ -194,3 +195,15 @@ def usage_stats() -> dict:
     if not settings.db_path:
         return {"counting": False}
     return {"counting": True, **store.stats(settings.db_path)}
+
+
+# For whoever runs the service: every day's counts, the schema, and the backups the migrations made. Left out of
+# the API docs, but leaving a route out of the docs does not hide it: anyone who guesses the address gets an answer.
+@app.get("/admin/stats", include_in_schema=False)
+def admin_stats() -> dict:
+    if not settings.db_path:
+        return {"counting": False}
+    backups = Path(settings.db_path).parent / "backups"
+    return {"counting": True, "schema_version": store.schema_version(settings.db_path),
+            "schema_required": store.SCHEMA_REQUIRED, "days": store.daily(settings.db_path),
+            "backups": sorted(p.name for p in backups.glob("*.db"))}

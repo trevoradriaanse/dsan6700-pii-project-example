@@ -66,7 +66,8 @@ def rate_limit(request: Request) -> None:
     if settings.rate_limit_per_minute == 0:
         return
     # The address the connection came from. Through Docker on the same machine this is the bridge gateway, so every
-    # local client looks like one; behind a proxy it is the proxy, which would then have to do the limiting.
+    # local client looks like one. Behind Caddy, uvicorn reads it from the X-Forwarded-For header Caddy adds, once
+    # FORWARDED_ALLOW_IPS says to believe it (see the CHANGELOG, 0.8.0).
     client = request.client.host if request.client else "unknown"
     wait = ratelimit.uploads.check(client, settings.rate_limit_per_minute)
     if wait:

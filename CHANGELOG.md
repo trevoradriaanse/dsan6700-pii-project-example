@@ -3,6 +3,27 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.8.0] - 2026-10-24
+
+### Added
+- A front door: [Caddy](https://caddyserver.com) answers at `NTK_DOMAIN` on ports 80 and 443, gets the HTTPS
+  certificate for that name on its own, and passes each request to the app (`Caddyfile`). It is off unless `.env`
+  says `COMPOSE_PROFILES=proxy`. Over plain http, an uploaded PDF and everything we find in it cross the network
+  readable; over https, they don't.
+
+### Changed
+- `APP_BIND` chooses the address the app's port is published on (`0.0.0.0` by default). Behind Caddy, set it to
+  `127.0.0.1` so the only way in from outside is the front door.
+- The GLiNER weights are pinned to one commit on Hugging Face (`NTK_GLINER_REVISION`), as `uv.lock` pins our
+  packages. Before, a new upload under the same model name would have changed what runs.
+- The Dockerfile's base images (`python`, `uv`) are pinned by digest, and Caddy's image too.
+
+### Note for whoever deploys
+- Behind Caddy, every request reaches the app from Caddy's address. Set `FORWARDED_ALLOW_IPS=*` so the app reads
+  the client's address from the `X-Forwarded-For` header Caddy adds (Caddy replaces any copy the client sent), and
+  the rate limit counts each client again. This is safe only with `APP_BIND=127.0.0.1`: anyone who can reach the
+  app's port directly could write that header themselves.
+
 ## [0.7.0] - 2026-10-24
 
 ### Added

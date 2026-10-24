@@ -1,9 +1,12 @@
 name: CI
 on:
   push:
-    branches: [main, example-l8]
+    branches: [main, example-l8, example-l9]
   pull_request:
   workflow_dispatch:                  # a "Run workflow" button on the Actions tab
+
+# Each action is pinned to a commit, not a tag: whoever controls an action's repository can move a tag to other
+# code, and that code would run here with our token. The comment says which release the commit is.
 
 # The token every job gets can only read the repository. A job that needs more asks for it (publish, below).
 permissions:
@@ -22,8 +25,8 @@ jobs:
       matrix:
         python: ["3.12", "3.13"]      # the version in the image, and the next one
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
         with:
           python-version: ${{ matrix.python }}
           enable-cache: true          # keep downloaded packages between runs, keyed on uv.lock
@@ -41,7 +44,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Build, tagged by commit
         run: |
           echo "IMAGE=ghcr.io/trevoradriaanse/needtoknow:sha-${GITHUB_SHA::7}" >> "$GITHUB_ENV"

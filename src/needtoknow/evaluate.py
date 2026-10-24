@@ -30,7 +30,8 @@ def char_sets(spans, skip_space=True):
 def evaluate(bench: Path, detector_name: str, out_dir: Path) -> dict:
     texts = json.loads((bench / "data/text_data.json").read_text())
     truth = json.loads((bench / "data/ground_truth.json").read_text())
-    detector = build_detector(detector_name, gliner_model=settings.gliner_model, gliner_threshold=settings.gliner_threshold)
+    detector = build_detector(detector_name, gliner_model=settings.gliner_model, gliner_threshold=settings.gliner_threshold,
+                              gliner_revision=settings.gliner_revision)
 
     t0 = time.monotonic()
     predictions = {doc: [s.as_dict() for s in detector.detect(d["text"])] for doc, d in texts.items()}

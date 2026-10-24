@@ -14,7 +14,7 @@ from needtoknow.detectors import build_detector
 def main() -> None:
     t0 = time.monotonic()
     detector = build_detector(settings.detector, gliner_model=settings.gliner_model,
-                              gliner_threshold=settings.gliner_threshold)
+                              gliner_threshold=settings.gliner_threshold, gliner_revision=settings.gliner_revision)
     print(f"{detector.name}: ready in {time.monotonic() - t0:.1f} s (weights, if any, are now in the cache volume)")
 
 

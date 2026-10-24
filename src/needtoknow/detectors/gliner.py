@@ -28,8 +28,9 @@ OVERLAP = 200
 class GlinerDetector:
     name = "gliner"
 
-    def __init__(self, model: str = "urchade/gliner_multi_pii-v1", threshold: float = 0.5) -> None:
-        self.model = GLiNER.from_pretrained(model)  # loaded once, when the service starts
+    def __init__(self, model: str = "urchade/gliner_multi_pii-v1", threshold: float = 0.5,
+                 revision: str | None = None) -> None:
+        self.model = GLiNER.from_pretrained(model, revision=revision)  # loaded once, when the service starts
         self.threshold = threshold
 
     def detect(self, text: str) -> list[Span]:

@@ -7,7 +7,8 @@
 #   documents      nowhere: each request reads the PDF from memory and forgets it
 #   usage counts   a SQLite file on a volume at /data (numbers only), changed only by migrations
 #   configuration  the environment at run time (.env through Compose), never the image
-FROM python:3.12-slim-bookworm
+# Base images by digest: a tag like 3.12-slim-bookworm can be moved to a different image, a digest can't.
+FROM python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70
 
 ENV PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
@@ -17,7 +18,7 @@ ENV PYTHONUNBUFFERED=1 \
     NTK_DB_PATH=/data/needtoknow.db \
     PATH=/app/.venv/bin:$PATH
 
-COPY --from=ghcr.io/astral-sh/uv:0.7.8 /uv /usr/local/bin/uv
+COPY --from=ghcr.io/astral-sh/uv:0.7.8@sha256:0178a92d156b6f6dbe60e3b52b33b421021f46d634aa9f81f42b91445bb81cdf /uv /usr/local/bin/uv
 
 # A user with no special rights runs the service. The model cache directory must exist, owned by that user, before a
 # volume is mounted on it: otherwise Docker creates it owned by root and the download fails with Permission denied.

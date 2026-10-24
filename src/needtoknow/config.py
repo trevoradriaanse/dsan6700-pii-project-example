@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     # Which detector finds the personal information. Changing it is a .env edit and a restart.
     detector: Literal["regex", "presidio", "gliner", "regex+gliner"] = "regex"
     gliner_model: str = "urchade/gliner_multi_pii-v1"
+    # The exact commit of the weights on Hugging Face. uv.lock pins our packages, not the model we download by name.
+    gliner_revision: str = "1fcf13e85f4eef5394e1fcd406cf2ca9ea82351d"
     gliner_threshold: float = Field(0.5, ge=0.0, le=1.0)
 
     # Limits on what a user can send us.

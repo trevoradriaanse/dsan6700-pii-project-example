@@ -26,7 +26,8 @@ def build_detector(name: str, **kwargs) -> Detector:
     if name == "gliner":
         from needtoknow.detectors.gliner import GlinerDetector
 
-        return GlinerDetector(kwargs.get("gliner_model", "urchade/gliner_multi_pii-v1"), kwargs.get("gliner_threshold", 0.5))
+        return GlinerDetector(kwargs.get("gliner_model", "urchade/gliner_multi_pii-v1"), kwargs.get("gliner_threshold", 0.5),
+                              kwargs.get("gliner_revision"))
     if name == "regex+gliner":
         return UnionDetector(RegexDetector(), build_detector("gliner", **kwargs))
     raise ValueError(f"unknown detector {name!r}")

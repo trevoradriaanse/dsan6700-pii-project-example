@@ -35,7 +35,8 @@ async def lifespan(app: FastAPI):
     logging.basicConfig(level=settings.log_level, format="%(asctime)s %(levelname)s %(name)s %(message)s")
     t0 = time.monotonic()
     app.state.detector = build_detector(settings.detector, gliner_model=settings.gliner_model,
-                                        gliner_threshold=settings.gliner_threshold)  # once, before the first request
+                                        gliner_threshold=settings.gliner_threshold,
+                                        gliner_revision=settings.gliner_revision)  # once, before the first request
     log.info("detector %s ready in %.1fs", app.state.detector.name, time.monotonic() - t0)
     yield
 

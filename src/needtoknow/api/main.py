@@ -8,6 +8,7 @@ import hashlib
 import json
 import logging
 import re
+import secrets
 import time
 from contextlib import asynccontextmanager
 from importlib.resources import files
@@ -15,8 +16,9 @@ from pathlib import Path
 from typing import Annotated
 from urllib.parse import quote
 
-from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
+from fastapi import APIRouter, Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.security import APIKeyHeader
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -198,8 +200,24 @@ def usage_stats() -> dict:
 
 
 # For whoever runs the service: every day's counts, the schema, and the backups the migrations made. Left out of
-# the API docs, but leaving a route out of the docs does not hide it: anyone who guesses the address gets an answer.
-@app.get("/admin/stats", include_in_schema=False)
+# the API docs, but that alone hides nothing (anyone who guesses the address would get an answer), so every route
+# here asks for the key first.
+admin_key = APIKeyHeader(name="X-Admin-Key", auto_error=False)   # auto_error=False: we choose the status code
+
+
+def require_admin(key: Annotated[str | None, Depends(admin_key)]) -> None:
+    expected = settings.admin_api_key.get_secret_value()
+    if not expected:   # no key configured: the routes are off, and there is nothing to guess
+        raise HTTPException(404, "Not Found")
+    # compare_digest takes as long for a near miss as for a wild guess, so timing gives away nothing about the key.
+    if key is None or not secrets.compare_digest(key.encode(), expected.encode()):
+        raise HTTPException(401, "a valid X-Admin-Key header is required")
+
+
+admin = APIRouter(prefix="/admin", dependencies=[Depends(require_admin)], include_in_schema=False)
+
+
+@admin.get("/stats")
 def admin_stats() -> dict:
     if not settings.db_path:
         return {"counting": False}
@@ -207,3 +225,6 @@ def admin_stats() -> dict:
     return {"counting": True, "schema_version": store.schema_version(settings.db_path),
             "schema_required": store.SCHEMA_REQUIRED, "days": store.daily(settings.db_path),
             "backups": sorted(p.name for p in backups.glob("*.db"))}
+
+
+app.include_router(admin)

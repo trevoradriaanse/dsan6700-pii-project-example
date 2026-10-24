@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -22,6 +22,10 @@ class Settings(BaseSettings):
 
     # Where the usage counts live (a SQLite file on a volume); empty means do not count.
     db_path: str = ""
+
+    # The key for the /admin routes, sent in an X-Admin-Key header. Empty turns those routes off (404).
+    # SecretStr keeps it out of logs and tracebacks: printing the settings shows "**********".
+    admin_api_key: SecretStr = SecretStr("")
 
     # The git commit this image was built from (set by the Dockerfile from the CI build); "dev" when run from source.
     commit: str = "dev"

@@ -3,11 +3,27 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
-## [Unreleased]
+## [0.7.0] - 2026-10-24
+
+### Added
+- `GET /admin/stats`: every day's counts per detector, the schema version and the migration backups, for whoever
+  runs the service. It asks for the key in `NTK_ADMIN_API_KEY`, sent as an `X-Admin-Key` header (a wrong or missing
+  key gets 401), and answers 404 when no key is set. It is not in the API docs, which alone would hide nothing.
+- A limit on uploads per client: `/api/detect` and `/api/redact` allow `NTK_RATE_LIMIT_PER_MINUTE` requests a minute
+  from one address (30 by default, 0 turns it off). Over it, the answer is `429 Too Many Requests` with a
+  `Retry-After` header that says how many seconds to wait. Each copy of the app counts on its own.
 
 ### Changed
 - `scripts/deploy.sh` now pins the image by digest: `.env` gets `ghcr.io/...needtoknow@sha256:...`, the exact
   image it pulled, instead of the tag we asked for. A tag moved later can no longer change what runs.
+- CI and the release workflow use each GitHub Action by full commit SHA, with its release in a comment, so a tag
+  moved in the action's repository can't change what runs with our token.
+
+### Note for whoever deploys
+- The admin route is off until you set `NTK_ADMIN_API_KEY` in `.env` (make one with
+  `python -c "import secrets; print(secrets.token_urlsafe(32))"`) and restart.
+- `NTK_RATE_LIMIT_PER_MINUTE` defaults to 30. Through Docker on the same machine, every local client arrives from
+  the bridge gateway's address, so they share one limit.
 
 ## [0.6.0] - 2026-10-15
 

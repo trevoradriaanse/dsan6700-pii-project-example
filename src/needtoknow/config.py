@@ -18,6 +18,9 @@ class Settings(BaseSettings):
     max_upload_mb: int = Field(10, ge=1, le=100)
     max_pages: int = Field(30, ge=1, le=500)
 
+    # Uploads (find or redact) one client may send per minute; 0 turns the limit off.
+    rate_limit_per_minute: int = Field(30, ge=0)
+
     log_level: str = "INFO"
 
     # Where the usage counts live (a SQLite file on a volume); empty means do not count.

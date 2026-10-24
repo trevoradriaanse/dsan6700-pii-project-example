@@ -1,6 +1,8 @@
 import pymupdf
 import pytest
 
+from needtoknow import ratelimit
+
 SAMPLE = [
     "LEASE AGREEMENT",
     "Tenant: Maria Delgado, phone (202) 555-0143, email maria.delgado@example.com",
@@ -32,3 +34,9 @@ def counting(tmp_path, monkeypatch):
     monkeypatch.setattr(settings, "db_path", path)
     migrate.up(path)
     return path
+
+
+@pytest.fixture(autouse=True)
+def fresh_rate_limit():
+    """Every test starts with nobody having sent anything, so tests never use up each other's limit."""
+    ratelimit.uploads.clear()

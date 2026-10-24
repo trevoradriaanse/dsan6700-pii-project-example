@@ -22,7 +22,7 @@ from fastapi.security import APIKeyHeader
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from needtoknow import __version__, store
+from needtoknow import __version__, ratelimit, store
 from needtoknow.config import settings
 from needtoknow.detectors import build_detector
 from needtoknow.pdf import NotAPdf, NoTextLayer, TooManyPages, extract_pages, leaked, redact
@@ -58,6 +58,19 @@ def download_headers(filename: str | None) -> dict:
     stem = (filename or "document.pdf").rsplit("/", 1)[-1].rsplit(".", 1)[0] + "-redacted.pdf"
     ascii_name = re.sub(r"[^A-Za-z0-9._-]", "_", stem)
     return {"Content-Disposition": f"attachment; filename=\"{ascii_name}\"; filename*=UTF-8''{quote(stem)}"}
+
+
+def rate_limit(request: Request) -> None:
+    """Refuse a client that has sent too many uploads this minute, and tell it how long to wait."""
+    if settings.rate_limit_per_minute == 0:
+        return
+    # The address the connection came from. Through Docker on the same machine this is the bridge gateway, so every
+    # local client looks like one; behind a proxy it is the proxy, which would then have to do the limiting.
+    client = request.client.host if request.client else "unknown"
+    wait = ratelimit.uploads.check(client, settings.rate_limit_per_minute)
+    if wait:
+        raise HTTPException(429, f"too many uploads: at most {settings.rate_limit_per_minute} a minute",
+                            headers={"Retry-After": str(wait)})
 
 
 class Finding(BaseModel):
@@ -140,7 +153,7 @@ def ready(request: Request) -> dict:
     return {"status": "ready", "detector": detector.name, "version": __version__, "commit": settings.commit}
 
 
-@app.post("/api/detect", response_model=DetectResponse)
+@app.post("/api/detect", response_model=DetectResponse, dependencies=[Depends(rate_limit)])
 def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectResponse:
     t0 = time.monotonic()
     data = read_upload(file)
@@ -169,7 +182,7 @@ def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectRespo
     return DetectResponse(detector=detector.name, pages=len(pages), findings=findings, seconds=seconds)
 
 
-@app.post("/api/redact")
+@app.post("/api/redact", dependencies=[Depends(rate_limit)])
 def redact_pdf(file: Annotated[UploadFile, File()], remove: Annotated[str, Form()]) -> Response:
     data = read_upload(file)
     try:

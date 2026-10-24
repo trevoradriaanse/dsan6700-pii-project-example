@@ -9,7 +9,8 @@ services:
     image: ${APP_IMAGE:-needtoknow:${DETECTOR_EXTRA:-regex}}
     env_file: .env
     ports:
-      - "${APP_PORT:-8000}:8000"              # the only port we publish
+      # APP_BIND=127.0.0.1 once Caddy is the way in: then only this machine reaches the app's port.
+      - "${APP_BIND:-0.0.0.0}:${APP_PORT:-8000}:8000"
     volumes:
       - models:/home/app/.cache/huggingface   # model weights survive a rebuild or restart
       - data:/data                            # the usage counts (and their backups) survive a deploy
@@ -17,6 +18,22 @@ services:
       - /tmp                                  # a large upload is spooled here: keep it in memory, never on disk
     restart: unless-stopped
 
+  # Our front door, on only when .env says COMPOSE_PROFILES=proxy: it answers at NTK_DOMAIN on ports 80 and 443, gets
+  # the HTTPS certificate on its own, and passes each request to the app.
+  caddy:
+    image: caddy:2.11.7@sha256:504a44d7d74bd2bc28a66afc4774912fc21223ca8a67734af1c54ab2f999b489
+    profiles: [proxy]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      NTK_DOMAIN: ${NTK_DOMAIN:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy:/data                           # its certificates survive a restart
+    restart: unless-stopped
+
 volumes:
   models:
   data:
+  caddy:

@@ -60,3 +60,16 @@ tagged by commit (`sha-1a2b3c4`). Pushing a tag such as `v0.6.0` gives that test
 instance, `scripts/deploy.sh v0.6.0` runs any database migrations and deploys it, and the same command with the
 previous version rolls back. deploy.sh writes the digest of the image it pulled into `.env`, so a tag moved
 later can't change what runs. See [CHANGELOG.md](CHANGELOG.md) for what each release changes.
+
+## Put a front door on it (HTTPS)
+
+[Caddy](https://caddyserver.com) answers at the instance's name, gets the HTTPS certificate for it on its own, and
+passes each request to the app ([Caddyfile](Caddyfile)). Add these lines to `.env` on the instance, then start it
+once with `docker compose up -d`; later deploys restart only the app.
+
+```
+COMPOSE_PROFILES=proxy
+NTK_DOMAIN=your-instance.your-project.projects.jetstream-cloud.org
+APP_BIND=127.0.0.1        # the app's own port answers only this machine now
+FORWARDED_ALLOW_IPS=*     # read who is calling from the header Caddy adds; safe because Caddy is the only way in
+```

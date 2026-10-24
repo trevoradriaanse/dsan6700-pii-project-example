@@ -1,0 +1,5 @@
+# Caddy, our front door: the instance's name in, the app out. It gets the HTTPS certificate for the name on its own.
+# NTK_DOMAIN comes from .env, for example your-instance.your-project.projects.jetstream-cloud.org
+{$NTK_DOMAIN} {
+	reverse_proxy app:8000
+}

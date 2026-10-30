@@ -20,9 +20,10 @@ What went well:    what limited the damage
 What we'll change: each action with an owner and an issue number
 ```
 
-## Example: documents were not counted after a rollback (from our continuous delivery demo)
+## Example: documents were not counted after a rollback
 
-We rolled back too far on purpose in that demo; this is the postmortem we would have written had it been real.
+In our continuous delivery lecture, we rolled back too far on purpose. This is the postmortem we would have written
+had it been real; the times come from a run of that example on 2026-10-28.
 
 ```
 # Uploads worked, but documents were not counted  (2026-10-28)

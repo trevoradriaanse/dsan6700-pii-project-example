@@ -6,8 +6,9 @@ const names = { private_person:"Name", private_email:"Email", private_phone:"Pho
 function status(msg, err=false) { $("status").textContent = msg; $("status").className = err ? "err" : ""; }
 
 // Every call to the app gets a time limit, and every way it can fail becomes a sentence the user can act on.
-// Without the limit, a stuck app leaves "Reading the document..." on the page forever.
-const LIMIT_MS = 60000;
+// Without the limit, a stuck app leaves "Reading the document..." on the page forever. 70 s is a little longer than
+// Caddy's 60 (see the Caddyfile), so for a stuck app Caddy's clearer 504 arrives first.
+const LIMIT_MS = 70000;
 async function ask(path, body) {
   try {
     const r = await fetch(path, { method:"POST", body, signal: AbortSignal.timeout(LIMIT_MS) });
@@ -18,7 +19,7 @@ async function ask(path, body) {
   }
 }
 function problem({ r, j }) {
-  if (!r) return "Need to Know did not answer within a minute. Nothing was kept. Try again in a moment.";
+  if (!r) return "Need to Know did not answer in time. Nothing was kept. Try again in a moment.";
   if (r.status === 429) return `${j.detail}. Try again in ${r.headers.get("Retry-After")} seconds.`;
   if (j.detail) return j.detail;   // our own app's explanation (415, 422, 503 while loading, ...)
   return "Need to Know is not answering right now. Nothing was kept. Try again in a minute.";   // 502 or 504

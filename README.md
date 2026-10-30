@@ -73,3 +73,12 @@ NTK_DOMAIN=your-instance.your-project.projects.jetstream-cloud.org
 APP_BIND=127.0.0.1        # the app's own port answers only this machine now
 FORWARDED_ALLOW_IPS=*     # read who is calling from the header Caddy adds; safe because Caddy is the only way in
 ```
+
+## Back up the counts, and restore them
+
+The usage counts are the only thing Need to Know keeps that can't be rebuilt from Git and the registry (the
+documents never are). `scripts/backup.sh` takes a consistent copy while the app keeps running and saves it in
+`backups/` on the instance; copy it somewhere else too, since a copy on the instance is lost with the instance.
+`scripts/restore.sh backups/<file>.db` puts a copy back (counts recorded after it are lost), and
+`scripts/smoke.sh <port>` checks the app afterwards. A backup we have never restored is only a hope: try a restore
+now and then, on another machine if you can. Keep a copy of `.env` somewhere safe too: it is not in Git.

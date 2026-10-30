@@ -6,3 +6,4 @@ __pycache__/
 eval/pdf-pii-bench/
 eval/mine/
 *.redacted.pdf
+backups/

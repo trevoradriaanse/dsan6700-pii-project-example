@@ -3,6 +3,28 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.9.0] - 2026-10-30
+
+### Added
+- `scripts/backup.sh` copies the usage counts out of the volume while the app keeps running, using SQLite's own
+  backup (`python -m needtoknow.backup`), which reads one consistent snapshot. Copying the file with `cp` while the
+  app writes to it can give a broken copy. `scripts/restore.sh` stops the app, checks that the newest copy in
+  `backups/` (or the one named) is whole, puts it back, and starts the app again.
+
+### Changed
+- The page gives every request a 70-second limit (a little longer than Caddy's), and says what happened when one
+  fails: the app is not answering (502 or 504), it didn't answer in time, or the app's own reason (415, 422, 429 with
+  how long to wait, 503 while starting). Before, an error page without JSON, or an app that never answered, left "Reading the document..." on
+  the page for good. Failure messages now show in the warning color; a CSS rule kept them grey before.
+- Caddy stops waiting for the app after 60 seconds and answers `504 Gateway Timeout`. Before, a stuck app kept the
+  user's request open as long as the app was stuck.
+
+### Note for whoever deploys
+- Caddy reads its Caddyfile when it starts, and deploy.sh restarts only the app: run `docker compose up -d caddy
+  --force-recreate` once after this deploy.
+- A backup on the instance is lost with the instance. Copy `backups/` somewhere else (for example `scp` it to your
+  laptop), and keep a copy of `.env`, which is not in Git.
+
 ## [0.8.0] - 2026-10-24
 
 ### Added

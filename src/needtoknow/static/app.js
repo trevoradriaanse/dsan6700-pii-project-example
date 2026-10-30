@@ -5,14 +5,33 @@ const names = { private_person:"Name", private_email:"Email", private_phone:"Pho
 
 function status(msg, err=false) { $("status").textContent = msg; $("status").className = err ? "err" : ""; }
 
+// Every call to the app gets a time limit, and every way it can fail becomes a sentence the user can act on.
+// Without the limit, a stuck app leaves "Reading the document..." on the page forever.
+const LIMIT_MS = 60000;
+async function ask(path, body) {
+  try {
+    const r = await fetch(path, { method:"POST", body, signal: AbortSignal.timeout(LIMIT_MS) });
+    const j = r.ok && r.headers.get("content-type") === "application/pdf" ? null : await r.json().catch(() => ({}));
+    return { r, j };
+  } catch (e) {      // no answer at all: the time limit ran out, or the network is down
+    return { r: null, j: {} };
+  }
+}
+function problem({ r, j }) {
+  if (!r) return "Need to Know did not answer within a minute. Nothing was kept. Try again in a moment.";
+  if (r.status === 429) return `${j.detail}. Try again in ${r.headers.get("Retry-After")} seconds.`;
+  if (j.detail) return j.detail;   // our own app's explanation (415, 422, 503 while loading, ...)
+  return "Need to Know is not answering right now. Nothing was kept. Try again in a minute.";   // 502 or 504
+}
+
 $("find").onclick = async () => {
   const f = $("file").files[0];
   if (!f) { status("Choose a PDF first.", true); return; }
   status("Reading the document..."); $("review").hidden = true;
   const body = new FormData(); body.append("file", f);
-  const r = await fetch("/api/detect", { method:"POST", body });
-  const j = await r.json();
-  if (!r.ok) { status(j.detail || "Something went wrong.", true); return; }
+  const answer = await ask("/api/detect", body);
+  if (!answer.r || !answer.r.ok) { status(problem(answer), true); return; }
+  const j = answer.j;
   findings = j.findings;
   $("count").textContent = `${findings.length} item${findings.length===1?"":"s"} found`;
   $("meta").textContent = `in ${j.pages} page${j.pages===1?"":"s"}, by the ${j.detector} detector, in ${j.seconds}s. Uncheck anything you want to keep.`;
@@ -37,9 +56,9 @@ $("redact").onclick = async () => {
   if (!chosen.length) { status("Nothing is selected.", true); return; }
   status("Removing...");
   const body = new FormData(); body.append("file", f); body.append("remove", JSON.stringify(chosen));
-  const r = await fetch("/api/redact", { method:"POST", body });
-  if (!r.ok) { const j = await r.json(); status(j.detail || "Something went wrong.", true); return; }
-  const blob = await r.blob(); const a = document.createElement("a");
+  const answer = await ask("/api/redact", body);
+  if (!answer.r || !answer.r.ok) { status(problem(answer), true); return; }
+  const blob = await answer.r.blob(); const a = document.createElement("a");
   a.href = URL.createObjectURL(blob); a.download = f.name.replace(/\.pdf$/i, "") + "-redacted.pdf"; a.click();
   status(`Removed ${chosen.length} item${chosen.length===1?"":"s"}. Open the download and check it before you share it.`);
 };

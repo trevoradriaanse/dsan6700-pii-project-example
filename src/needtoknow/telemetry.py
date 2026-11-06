@@ -19,6 +19,7 @@ import re
 import sys
 import time
 import uuid
+from contextvars import ContextVar
 
 from fastapi import FastAPI, Request
 from loguru import logger
@@ -48,10 +49,13 @@ REFUSED = Counter("needtoknow_uploads_refused", "Uploads refused, by reason", ["
 # What users did with the findings before downloading: removed them, or unchecked them as false alarms. A rising
 # share of unchecked findings says the detector is flagging things that aren't personal information.
 REVIEWED = Counter("needtoknow_findings_reviewed", "Findings users reviewed, by what they decided", ["decision"])
+DETECTOR_RETRIES = Counter("needtoknow_detector_retries", "Calls to the detector tried again, by problem", ["problem"])
 
 SKIP = ["/health", "/ready", "/metrics"]   # asked every few seconds by Docker and Prometheus: no traces, no counts
 tracer = trace.get_tracer("needtoknow")
+request_id: ContextVar[str] = ContextVar("request_id", default="")   # passed on when the API calls the detector
 _providers = []   # flushed when the app stops, so the last few seconds of spans and logs aren't lost
+_ready = False
 
 
 def _add_trace_id(record: dict) -> None:
@@ -123,8 +127,8 @@ def forget_the_caller(span, scope) -> None:
         span.set_attributes({key: "" for key in ("net.peer.ip", "client.address") if key in span.attributes})
 
 
-def setup(app: FastAPI, service: str, level: str = "INFO") -> None:
-    """Logs, traces and metrics for one service (the API, or later the detector)."""
+def _once(service: str, level: str) -> None:
+    """What belongs to the whole process: where log lines and spans go. Each service runs in its own process."""
     collector = os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT")   # e.g. http://lgtm:4318, set in .env with the profile
     resource = Resource.create({"service.name": service})
 
@@ -149,6 +153,14 @@ def setup(app: FastAPI, service: str, level: str = "INFO") -> None:
         spans.add_span_processor(BatchSpanProcessor(OTLPSpanExporter()))
         _providers.append(spans)
     trace.set_tracer_provider(spans)
+
+
+def setup(app: FastAPI, service: str, level: str = "INFO") -> None:
+    """Logs, traces and metrics for one service: the API, or the detector."""
+    global _ready
+    if not _ready:   # the first app set up in this process decides where lines and spans go (tests load both apps)
+        _once(service, level)
+        _ready = True
     FastAPIInstrumentor.instrument_app(app, excluded_urls=",".join(SKIP), exclude_spans=["receive", "send"],
                                        server_request_hook=forget_the_caller)
 
@@ -161,7 +173,8 @@ def setup(app: FastAPI, service: str, level: str = "INFO") -> None:
         asked = request.headers.get("x-request-id", "")   # a caller (later, the API calling the detector) may send one
         rid = asked if re.fullmatch(r"[\w-]{1,64}", asked) else uuid.uuid4().hex
         t0, status = time.monotonic(), 500     # 500 unless the route answers: an exception becomes a 500 outside us
-        with logger.contextualize(request_id=rid):
+        request_id.set(rid)
+        with logger.contextualize(request_id=rid, service=service):
             try:
                 response = await call_next(request)
                 status = response.status_code

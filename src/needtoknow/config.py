@@ -15,6 +15,13 @@ class Settings(BaseSettings):
     # The exact commit of the weights on Hugging Face. uv.lock pins our packages, not the model we download by name.
     gliner_revision: str = "1fcf13e85f4eef5394e1fcd406cf2ca9ea82351d"
     gliner_threshold: float = Field(0.5, ge=0.0, le=1.0)
+    # Where the detector service answers (needtoknow.detectors.service), for example http://detector:8000.
+    # Empty: the API runs the detector itself, in its own process, as before.
+    detector_url: str = ""
+    detector_timeout: float = Field(10.0, gt=0)   # seconds to wait for one answer before trying again
+    # After this many seconds on one document, start no more pages: a page can still take about 30 s with its
+    # retries, so the user hears back before Caddy's 60 s either way.
+    detect_budget: float = Field(25.0, gt=0)
 
     # Limits on what a user can send us.
     max_upload_mb: int = Field(10, ge=1, le=100)

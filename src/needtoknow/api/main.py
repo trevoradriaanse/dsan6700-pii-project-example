@@ -27,6 +27,7 @@ from pydantic import BaseModel
 from needtoknow import __version__, ratelimit, store, telemetry
 from needtoknow.config import settings
 from needtoknow.detectors import build_detector
+from needtoknow.detectors.remote import DetectorUnavailable, RemoteDetector
 from needtoknow.pdf import NotAPdf, NoTextLayer, TooManyPages, extract_pages, leaked, redact
 from needtoknow.telemetry import DETECTION_SECONDS, DOCUMENTS, FINDINGS_PER_PAGE, REFUSED, REVIEWED, tracer
 
@@ -34,9 +35,12 @@ from needtoknow.telemetry import DETECTION_SECONDS, DOCUMENTS, FINDINGS_PER_PAGE
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     t0 = time.monotonic()
-    app.state.detector = build_detector(settings.detector, gliner_model=settings.gliner_model,
-                                        gliner_threshold=settings.gliner_threshold,
-                                        gliner_revision=settings.gliner_revision)  # once, before the first request
+    if settings.detector_url:   # the detector runs as its own service (needtoknow.detectors.service)
+        app.state.detector = RemoteDetector(settings.detector_url, settings.detector_timeout)
+    else:
+        app.state.detector = build_detector(settings.detector, gliner_model=settings.gliner_model,
+                                            gliner_threshold=settings.gliner_threshold,
+                                            gliner_revision=settings.gliner_revision)  # once, before the first request
     logger.info("detector ready", detector=app.state.detector.name, seconds=round(time.monotonic() - t0, 1))
     yield
     telemetry.flush()
@@ -184,6 +188,8 @@ def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectRespo
     with tracer.start_as_current_span("detect") as step:
         t1 = time.monotonic()
         for page in pages:
+            if time.monotonic() - t1 > settings.detect_budget:
+                raise DetectorUnavailable(f"still detecting after {settings.detect_budget:g} s")
             for span in detector.detect(page.text):
                 key = (page.number, span.text)
                 if key in seen:
@@ -205,6 +211,13 @@ def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectRespo
                 logger.exception("could not record usage")
     logger.info("detect", pages=len(pages), findings=len(findings), detector=detector.name, seconds=seconds)
     return DetectResponse(detector=detector.name, pages=len(pages), findings=findings, seconds=seconds)
+
+
+@app.exception_handler(DetectorUnavailable)
+def detector_unavailable(request: Request, exc: DetectorUnavailable) -> JSONResponse:
+    """The detector service did not answer, even after trying again: say so (the page shows this detail)."""
+    logger.error("detector unavailable", problem=str(exc))
+    return JSONResponse({"detail": "the detector is not answering. Nothing was kept. Try again in a minute."}, 503)
 
 
 @app.post("/api/redact", dependencies=[Depends(rate_limit)])

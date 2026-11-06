@@ -14,6 +14,11 @@ services:
     # locally as before: `docker compose up -d --build`.
     image: ${APP_IMAGE:-needtoknow:${DETECTOR_EXTRA:-regex}}
     env_file: .env
+    environment:
+      NTK_DETECTOR_URL: http://detector:8000   # find personal information by asking the detector service
+    depends_on:
+      detector:
+        condition: service_healthy             # the image's HEALTHCHECK asks the detector's /ready
     ports:
       # APP_BIND=127.0.0.1 once Caddy is the way in: then only this machine reaches the app's port.
       - "${APP_BIND:-0.0.0.0}:${APP_PORT:-8000}:8000"
@@ -22,6 +27,20 @@ services:
       - data:/data                            # the usage counts (and their backups) survive a deploy
     tmpfs:
       - /tmp                                  # a large upload is spooled here: keep it in memory, never on disk
+    restart: unless-stopped
+    logging: *logging
+
+  # The detector as its own service: the same image with another command. It publishes no port, so only the app (on
+  # Compose's network) can reach it. NTK_DETECTOR in .env still chooses which detector it runs, and DETECTOR_CPUS
+  # can cap the CPU cores it may use (0, the default, is no limit).
+  detector:
+    image: ${APP_IMAGE:-needtoknow:${DETECTOR_EXTRA:-regex}}
+    command: ["/app/.venv/bin/uvicorn", "needtoknow.detectors.service:app", "--host", "0.0.0.0", "--port", "8000",
+              "--reset-contextvars"]          # see the Dockerfile's CMD
+    env_file: .env
+    cpus: ${DETECTOR_CPUS:-0}
+    volumes:
+      - models:/home/app/.cache/huggingface   # the model weights now load here
     restart: unless-stopped
     logging: *logging
 

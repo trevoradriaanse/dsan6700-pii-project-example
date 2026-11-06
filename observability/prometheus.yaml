@@ -1,5 +1,5 @@
 # Prometheus inside grafana/otel-lgtm 0.39.0: the image's own settings (it also receives OpenTelemetry metrics), plus
-# two changes: a 15 s scrape interval, and scrape_configs at the end, which collect /metrics from our app.
+# two changes: a 15 s scrape interval, and scrape_configs at the end, which collect /metrics from our two services.
 # Compose mounts this file over /otel-lgtm/prometheus.yaml.
 global:
   scrape_interval: 15s
@@ -44,3 +44,6 @@ scrape_configs:
   - job_name: needtoknow-api          # the job label names the service on the dashboard
     static_configs:
       - targets: ["app:8000"]         # the Compose service's name, and the port inside its container
+  - job_name: needtoknow-detector
+    static_configs:
+      - targets: ["detector:8000"]

@@ -46,7 +46,8 @@ The same, as text:
 - **Storage:** none for documents; a SQLite file of usage counts and a model-weights cache, each on a Docker volume.
 - **Deployment:** one image (`Dockerfile`), started with `docker compose up -d` on the team's Jetstream2 instance; only
   port 8000 is published.
-- **Monitoring and logging:** structured log lines with counts and timings (planned: request IDs and metrics).
+- **Monitoring and logging:** JSON log lines with a request id and a trace id, `/metrics` for Prometheus, and
+  traces; Grafana and its stores run beside the app in Compose's `observability` profile (0.10.0).
 
 ## Where it could go
 

@@ -3,6 +3,34 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
+## [0.10.0] - 2026-11-07
+
+### Added
+- Logs as JSON, written with loguru: one object per line, each with a `request_id` and a `trace_id`, plus one line
+  per request (method, path, status, milliseconds; not the caller's address). The request id is also sent back in
+  the `X-Request-ID` header.
+- `/metrics` for Prometheus: requests, errors and durations per route, and our own counts (documents checked,
+  findings per page, detection time, uploads refused by reason, findings users removed or unchecked).
+- Traces with OpenTelemetry: a span for each request, and for reading the PDF, detecting and redacting. Counts only.
+- An `observability` profile in compose.yml: grafana/otel-lgtm, with Prometheus collecting `/metrics`, the
+  Need to Know dashboard, and two alerts (uploads failing, the API not answering). Grafana is on port 3000 of the
+  instance only.
+- `scripts/locustfile.py`, a stepped load test that prints the uploads a second and p50/p95/p99 at each step.
+
+### Changed
+- `/health` answers on the event loop, so it no longer waits for a free worker thread behind slow uploads.
+- The page tells the API how many findings the user unchecked before downloading (a count, nothing else).
+- Each service's Docker logs are rotated (three files of 10 MB).
+- uvicorn runs with `--reset-contextvars`, so a request never starts inside the previous one's trace.
+
+### Fixed
+- `.env.example`: the comment after the empty `DETECTOR_EXTRA=` was read as its value by Docker Compose, so
+  `docker compose build` failed with "invalid reference format". The comment now has its own line.
+
+### Note for whoever deploys
+- Caddy now answers 404 for `/metrics`; restart it once: `docker compose up -d caddy --force-recreate`.
+- To see the dashboards, add the two lines in the README's "Watch it run" section to `.env`.
+
 ## [0.9.0] - 2026-10-30
 
 ### Added

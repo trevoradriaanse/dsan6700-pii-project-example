@@ -74,6 +74,40 @@ APP_BIND=127.0.0.1        # the app's own port answers only this machine now
 FORWARDED_ALLOW_IPS=*     # read who is calling from the header Caddy adds; safe because Caddy is the only way in
 ```
 
+## Watch it run: logs, metrics and traces
+
+Every log line is one JSON object on stdout, written with [loguru](https://loguru.readthedocs.io). The lines of one
+request share a `request_id` (also sent back in the `X-Request-ID` header) and a `trace_id`, so one upload can be
+followed through its lines: `docker compose logs app | grep <request_id>`. `/metrics` has the requests, errors and
+durations of each route for [Prometheus](https://prometheus.io), plus our own counts: documents checked, findings
+per page, uploads refused by reason, and the findings users unchecked. None of them holds a document's text, its
+name, or the caller's address (see [telemetry.py](src/needtoknow/telemetry.py)).
+
+To see them in Grafana, add these lines to `.env` and start the stack again with `docker compose up -d`:
+
+```
+COMPOSE_PROFILES=observability          # proxy,observability with Caddy
+OTEL_EXPORTER_OTLP_ENDPOINT=http://lgtm:4318
+```
+
+The `lgtm` service is [grafana/otel-lgtm](https://github.com/grafana/docker-otel-lgtm): Grafana, Prometheus, Loki
+(logs), Tempo (traces) and an OpenTelemetry collector in one container, made for development and demonstrations,
+not production. Grafana answers on port 3000 of the instance only: forward it with VS Code's Ports panel (or
+`ssh -L 3000:localhost:3000 ...`) and open http://localhost:3000. The **Need to Know** dashboard shows the four golden
+signals (traffic, errors, latency, saturation) and the model's findings; two alerts fire when uploads fail or the API
+stops answering. Anyone who can open this Grafana is an administrator, so never publish its port.
+
+Load-test it with [Locust](https://locust.io), from Locust's own image, so nothing needs installing:
+
+```bash
+docker run --rm --network host -v "$PWD/scripts:/mnt/locust" locustio/locust:2.47.0 \
+  -f /mnt/locust/locustfile.py --host http://localhost:8000 --headless --only-summary
+```
+
+It adds users step by step and prints one line per step: uploads a second, and the average, p50, p95 and p99 times.
+`-e STEPS=1,2,4 -e STEP_SECONDS=60` changes the steps. Every Locust user comes from one machine, so set
+`NTK_RATE_LIMIT_PER_MINUTE=0` while you measure capacity.
+
 ## Back up the counts, and restore them
 
 The usage counts are the only thing Need to Know keeps that can't be rebuilt from Git and the registry (the

@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [main, example-l8, example-l9, example-l10]
+    branches: [main, example-l8, example-l9, example-l10, example-l11]
   pull_request:
   workflow_dispatch:                  # a "Run workflow" button on the Actions tab
 

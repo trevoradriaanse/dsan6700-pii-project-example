@@ -57,6 +57,7 @@ $("redact").onclick = async () => {
   if (!chosen.length) { status("Nothing is selected.", true); return; }
   status("Removing...");
   const body = new FormData(); body.append("file", f); body.append("remove", JSON.stringify(chosen));
+  body.append("unchecked", boxes().length - chosen.length);   // how many the user decided weren't personal (a count)
   const answer = await ask("/api/redact", body);
   if (!answer.r || !answer.r.ok) { status(problem(answer), true); return; }
   const blob = await answer.r.blob(); const a = document.createElement("a");

@@ -16,6 +16,7 @@ ENV PYTHONUNBUFFERED=1 \
     UV_PYTHON_DOWNLOADS=never \
     HF_HOME=/home/app/.cache/huggingface \
     NTK_DB_PATH=/data/needtoknow.db \
+    PROMETHEUS_DISABLE_CREATED_SERIES=True \
     PATH=/app/.venv/bin:$PATH
 
 COPY --from=ghcr.io/astral-sh/uv:0.7.8@sha256:0178a92d156b6f6dbe60e3b52b33b421021f46d634aa9f81f42b91445bb81cdf /uv /usr/local/bin/uv
@@ -48,4 +49,7 @@ EXPOSE 8000
 # The image has no curl; Python can ask the health endpoint itself.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/ready', timeout=4)"
-CMD ["/app/.venv/bin/uvicorn", "needtoknow.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# --reset-contextvars starts every request with a clean context. On Python's own event loop, a request with a large body
+# can otherwise begin inside the previous request's trace (CPython gh-140947, fixed in Python 3.15). uvloop, which
+# uvicorn[standard] uses, isn't affected; the flag is there in case the loop changes.
+CMD ["/app/.venv/bin/uvicorn", "needtoknow.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reset-contextvars"]

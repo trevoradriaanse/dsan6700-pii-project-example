@@ -198,10 +198,11 @@ def detect(request: Request, file: Annotated[UploadFile, File()]) -> DetectRespo
     DOCUMENTS.labels(detector.name).inc()
     seconds = round(time.monotonic() - t0, 3)
     if settings.db_path:
-        try:
-            store.record(settings.db_path, detector.name, len(findings))
-        except Exception:  # counting must never cost the user their result; the log says what went wrong
-            logger.exception("could not record usage")
+        with tracer.start_as_current_span("usage.record"):   # one write to SQLite, which waits for the disk
+            try:
+                store.record(settings.db_path, detector.name, len(findings))
+            except Exception:  # counting must never cost the user their result; the log says what went wrong
+                logger.exception("could not record usage")
     logger.info("detect", pages=len(pages), findings=len(findings), detector=detector.name, seconds=seconds)
     return DetectResponse(detector=detector.name, pages=len(pages), findings=findings, seconds=seconds)
 

@@ -23,8 +23,8 @@
     {
       "id": 1,
       "type": "timeseries",
-      "title": "Traffic: requests per second",
-      "description": "Every request each service answered, by service.",
+      "title": "Traffic",
+      "description": "Requests per second that each service answered.",
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus"
@@ -42,7 +42,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": ""
           }
         },
         "overrides": []
@@ -74,8 +75,8 @@
     {
       "id": 2,
       "type": "timeseries",
-      "title": "Errors: share answered with a 5xx",
-      "description": "Server errors over all requests, by service.",
+      "title": "Errors",
+      "description": "The share of requests answered with a server error (5xx), by service.",
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus"
@@ -93,7 +94,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": ""
           },
           "max": 1
         },
@@ -126,7 +128,7 @@
     {
       "id": 3,
       "type": "timeseries",
-      "title": "Latency: uploads, p50, p95 and p99",
+      "title": "Latency of uploads",
       "description": "How long uploads took: half finished within p50, 95 in 100 within p95, 99 in 100 within p99.",
       "datasource": {
         "type": "prometheus",
@@ -145,7 +147,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": ""
           }
         },
         "overrides": []
@@ -197,8 +200,8 @@
     {
       "id": 4,
       "type": "timeseries",
-      "title": "Saturation: CPU cores in use",
-      "description": "CPU each service's process used. One process can use at most one core, so near 1 means it is full.",
+      "title": "Saturation",
+      "description": "CPU cores each service's process used. Plain Python code runs on about one core at a time, so near 1 means our Python code is busy; a model library can use more.",
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus"
@@ -216,7 +219,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": "CPU cores"
           }
         },
         "overrides": []
@@ -267,7 +271,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": ""
           }
         },
         "overrides": []
@@ -318,7 +323,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": ""
           },
           "max": 1
         },
@@ -351,7 +357,7 @@
     {
       "id": 7,
       "type": "timeseries",
-      "title": "Uploads refused, by reason",
+      "title": "Uploads refused",
       "description": "Uploads we turned away, per second, by reason.",
       "datasource": {
         "type": "prometheus",
@@ -370,7 +376,8 @@
           "min": 0,
           "custom": {
             "lineWidth": 2,
-            "fillOpacity": 0
+            "fillOpacity": 0,
+            "axisLabel": ""
           }
         },
         "overrides": []

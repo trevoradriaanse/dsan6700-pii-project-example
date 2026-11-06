@@ -1,0 +1,66 @@
+# Two alerts, evaluated by Grafana every 10 s. Each is "pending" while its condition holds, and "firing" once it has
+# held for a full minute. They alert on what users feel: failed uploads, or an app that isn't answering at all.
+apiVersion: 1
+groups:
+  - orgId: 1
+    name: needtoknow
+    folder: Need to Know
+    interval: 10s
+    rules:
+      - uid: needtoknow-errors
+        title: Uploads are failing
+        condition: C
+        for: 1m
+        noDataState: OK
+        execErrState: Error
+        annotations:
+          summary: More than 5% of the API's answers in the last minute were server errors (5xx).
+        labels:
+          severity: page
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              refId: A
+              expr: >-
+                (sum(rate(http_requests_total{job="needtoknow-api",status="5xx"}[1m])) or vector(0))
+                / sum(rate(http_requests_total{job="needtoknow-api"}[1m]))
+              instant: true
+          - refId: B
+            datasourceUid: __expr__
+            model: {refId: B, type: reduce, expression: A, reducer: last}
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: gt, params: [0.05]}
+      - uid: needtoknow-down
+        title: The API is not answering
+        condition: C
+        for: 1m
+        noDataState: Alerting
+        execErrState: Error
+        annotations:
+          summary: Prometheus could not collect /metrics from the API for a minute.
+        labels:
+          severity: page
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model: {refId: A, expr: 'up{job="needtoknow-api"}', instant: true}
+          - refId: B
+            datasourceUid: __expr__
+            model: {refId: B, type: reduce, expression: A, reducer: last}
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: lt, params: [1]}

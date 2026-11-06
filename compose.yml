@@ -1,3 +1,9 @@
+# Every service's log lines, kept in at most three files of 10 MB: Docker keeps them all by default, and JSON logs under
+# load fill a disk quickly.
+x-logging: &logging
+  driver: json-file
+  options: {max-size: "10m", max-file: "3"}
+
 services:
   app:
     build:
@@ -17,6 +23,24 @@ services:
     tmpfs:
       - /tmp                                  # a large upload is spooled here: keep it in memory, never on disk
     restart: unless-stopped
+    logging: *logging
+
+  # Grafana, Prometheus (metrics), Tempo (traces), Loki (logs) and an OpenTelemetry collector in one container: made
+  # for development and demonstrations, not production. On only when .env says COMPOSE_PROFILES=observability (or
+  # proxy,observability); set OTEL_EXPORTER_OTLP_ENDPOINT=http://lgtm:4318 there too, so the app sends it its traces
+  # and log lines. Prometheus collects the app's /metrics itself.
+  lgtm:
+    image: grafana/otel-lgtm:0.39.0@sha256:4c8056c9c05fcb3c8fd93800e85334bfd79b4d0271b47a54a121a64af41fe1fe
+    profiles: [observability]
+    ports:
+      - "127.0.0.1:3000:3000"                 # Grafana, for this machine only: open it through an SSH tunnel
+    volumes:
+      - ./observability/prometheus.yaml:/otel-lgtm/prometheus.yaml:ro
+      - ./observability/dashboards.yaml:/otel-lgtm/grafana/conf/provisioning/dashboards/needtoknow.yaml:ro
+      - ./observability/dashboards:/otel-lgtm/needtoknow-dashboards:ro
+      - ./observability/alerts.yaml:/otel-lgtm/grafana/conf/provisioning/alerting/needtoknow.yaml:ro
+    restart: unless-stopped
+    logging: *logging
 
   # Our front door, on only when .env says COMPOSE_PROFILES=proxy: it answers at NTK_DOMAIN on ports 80 and 443, gets
   # the HTTPS certificate on its own, and passes each request to the app.
@@ -32,6 +56,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy:/data                           # its certificates survive a restart
     restart: unless-stopped
+    logging: *logging
 
 volumes:
   models:

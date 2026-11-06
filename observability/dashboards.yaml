@@ -1,0 +1,8 @@
+# Tells Grafana (inside grafana/otel-lgtm) to load every dashboard in observability/dashboards/ when it starts.
+apiVersion: 1
+providers:
+  - name: needtoknow
+    type: file
+    options:
+      path: /otel-lgtm/needtoknow-dashboards
+      foldersFromFilesStructure: false

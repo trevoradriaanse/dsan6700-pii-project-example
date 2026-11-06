@@ -29,6 +29,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 0,
         "y": 0,
@@ -79,6 +80,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 6,
         "y": 0,
@@ -130,6 +132,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 12,
         "y": 0,
@@ -200,6 +203,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 18,
         "y": 0,
@@ -250,6 +254,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 0,
         "y": 8,
@@ -300,6 +305,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 8,
         "y": 8,
@@ -351,6 +357,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
+      "interval": "15s",
       "gridPos": {
         "x": 16,
         "y": 8,

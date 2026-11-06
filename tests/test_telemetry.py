@@ -1,4 +1,6 @@
 import json
+import re
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -39,6 +41,23 @@ def test_metrics_count_documents_findings_and_refusals(sample_pdf):
     assert 'needtoknow_detection_seconds_bucket{detector="regex",le="0.005"}' in text
     assert 'needtoknow_uploads_refused_total{reason="not_pdf"}' in text
     assert 'http_requests_total{handler="/api/detect",method="POST",status="2xx"}' in text
+
+
+def test_every_known_series_starts_at_zero():
+    with TestClient(app) as client:
+        text = client.get("/metrics").text
+    for reason in telemetry.REASONS:
+        assert f'needtoknow_uploads_refused_total{{reason="{reason}"}}' in text
+    for decision in telemetry.DECISIONS:
+        assert f'needtoknow_findings_reviewed_total{{decision="{decision}"}}' in text
+    assert 'needtoknow_documents_checked_total{detector="regex"}' in text
+
+
+def test_every_refusal_reason_is_known():
+    """A reason missing from REASONS would still be counted, but its first refusal would never show up."""
+    source = (Path(__file__).parents[1] / "src/needtoknow/api/main.py").read_text()
+    used = set(re.findall(r'refused\(\d+, "(\w+)"', source))
+    assert used and used <= set(telemetry.REASONS)
 
 
 def test_redact_counts_what_users_unchecked(sample_pdf):

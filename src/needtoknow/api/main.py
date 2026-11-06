@@ -38,6 +38,7 @@ async def lifespan(app: FastAPI):
                                         gliner_threshold=settings.gliner_threshold,
                                         gliner_revision=settings.gliner_revision)  # once, before the first request
     logger.info("detector ready", detector=app.state.detector.name, seconds=round(time.monotonic() - t0, 1))
+    telemetry.start_at_zero(app.state.detector.name)
     yield
     telemetry.flush()
 

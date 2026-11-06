@@ -48,6 +48,20 @@ REFUSED = Counter("needtoknow_uploads_refused", "Uploads refused, by reason", ["
 # What users did with the findings before downloading: removed them, or unchecked them as false alarms. A rising
 # share of unchecked findings says the detector is flagging things that aren't personal information.
 REVIEWED = Counter("needtoknow_findings_reviewed", "Findings users reviewed, by what they decided", ["decision"])
+REASONS = ("rate_limited", "too_large", "not_pdf", "no_text_layer", "too_many_pages")   # every reason we refuse for
+DECISIONS = ("removed", "unchecked")
+
+
+def start_at_zero(detector: str) -> None:
+    """Create each series we know of at 0 when the app starts. A labeled series only exists from its first event on,
+    so Prometheus would first see it at 1 and have no earlier sample to count that 1 from: the first refusal of
+    each kind after every restart would never show up in rate() or on the dashboard."""
+    for reason in REASONS:
+        REFUSED.labels(reason)
+    for decision in DECISIONS:
+        REVIEWED.labels(decision)
+    for metric in (DETECTION_SECONDS, FINDINGS_PER_PAGE, DOCUMENTS):
+        metric.labels(detector)
 
 SKIP = ["/health", "/ready", "/metrics"]   # asked every few seconds by Docker and Prometheus: no traces, no counts
 tracer = trace.get_tracer("needtoknow")

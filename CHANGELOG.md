@@ -3,7 +3,14 @@
 What changed in each release, for the people who deploy and use Need to Know. Versions follow semantic versioning:
 MAJOR.MINOR.PATCH, where a new feature raises MINOR and a fix raises PATCH (before 1.0, anything may still change).
 
-## [0.10.0] - 2026-11-07
+## [0.10.1] - 2026-11-06
+
+### Fixed
+- The first refusal of each kind, after every restart, never showed up on the dashboard. A labeled count only exists
+  from its first event on, so Prometheus first saw it at 1, with no earlier sample to count that 1 from. The app now
+  creates every count it knows of (each refusal reason, each review decision, its detector) at 0 when it starts.
+
+## [0.10.0] - 2026-11-06
 
 ### Added
 - Logs as JSON, written with loguru: one object per line, each with a `request_id` and a `trace_id`, plus one line

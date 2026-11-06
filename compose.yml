@@ -25,8 +25,8 @@ services:
     restart: unless-stopped
     logging: *logging
 
-  # Grafana, Prometheus (metrics), Tempo (traces), Loki (logs) and an OpenTelemetry collector in one container: made
-  # for development and demonstrations, not production. On only when .env says COMPOSE_PROFILES=observability (or
+  # Grafana, Prometheus (metrics), Tempo (traces), Loki (logs), an OpenTelemetry collector, and Pyroscope (profiles,
+  # which we don't collect) in one container: made for development and demonstrations, not production. On only when .env says COMPOSE_PROFILES=observability (or
   # proxy,observability); set OTEL_EXPORTER_OTLP_ENDPOINT=http://lgtm:4318 there too, so the app sends it its traces
   # and log lines. Prometheus collects the app's /metrics itself.
   lgtm:
